@@ -1,0 +1,114 @@
+﻿.container {
+    position: relative;
+}
+
+.title {
+    height: 90px;
+}
+
+.LogOut {
+    width: 50%;
+    height: 20%;
+    position: relative;
+}
+
+.lblAccount {
+    padding-bottom: 5px;
+    border-bottom: 1.5px solid black;
+    font-size: large;
+}
+
+.center {
+    text-align: center;
+}
+
+
+
+.txt {
+    font-size: 20px;
+    font-family: Inria Sans;
+    color: dimgray;
+}
+
+
+
+.lblTitle {
+    font-size: x-large;
+    margin-left: 20px;
+    font-weight: 600;
+}
+
+.lbl1 {
+    font-family: Inria Sans;
+}
+
+
+.lbLogOut {
+    font-family: Inria Sans;
+    color: black;
+}
+
+.lb {
+    font-size: medium;
+    text-decoration: none;
+    color: black;
+    font-family: Inria Sans;
+}
+
+    .lb:hover, .lbLogOut:hover {
+        color: red;
+    }
+
+    .lb:before {
+        content: "•";
+        font-size: 30px;
+        color: grey;
+        font-weight: 900;
+        display: inline-block;
+        width: 20px;
+    }
+
+.lb1 {
+    color: red;
+}
+
+    .lb1:before {
+        color: orange;
+    }
+
+.lbl {
+    margin-left: 20px;
+    font-family: Inria Sans;
+    color: grey;
+}
+
+
+
+.txt {
+    border-right: none;
+    border-top: none;
+    border-left: none;
+    border-bottom: 1px solid grey;
+    margin-bottom: 20px;
+    font-family: Inria Sans;
+}
+
+
+
+.btn {
+    text-align: center;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    font-family: Inria Sans;
+    background-color: #ED1C24;
+    font-weight: 600;
+}
+
+    /* Red */
+    .btn:hover {
+        background: #da190b;
+    }

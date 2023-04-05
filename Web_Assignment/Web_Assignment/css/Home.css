@@ -1,0 +1,33 @@
+﻿body {
+}
+
+.carousel{
+    width:80%;
+    margin:auto;
+
+}
+.carousel-indicators{
+    height:50px;
+}
+
+.carousel-indicators li {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+}
+.menu_class {
+    width: 75%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+.menu_class2 {
+    width: 80%;
+    margin: auto;
+    align-content:center;
+    margin-top: 10px;
+}
+.slide_bottom {
+   margin-top:50px;
+}

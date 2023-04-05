@@ -1,0 +1,101 @@
+﻿.Login {
+    margin-top: 40px;
+    font-family: Inria Sans;
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+    background-image: url('asset/loginBackground.jpg');
+}
+
+
+
+.txtEmail {
+    border-right: none;
+    border-top: none;
+    border-left: none;
+    border-bottom: 1px solid grey;
+    margin-bottom: 20px;
+    font-family: Inria Sans;
+    color: dimgray;
+}
+
+
+::placeholder {
+    font-family: Inria Sans;
+    margin-left: 10px;
+}
+
+
+
+
+.txtPassword {
+    border-right: none;
+    border-top: none;
+    border-left: none;
+    border-bottom: 1px solid grey;
+    margin-bottom: 10px;
+    font-family: Inria Sans;
+    color: dimgray;
+}
+
+
+.cbRmbMe {
+    font-weight: 600;
+    font-family: Inria Sans;
+    margin-right: 100px;
+}
+
+    .cbRmbMe input[type="checkbox"] {
+        margin-right: 5px;
+    }
+
+.btn1 {
+    text-align: center;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.btnLogin {
+    font-family: Inria Sans;
+    background-color: #ED1C24;
+    font-weight: 600;
+}
+    /* Red */
+    .btnLogin:hover {
+        background: #da190b;
+    }
+
+.btn2 {
+    border: 1px solid black;
+    background-color: white;
+    color: red;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+.btnCreateAcc {
+    font-family: Inria Sans;
+    border-color: black;
+    color: #ED1C24;
+    font-weight: 600;
+}
+
+    .btnCreateAcc:hover {
+        background: #e7e7e7;
+    }
+
+
+
+.lbForgotPswd {
+    font-family: Inria Sans;
+    color: #ED1C24;
+    font-weight: 600;
+}

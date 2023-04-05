@@ -1,0 +1,13 @@
+﻿
+
+.lb12 {
+    color: red;
+}
+
+    .lb12:before {
+        color: orange;
+    }
+
+.center {
+    text-align: center;
+}

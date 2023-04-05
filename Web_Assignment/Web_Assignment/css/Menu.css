@@ -1,0 +1,19 @@
+﻿body {
+}
+
+.menu_class {
+    width: 75%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+.menu_class2 {
+    width: 80%;
+    margin: auto;
+    align-content:center;
+    margin-top: 10px;
+}
+.slide_bottom {
+   margin-top:50px;
+}

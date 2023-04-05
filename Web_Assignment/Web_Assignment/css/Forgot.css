@@ -1,0 +1,43 @@
+﻿.container {
+    text-align: center;
+}
+
+.title {
+    margin-top: 40px;
+}
+
+.btn {
+    text-align: center;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    font-family: Inria Sans;
+    background-color: #ED1C24;
+    font-weight: 600;
+    width: 200px;
+    height: 40px;
+}
+
+.title1 {
+    margin-top: 40px;
+    font-size: x-large;
+    margin-left: 20px;
+    font-weight: 600;
+}
+
+.lblQ {
+    font-size: large;
+    font-weight: 300;
+}
+
+.lblSecQ {
+    font-size: medium;
+    font-weight: 400;
+}
+
+.txtSecAns {
+    font-family: Inria Sans;
+}
