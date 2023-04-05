@@ -8,16 +8,32 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
-   Product List
-     <div class="input-group">
+   Product List<br>
+   
+    
+    
+    <div class="input-group ">
           <div class="form-outline">
-            <input type="search" id="form1" class="form-control" placeholder="Search" />
-            
+           
           </div>
-          <button type="button" class="btn btn-primary">
+         
+          
+        
+     </div>
+    
+   
+    <div class="d-flex justify-content-between">
+        <div>
+            <input type="search" id="form1" class="form-control" placeholder="Search" /> 
+           <button type="button" class="btn btn-primary">
             <i class="fas fa-search"></i>
           </button>
         </div>
+        <div>
+             <asp:LinkButton ID="LinkButton1" runat="server" class="btn btn-success">Add Product</asp:LinkButton>
+        </div>
+    </div>
+
     <div class="container-fluid">
         <table class="table table-striped table-borderless">
           <thead>
@@ -50,8 +66,8 @@
               <td>RM19.49</td>
               <td>Chicken</td>
               <td>
-                  <asp:Button ID="Button1" runat="server" Text="Edit" class="btn btn-primary" />
-                  <asp:Button ID="Button4" runat="server" Text="Button" />
+                  <asp:Button ID="Button1" runat="server" Text="Edit" class="btn btn-primary" PostBackUrl="~/Admin/UpdateProduct.aspx" />
+                  <asp:Button ID="Button4" runat="server" Text="Button" class="btn btn-primary" />
                 </td>
             </tr>
             <tr>
@@ -70,8 +86,8 @@
               <td>RM19.49</td>
               <td>Chicken</td>
               <td>
-                  <asp:Button ID="Button2" runat="server" Text="Edit" class="btn btn-primary" />
-                  <asp:Button ID="Button5" runat="server" Text="Button" />
+                  <asp:Button ID="Button2" runat="server" Text="Edit" class="btn btn-primary" PostBackUrl="~/Admin/UpdateProduct.aspx" />
+                  <asp:Button ID="Button5" runat="server" Text="Button" class="btn btn-primary" />
                 </td>
             </tr>
             <tr>
@@ -90,8 +106,8 @@
               <td>RM19.49</td>
               <td>Chicken</td>
               <td class="auto-style1">
-                  <asp:Button ID="Button3" runat="server" Text="Edit" class="btn btn-primary" />
-                  <asp:Button ID="Button6" runat="server" Text="Button" />
+                  <asp:Button ID="Button3" runat="server" Text="Edit" class="btn btn-primary" PostBackUrl="~/Admin/UpdateProduct.aspx" />
+                  <asp:Button ID="Button6" runat="server" Text="Button" class="btn btn-primary" />
               </td>
 
             </tr>
