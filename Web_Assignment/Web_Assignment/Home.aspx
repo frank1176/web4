@@ -34,7 +34,7 @@
     <div class="menu_class">
       <h2>Menu</h2>
 
-       <a href="#" class="nav-link">view all</a>
+       <a href="Menu.aspx" class="nav-link">view all</a>
     </div>
 
     <div class="card-deck d-flex flex-column flex-sm-row justify-content-between container-fluid menu_class2 ">

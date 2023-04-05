@@ -38,9 +38,11 @@
                               <li class="nav-item">
                                     <a class="nav-link <%= Request.Url.AbsolutePath.EndsWith("Menu.aspx") ? "active" : "" %>" href="Menu.aspx">Menu</a>
                               </li>
+                              <!--
                               <li class="nav-item">
                                     <a class="nav-link <%= Request.Url.AbsolutePath.EndsWith("About.aspx") ? "active" : "" %>" href="About.aspx">About Us</a>
                               </li>
+                                -->
                                <li class="nav-item">
                                     <a class="nav-link <%= Request.Url.AbsolutePath.EndsWith("Delivery.aspx") ? "active" : "" %>" href="Delivery.aspx">Track Order</a>
                               </li>
