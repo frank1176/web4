@@ -4,21 +4,19 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <title>Product</title>
-    Product Pagex
+    
     <head>
         
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tutorial</title>
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-    <!-- CSS -->
     <link href="css/style.css" rel="stylesheet">
     <meta name="robots" content="noindex,follow" />
 
   </head>
 
   <body>
+      <span style="margin-left:8%; margin-top:10%; color: gray;"><i>Home > Menu > 3-pc Arabian Spice Crunch Combo</i></span>
     <main class="container">
         
 
@@ -38,36 +36,36 @@
     Default checked radio
   </label>
 </div>   -->
-          <div >
-        Choose Your Drink (pick1)<br><br>
+          <div style="margin-top: 20px; width:98%;">
+        <span><b>Choose Your Drink </b>  <i>(pick1)</i></span><br><br>
         
-        <input type="radio" id="fname" name="fname" value="John">
-        <label for="fname">Coca-Cola (M)</label><br><br>
+        <input class="btnr" type="radio" id="fname" name="fname" value="Coca-Cola (M)" checked>
+        <label for="fname">Coca-Cola (M)</label>  <br><hr />
 
-        <input type="radio" id="fname" name="fname" value="John">
-        <label for="fname">Coca-Cola Zero Sugar (M)</label><br><br>
+        <input class="btnr" type="radio" id="fname" name="fname" value="Coca-Cola Zero Sugar (M)">
+        <label for="fname">Coca-Cola Zero Sugar (M)</label><br><hr />
 
-        <input type="radio" id="fname" name="fname" value="John">
-        <label for="fname">Sprite (M)</label><br><br>
+        <input class="btnr" type="radio" id="fname" name="fname" value="Sprite (M)">
+        <label for="fname">Sprite (M)</label><br><hr />
 
-        <input type="radio" id="fname" name="fname" value="John">
-        <label for="fname">Fanta Orange (M)</label><br><br>
+        <input class="btnr" type="radio" id="fname" name="fname" value="Fanta Orange (M)">
+        <label for="fname">Fanta Orange (M)</label><br><hr />
 
-        <input type="radio" id="fname" name="fname" value="John">
-        <label for="fname">Coca-Cola (L)</label><br><br>
+        <input class="btnr" type="radio" id="fname" name="fname" value="Coca-Cola (L)">
+        <label for="fname">Coca-Cola (L)</label> <span style="float:right;">+RM 1.20</span> <br><hr />
 
-        <input type="radio" id="fname" name="fname" value="John">
-        <label for="fname">Coca-Cola Zero Sugar (L)</label><br><br>
+        <input class="btnr" type="radio" id="fname" name="fname" value="Coca-Cola Zero Sugar (L)">
+        <label for="fname">Coca-Cola Zero Sugar (L)</label> <span style="float:right;">+RM 1.20</span> <br> <hr />
 
-        <input type="radio" id="fname" name="fname" value="John">
-        <label for="fname">Sprite (L)</label><br><br>
+        <input class="btnr" type="radio" id="fname" name="fname" value="Sprite (L)">
+        <label for="fname">Sprite (L)</label> <span style="float:right;">+RM 1.20</span> <br> <hr />
 
-        <input type="radio" id="fname" name="fname" value="John">
-        <label for="fname">Fanta Orange (L)</label><br><br>
+        <input class="btnr" type="radio" id="fname" name="fname" value="Fanta Orange (L)">
+        <label for="fname">Fanta Orange (L)</label> <span style="float:right;">+RM 1.20</span> <br> <hr />
 
-        <input type="radio" id="fname" name="fname" value="John">
-        <label for="fname">Ice Milo (M)</label><br><br>
-        <p style="float:right">fijcoe</p>
+        <input class="btnr" type="radio" id="fname" name="fname" value="Ice Milo (M)">
+        <label for="fname">Ice Milo (M)</label> <span style="float:right;">+RM 2.20</span> <br> <hr />
+       
     </div>
       
     </div>
@@ -94,12 +92,12 @@
           <div class="cable-config">
 
             <div class="cable-choose">
-              <button> - </button>
-              <button style="width: 65%; border-radius: 25px; " disabled>1</button>
-              <button> + </button>
+              <button style="border-radius: 50%; width:8%; background-color:white;"> - </button>
+              <button style="width: 75%; border-radius: 25px; background-color:white;">1</button>
+              <button style="border-radius: 50%; width:8%; background-color:white;"> + </button>
             </div>
             <div>
-              <button style="width: 95%; height: 50px; border-radius: 20px;">Add To Cart - RM24.99</button>
+              <button style="width: 95%; height: 50px; border-radius: 20px; margin-top:10px; background-color:white;">Add To Cart - RM24.99</button>
             </div>
 
           

@@ -28,10 +28,11 @@ html, body {
 .right-column {
   width: 34%;
   margin-top: 30px;
-  padding: 20px;
-  background-color: #E1E8EE;
+  padding: 25px;
+  background-color: lemonchiffon;
   border-radius: 10px;
   height: 40%;
+  
 }
 
 
