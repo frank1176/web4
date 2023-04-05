@@ -18,7 +18,7 @@
           <img src="asset/arabian_spice_crunch_box_meal_coleslaw.jpg" class="card-img-top " alt="...">
           <div class="card-body">
             <h5 class="card-title">Arabian Spice Crunch Box Meal Coleslaw</h5>
-            <a href="#" class="btn btn-danger">More details</a>
+              <asp:LinkButton class="btn btn-danger" ID="LinkButton1" runat="server" PostBackUrl="~/Product.aspx" >More details</asp:LinkButton>
           </div>
         </div>
 
@@ -27,7 +27,7 @@
           <img src="asset/2pc_arabian_spice_crunch_coleslaw.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">2-pc Arabian Spice Crunch Coleslaw Combo</h5>
-            <a href="#" class="btn btn-danger">More details</a>
+             <asp:LinkButton class="btn btn-danger" ID="LinkButton2" runat="server" PostBackUrl="~/Product.aspx" >More details</asp:LinkButton>
           </div>
         </div>
 
@@ -35,7 +35,7 @@
           <img src="asset/3pc_arabian_spice_crunch_coleslaw.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">3-pc Arabian Spice Crunch Coleslaw Combo</h5>
-            <a href="#" class="btn btn-danger">More details</a>
+             <asp:LinkButton class="btn btn-danger" ID="LinkButton3" runat="server" PostBackUrl="~/Product.aspx" >More details</asp:LinkButton>
           </div>
         </div>
 
@@ -43,7 +43,7 @@
           <img src="asset/6pc_bucket_kongsi_with_spicy_nuggets.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">6-pc Bucket Kongsi</h5>
-            <a href="#" class="btn btn-danger">More details</a>
+             <asp:LinkButton class="btn btn-danger" ID="LinkButton4" runat="server" PostBackUrl="~/Product.aspx" >More details</asp:LinkButton>
           </div>
         </div>
 
