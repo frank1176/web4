@@ -239,7 +239,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body ">
-                <div class="text-right"> <i class="fa fa-close close" data-dismiss="modal"></i> </div>
+                <div class="text-right">  <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="document.location='Home.aspx'"></button> </div>
                 
                 <div class="px-4 py-5">
 
@@ -256,28 +256,28 @@
 
                 <div class="d-flex justify-content-between">
                     <span class="font-weight-bold">Product(Qty:1)</span>
-                    <span class="text-muted">$53.98</span>
+                    <span class="text-muted">RM53.98</span>
                 </div>
 
                    <div class="d-flex justify-content-between">
                     <span class="font-weight-bold">Product2(Qty:1)</span>
-                    <span class="text-muted">$1750.00</span>
+                    <span class="text-muted">RM00.00</span>
                 </div>
 
                 <div class="d-flex justify-content-between">
                     <small>Delivery Fee</small>
-                    <small>$4.00</small>
+                    <small>RM4.00</small>
                 </div>
 
 
                 <div class="d-flex justify-content-between">
                     <small>Tax</small>
-                    <small>$0.00</small>
+                    <small>RM0.00</small>
                 </div>
                 
                 <div class="d-flex justify-content-between mt-3">
                     <span class="font-weight-bold">Total</span>
-                    <span class="font-weight-bold theme-color">$57.98</span>
+                    <span class="font-weight-bold theme-color">RM57.98</span>
                 </div>  
 
 
