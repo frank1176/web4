@@ -5,7 +5,7 @@
       <link href="css/Cart.css" rel="stylesheet" type="text/css" media="all"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-  <h1>Cart Page</h1>
+  <title>Cart Page</title>
     
 <section class="h-100 gradient-custom">
   <div class="container py-5">

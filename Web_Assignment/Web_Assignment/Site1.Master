@@ -27,29 +27,29 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                  <div class="container-fluid">
                      <a href="Home.aspx"><img src="asset/firechicken.png" width="85" height="85" /></a>
-                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                           <span class="navbar-toggler-icon"></span>
                      </button>
                      <div class="collapse navbar-collapse" id="navbarNav">
-                          <ul class="navbar-nav me-auto nav-pills nav-fill ">
-                              <li class="nav-item active">
-                                <a class="nav-link active" aria-current="page" href="Home.aspx">Home</a>
+                          <ul class="navbar-nav me-auto nav-pills nav-fill red ">
+                              <li class="nav-item">
+                                <a class="nav-link <%= Request.Url.AbsolutePath.EndsWith("Home.aspx") ? "active" : "" %>" href="Home.aspx">Home</a>
                               </li>
                               <li class="nav-item">
-                                    <a class="nav-link" href="Menu.aspx">Menu</a>
+                                    <a class="nav-link <%= Request.Url.AbsolutePath.EndsWith("Menu.aspx") ? "active" : "" %>" href="Menu.aspx">Menu</a>
                               </li>
                               <li class="nav-item">
-                                    <a class="nav-link" href="#">About Us</a>
+                                    <a class="nav-link <%= Request.Url.AbsolutePath.EndsWith("About.aspx") ? "active" : "" %>" href="About.aspx">About Us</a>
                               </li>
                                <li class="nav-item">
-                                    <a class="nav-link" href="Delivery.aspx">Track Order</a>
+                                    <a class="nav-link <%= Request.Url.AbsolutePath.EndsWith("Delivery.aspx") ? "active" : "" %>" href="Delivery.aspx">Track Order</a>
                               </li>
                           </ul>
 
                          <ul class="navbar-nav">
                                
                              <li class="nav-item">
-                                 <a class="nav-link" href="Login.aspx">
+                                 <a class="nav-link <%= Request.Url.AbsolutePath.EndsWith("Login.aspx") ? "active" : "" %>" href="Login.aspx">
                                      <i class="fa-regular fa-user fa-xl" style="color: #ffffff;"></i>
                                      <span>Login</span>
                                  </a>
@@ -59,7 +59,7 @@
                           
                              <li class="nav-item">
                                 
-                                  <a class="nav-link" href="Cart.aspx">
+                                  <a class="nav-link <%= Request.Url.AbsolutePath.EndsWith("Cart.aspx") ? "active" : "" %>" href="Cart.aspx">
                                         <i class="fa-solid fa-cart-shopping fa-xl" style="color: #ffffff;"></i>
                                       <span>Cart</span>
                                   </a>
