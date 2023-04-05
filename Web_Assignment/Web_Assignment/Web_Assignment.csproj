@@ -116,6 +116,7 @@
     <Content Include="css\MyProfile.css" />
     <Content Include="css\navbar.css" />
     <Content Include="css\Payment.js" />
+    <Content Include="css\register.css" />
     <Content Include="css\SignIn.css" />
     <Content Include="css\style.css" />
     <Content Include="css\Track.css" />
