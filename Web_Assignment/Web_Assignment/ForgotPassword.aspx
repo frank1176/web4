@@ -62,7 +62,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="Button1" runat="server" Text="Send" CssClass="auto-style7" Height="40px" Width="302px" />
+                        <asp:Button ID="Button1" runat="server" Text="Send" CssClass="auto-style7" Height="40px" Width="302px" PostBackUrl="~/Forgot2.aspx" />
                     </td>
                 </tr>
             </table>

@@ -78,13 +78,13 @@
                 <tr>
                     <td class="auto-style15">
             
-                        <asp:LinkButton ID="LinkButton1" class="lb lb11" runat="server" OnClick="LinkButton1_Click">My Profile</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton1" class="lb lb11" runat="server" PostBackUrl="~/Profile.aspx" >My Profile</asp:LinkButton>
                         
                 </tr>
                 <tr>
                     <td class="auto-style15">
             
-                        <asp:LinkButton ID="LinkButton2" class="lb lb12" runat="server">Address book</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton2" class="lb lb12" runat="server" PostBackUrl="~/Address.aspx">Address book</asp:LinkButton>
                     </td>
                 </tr>
                 <tr>
@@ -96,7 +96,7 @@
                 <tr>
                     <td class="auto-style15">
             
-                        <asp:LinkButton ID="LinkButton4" class="lb lb14" runat="server">Change password</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton4" class="lb lb14" runat="server" PostBackUrl="~/Changepassword.aspx">Change password</asp:LinkButton>
                     </td>
                 </tr>
             </table>

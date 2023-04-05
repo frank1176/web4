@@ -90,11 +90,37 @@
                 </div>
               </div>
 
+                <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <input type="email" id="SecurityPassword" class="form-control form-control-lg"  placeholder="Security Password"/>
+                  </div>
+
+                </div>
+              </div>
+                <div class="row">
+
+                  <div class="form-outline mb-4">
+                    <input type="email" id="SecurityAns" class="form-control form-control-lg"  placeholder="Security Answer"/>
+                  </div>
+
+                </div>
+                 <div class="row">
+
+                  <div class="form-outline mb-4">
+                    <input type="email" id="Password" class="form-control form-control-lg"  placeholder="Password"/>
+                  </div>
+
+                </div>
+
+
+
             <div class="row">
   
 
-                  <div class="form-outline mb-4">
-                    <input type="password" id="password" class="form-control form-control-lg"  placeholder="Password"/>
+                  <div class="form-outline mb-5">
+                    <input type="password" id="Cpassword" class="form-control form-control-lg"  placeholder="Confirm Password"/>
                   </div>
 
 
@@ -104,7 +130,7 @@
 
 
               <div class="auto-style2 center">
-                <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                <input class="btn btn-primary btn-lg" type="submit" value="Sign Up" />
               </div>
 
             </form>

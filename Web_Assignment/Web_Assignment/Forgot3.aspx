@@ -2,12 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
         <link id="css1" href="css/Forgot.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
-        .auto-style1 {
-            height: 97px;
-        }
-        .auto-style2 {
-            height: 43px;
-        }
         .auto-style3 {
             height: 68px;
         }
@@ -61,25 +55,23 @@
                 </tr>
                 <tr >
                     <td class="auto-style5">
-                        <asp:Label ID="lblQ" runat="server" Text="Security Question" CssClass="lblQ"></asp:Label>
+                        <asp:Label ID="lblQ" runat="server" Text="Reset password" CssClass="lblQ"></asp:Label>
                     </td>
                 </tr>
                 <tr >
                     <td class="auto-style5">
-                        &nbsp;
-
-                        <asp:Label ID="lblSecQ" runat="server" CssClass="lblSecQ" Text="lblSecQ"></asp:Label>
+                        <asp:TextBox ID="txtSecAns0" runat="server" placeholder="New Password" Height="41px" Width="320px" CssClass="txtSecAns" ForeColor="DimGray"></asp:TextBox>
 
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style8">
-                        <asp:TextBox ID="txtSecAns" runat="server" placeholder="Security Question" Height="41px" Width="320px" CssClass="txtSecAns" ForeColor="DimGray"></asp:TextBox>
+                        <asp:TextBox ID="txtSecAns" runat="server" placeholder="Confirm New Password" Height="41px" Width="320px" CssClass="txtSecAns" ForeColor="DimGray"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="Button1" runat="server" Text="Next" CssClass="auto-style7" Height="40px" Width="302px" />
+                        <asp:Button ID="Button1" runat="server" Text="Reset" CssClass="auto-style7" Height="40px" Width="302px" PostBackUrl="~/Login.aspx" />
                     </td>
                 </tr>
             </table>
