@@ -90,13 +90,19 @@
                 <tr>
                     <td class="auto-style15">
             
-                        <asp:LinkButton ID="LinkButton3" class="lb lb13" runat="server">Order History</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton3" class="lb lb13" runat="server" PostBackUrl="~/OrderHistory.aspx">Order History</asp:LinkButton>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style15">
             
                         <asp:LinkButton ID="LinkButton4" class="lb lb14" runat="server" PostBackUrl="~/Changepassword.aspx">Change password</asp:LinkButton>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style16">
+            
+                        <asp:LinkButton ID="LinkButton5" class="lb lb4" runat="server" PostBackUrl="~/Admin/DashBoard.aspx">Admin</asp:LinkButton>
                     </td>
                 </tr>
             </table>
@@ -160,6 +166,7 @@
             <asp:Button ID="btnSave" runat="server" Text="Save Address" CssClass="btn" />
                     </td>
                 </tr>
+
             </table>
         <br />
         <br />

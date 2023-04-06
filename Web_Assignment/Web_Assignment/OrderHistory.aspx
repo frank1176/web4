@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Changepassword.aspx.cs" Inherits="Web_Assignment.WebForm11" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="OrderHistory.aspx.cs" Inherits="Web_Assignment.WebForm15" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-            <link id="css" href="css/MyProfile.css" type="text/css" rel="stylesheet" />
-        <link id="css1" href="css/changepassword.css" type="text/css" rel="stylesheet" />
+     <link id="css" href="css/MyProfile.css" type="text/css" rel="stylesheet" />
+    <link href="css/Track.css" rel="stylesheet" />
     <style type="text/css">
                 .auto-style7 {
     width: 18%;
@@ -67,10 +67,11 @@
         .auto-style18 {
             width: 91%;
         }
+        
         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div class="auto-style3">
+     <div class="auto-style3">
         <div class="auto-style11">
             <asp:LinkButton ID="lbLogOut" class="lbLogOut" runat="server">Log Out</asp:LinkButton>
         </div>
@@ -98,13 +99,13 @@
                 <tr>
                     <td class="auto-style15">
             
-                       <asp:LinkButton ID="LinkButton3" class="lb lb13" runat="server" PostBackUrl="~/OrderHistory.aspx">Order History</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton3" class="lb lb14" runat="server" PostBackUrl="~/OrderHistory.aspx">Order History</asp:LinkButton>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style15">
             
-                        <asp:LinkButton ID="LinkButton4" class="lb lb14" runat="server" PostBackUrl="~/Changepassword.aspx">Change password</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton4" class="lb lb13" runat="server" PostBackUrl="~/Changepassword.aspx">Change password</asp:LinkButton>
                     </td>
                 </tr>
                 <tr>
@@ -117,49 +118,43 @@
         </div>
 
         <div class="auto-style2 ">
-            <table class="auto-style18">
-                <tr>
-                    <td class="title ">
-                        <asp:Label ID="lblAddressBook"  runat="server" Text="Change Password" CssClass="lbl1 lblTitle"></asp:Label>
-                    </td>
-                </tr>
-                <tr>
-                    <td >
-                        <asp:Label ID="lblCum" runat="server" Text="Current Password" CssClass="lbl "></asp:Label>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="center" >
-                        <asp:TextBox ID="txtCur" runat="server" CssClass="txtC" Height="36px" Width="420px" ForeColor="DimGray"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Label ID="lblNew" runat="server" Text="New Password" CssClass="lbl"></asp:Label>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="center">
-                        <asp:TextBox ID="txtNew" runat="server" CssClass="txtC" Height="36px" Width="420px" ForeColor="DimGray"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Label ID="lbl" runat="server" Text="Comfirm new password" CssClass="lbl" ></asp:Label>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="center">
-                        <asp:TextBox ID="txtCom" runat="server" CssClass=" txtC" Height="36px" Width="420px" ForeColor="DimGray"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-            <asp:Button ID="btnChange" runat="server" Text="Change Password" CssClass="btn" />
-                    </td>
-                </tr>
+               <div class="container">
+      <h1 class="text-center mb-4">My Account</h1>
+      <h3>Order History</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Order Number</th>
+            <th scope="col">Order Date</th>
+            <th scope="col">Order Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>123456</td>
+            <td>March 28, 2023</td>
+            <td>Processing</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>789012</td>
+            <td>March 20, 2023</td>
+            <td>Completed</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>345678</td>
+            <td>March 10, 2023</td>
+            <td>Completed</td>
+          </tr>
+        </tbody>
+      </table>
+     
 
-            </table>
+
+    </div>
         <br />
         <br />
         <br />

@@ -104,7 +104,7 @@
                 <tr>
                     <td class="auto-style15">
             
-                        <asp:LinkButton ID="LinkButton3" class="lb lb3" runat="server">Order History</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton3" class="lb lb13" runat="server" PostBackUrl="~/OrderHistory.aspx">Order History</asp:LinkButton>
                     </td>
                 </tr>
                 <tr>
