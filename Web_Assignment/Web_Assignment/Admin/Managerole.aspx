@@ -12,7 +12,7 @@
            
             Create Role:<br />
             <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-            <asp:Button ID="Button3" runat="server" Text="Button" />
+            <asp:Button ID="Button3" runat="server" Text="Create" class="btn btn-primary" />
            
         </div>
         
@@ -27,7 +27,7 @@
                  <asp:ListItem>User</asp:ListItem>
              </asp:DropDownList>
 
-             <asp:Button ID="Button2" runat="server" Text="Assign" />
+             <asp:Button ID="Button2" runat="server" Text="Assign" class="btn btn-primary" />
         </div>
     </div>
 

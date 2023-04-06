@@ -65,7 +65,7 @@
               <td>Chicken</td>
               <td class="d-flex">
                   <asp:Button ID="Button1" runat="server" Text="Edit" class="btn btn-primary" PostBackUrl="~/Admin/UpdateProduct.aspx" />
-                  <asp:Button ID="Button4" runat="server" Text="Button" class="btn btn-primary" />
+                  <asp:Button ID="Button4" runat="server" Text="Delete" class="btn btn-danger" />
                 </td>
             </tr>
             <tr>
@@ -85,7 +85,7 @@
               <td>Chicken</td>
               <td class="d-flex">
                   <asp:Button ID="Button2" runat="server" Text="Edit" class="btn btn-primary" PostBackUrl="~/Admin/UpdateProduct.aspx" />
-                  <asp:Button ID="Button5" runat="server" Text="Button" class="btn btn-primary" />
+                  <asp:Button ID="Button5" runat="server" Text="Delete" class="btn btn-danger" />
                 </td>
             </tr>
             <tr>
@@ -105,7 +105,7 @@
               <td>Chicken</td>
               <td class="auto-style1 d-flex">
                   <asp:Button ID="Button3" runat="server" Text="Edit" class="btn btn-primary" PostBackUrl="~/Admin/UpdateProduct.aspx" />
-                  <asp:Button ID="Button6" runat="server" Text="Button" class="btn btn-primary" />
+                  <asp:Button ID="Button6" runat="server" Text="Delete" class="btn  btn-danger" />
               </td>
 
             </tr>
