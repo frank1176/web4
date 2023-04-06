@@ -124,6 +124,7 @@
     <Content Include="Forgot3.aspx" />
     <Content Include="ForgotPassword.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="OrderHistory.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Web.config" />
@@ -232,6 +233,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrderHistory.aspx.cs">
+      <DependentUpon>OrderHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderHistory.aspx.designer.cs">
+      <DependentUpon>OrderHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
