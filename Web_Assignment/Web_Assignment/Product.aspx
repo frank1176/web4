@@ -97,7 +97,7 @@
               <button style="border-radius: 50%; width:8%; background-color:white;"> + </button>
             </div>
             <div>
-              <button style="width: 95%; height: 50px; border-radius: 20px; margin-top:10px; background-color:white;">Add To Cart - RM24.99</button>
+              <button style="width: 95%; height: 50px; border-radius: 20px; margin-top:10px; background-color:orangered;" id="addbtn">Add To Cart - RM24.99</button>
             </div>
 
           
