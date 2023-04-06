@@ -6,7 +6,7 @@
      <link href="css/Home.css" rel="stylesheet" type="text/css" media="all"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Home Page</h1>
+    
 
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
@@ -51,7 +51,7 @@
          <div class="card" style="width: 18rem;">
           <img src="asset/2pc_arabian_spice_crunch_coleslaw.jpg" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">2pc_arabian_spice_crunch_coleslaw</h5>
+            <h5 class="card-title">2pc arabian spice crunch coleslaw</h5>
             <a href="#" class="btn btn-danger">More details</a>
           </div>
         </div>
@@ -59,7 +59,7 @@
         <div class="card" style="width: 18rem;">
           <img src="asset/3pc_arabian_spice_crunch_coleslaw.jpg" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">3pc_arabian_spice_crunch_coleslaw</h5>
+            <h5 class="card-title">3pc arabian spice crunch coleslaw</h5>
             <a href="#" class="btn btn-danger">More details</a>
           </div>
         </div>
@@ -67,7 +67,7 @@
         <div class="card" style="width: 18rem;">
           <img src="asset/6pc_bucket_kongsi_with_spicy_nuggets.jpg" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">6pc_bucket_kongsi_with_spicy_nuggets</h5>
+            <h5 class="card-title">6pc bucket kongsi with spicy nuggets</h5>
             <a href="#" class="btn btn-danger">More details</a>
           </div>
         </div>
