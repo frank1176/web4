@@ -1,9 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/admin.Master" AutoEventWireup="true" CodeBehind="ProductList.aspx.cs" Inherits="Web_Assignment.Admin.WebForm6" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
-        .auto-style1 {
-            margin-left: 40px;
-        }
+        
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -30,7 +28,7 @@
           </button>
         </div>
         <div>
-             <asp:LinkButton ID="LinkButton1" runat="server" class="btn btn-success">Add Product</asp:LinkButton>
+             <asp:LinkButton ID="LinkButton1" runat="server" class="btn btn-success" PostBackUrl="~/Admin/AddProduct.aspx">Add Product</asp:LinkButton>
         </div>
     </div>
 
@@ -65,7 +63,7 @@
               </td>
               <td>RM19.49</td>
               <td>Chicken</td>
-              <td>
+              <td class="d-flex">
                   <asp:Button ID="Button1" runat="server" Text="Edit" class="btn btn-primary" PostBackUrl="~/Admin/UpdateProduct.aspx" />
                   <asp:Button ID="Button4" runat="server" Text="Button" class="btn btn-primary" />
                 </td>
@@ -85,7 +83,7 @@
               </td>
               <td>RM19.49</td>
               <td>Chicken</td>
-              <td>
+              <td class="d-flex">
                   <asp:Button ID="Button2" runat="server" Text="Edit" class="btn btn-primary" PostBackUrl="~/Admin/UpdateProduct.aspx" />
                   <asp:Button ID="Button5" runat="server" Text="Button" class="btn btn-primary" />
                 </td>
@@ -105,7 +103,7 @@
               </td>
               <td>RM19.49</td>
               <td>Chicken</td>
-              <td class="auto-style1">
+              <td class="auto-style1 d-flex">
                   <asp:Button ID="Button3" runat="server" Text="Edit" class="btn btn-primary" PostBackUrl="~/Admin/UpdateProduct.aspx" />
                   <asp:Button ID="Button6" runat="server" Text="Button" class="btn btn-primary" />
               </td>
