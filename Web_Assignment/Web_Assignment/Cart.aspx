@@ -27,9 +27,8 @@
 
 
             <p class="mb-0">Kiongho address</p>
-                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Address">
- Change Address
-</button>
+                  <asp:LinkButton ID="ChangeAddress" runat="server" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Address"> Change Address</asp:LinkButton>
+                 
 
 <!-- The Modal -->
 <div class="modal" id="Address">
