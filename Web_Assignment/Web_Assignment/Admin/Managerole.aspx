@@ -12,7 +12,7 @@
            
             Create Role:<br />
             <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-            <asp:Button ID="Button3" runat="server" Text="Create" class="btn btn-primary" />
+            <asp:Button ID="Button3" runat="server" Text="Create" class="btn btn-primary" OnClick="Button3_Click" />
            
         </div>
         

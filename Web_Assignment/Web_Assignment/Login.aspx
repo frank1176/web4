@@ -16,10 +16,11 @@
 
 
                   <div class="form-outline mb-4">
-                    <input type="text" id="Gmail" class="form-control form-control-lg txt" placeholder="Gmail"/>
+                    <asp:TextBox ID="Gmail" class="form-control form-control-lg" runat="server" placeholder="Gmail"></asp:TextBox>
+                    
                   </div>
 
-
+                  
 
               </div>
 
@@ -27,8 +28,7 @@
   
 
                   <div class="form-outline mb-4">
-                    <input type="text" id="Password" class="form-control form-control-lg txt" placeholder="Password"/>
- 
+                      <asp:TextBox ID="Password" class="form-control form-control-lg" runat="server" placeholder="Password"></asp:TextBox>
                   </div>
 
 
@@ -39,7 +39,7 @@
 
 
               <div class="auto-style2 center mt-4">
-                <input class="btn btn-primary btn-lg btn1" type="submit" value="Log In" />
+                <asp:Button ID="login" class="btn btn-primary btn-lg" runat="server" Text="Login" OnClick="login_Click"/>
               </div>
 
             </form>

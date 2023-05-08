@@ -3,9 +3,6 @@
     
     <link id="css" href="css/register.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
-        .auto-style2 {
-            height: 82px;
-        }
         .auto-style3 {
             height: 705px;
         }
@@ -19,125 +16,98 @@
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
           <div class="card-body p-4 p-md-5">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 ">Registration </h3>
+
             <form>
-
-              <div class="row">
-                <div class="col-md-6 mb-4">
-
-                  <div class="form-outline">
-                    <input type="text" id="firstName" class="form-control form-control-lg" placeholder="First Name" />
-                  </div>
-
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <asp:Label ID="lblUserName" runat="server" AssociatedControlID="txtUserName">User Name:</asp:Label>
+                        <asp:TextBox ID="txtUserName" class="form-control form-control-lg" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="FirstNameRequired" runat="server" ControlToValidate="txtUserName" ErrorMessage="User name is required." ToolTip="User name is required." Display="Dynamic">*</asp:RequiredFieldValidator>
+                    </div>
                 </div>
-                <div class="col-md-6 mb-4">
+                    
+                 </div>
+                    
 
-                  <div class="form-outline">
-                    <input type="text" id="lastName" class="form-control form-control-lg"  placeholder="Last Name"/>
+
+             <div class="row">
+                 <div class="form-outline mb-4">
+                     <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">E-mail:</asp:Label>
+                    <asp:TextBox ID="Email" class="form-control form-control-lg" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="Email" ErrorMessage="E-mail is required." ToolTip="E-mail is required." Display="Dynamic">*</asp:RequiredFieldValidator>
+                   
+                 </div>
+             </div>
+
+             <div class="row">
+                 <div class="form-outline mb-4">
+                     <asp:Label ID="PhoneLabel" runat="server" AssociatedControlID="Phone">Phone:</asp:Label>
+                    <asp:TextBox ID="Phone" class="form-control form-control-lg" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="PhoneRequired" runat="server" ControlToValidate="Phone" ErrorMessage="Phone is required." ToolTip="Phone is required." Display="Dynamic">*</asp:RequiredFieldValidator>
+                    
+                     </div>
+             </div>
+
+
+             <div class="row">
+                 <div class="form-outline mb-4">
+                     <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
+                     <asp:TextBox ID="Password" class="form-control form-control-lg" runat="server" TextMode="Password"></asp:TextBox>
+                     <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Password is required." ToolTip="Password is required." Display="Dynamic">*</asp:RequiredFieldValidator>
+                </div>
+             </div>
+
+
+             <div class="row">
+                 <div class="form-outline mb-4">
+                     <asp:Label ID="ConfirmPasswordLabel" runat="server" AssociatedControlID="ConfirmPassword">Confirm Password:</asp:Label>
+                       <asp:TextBox ID="ConfirmPassword" class="form-control form-control-lg" runat="server" TextMode="Password"></asp:TextBox>
+                       <asp:RequiredFieldValidator ID="ConfirmPasswordRequired" runat="server" ControlToValidate="ConfirmPassword" ErrorMessage="Confirm Password is required." ToolTip="Confirm Password is required." Display="Dynamic">*</asp:RequiredFieldValidator>
+                        <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword" Display="Dynamic" ErrorMessage="The Password and Confirmation Password must match."></asp:CompareValidator>
+                 </div>
+             </div>
+
+
+             <div class="row">
+                 <div class="form-outline mb-4">
+                     <asp:Label ID="QuestionLabel" runat="server" AssociatedControlID="Question">Security Question:</asp:Label>
+                      <asp:TextBox ID="Question" class="form-control form-control-lg" runat="server"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="QuestionRequired" runat="server" ControlToValidate="Question" ErrorMessage="Security question is required." ToolTip="Security question is required." Display="Dynamic">*</asp:RequiredFieldValidator>
+                </div>
+             </div>
+
+
+             <div class="row">
+                 <div class="form-outline mb-4">
+                     <asp:Label ID="AnswerLabel" runat="server" AssociatedControlID="Answer">Security Answer:</asp:Label>
+                      <asp:TextBox ID="Answer" class="form-control form-control-lg" runat="server"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="AnswerRequired" runat="server" ControlToValidate="Answer" ErrorMessage="Security answer is required." ToolTip="Security answer is required." Display="Dynamic">*</asp:RequiredFieldValidator>
+                </div>
+             </div>
+
+
+                <div class="row">
+                 <div class="form-outline mb-4" align="center" colspan="2" style="color:Red;">
+                     <asp:Button ID="login" class="btn btn-primary btn-lg" runat="server" Text="Login" OnClick="login_Click" />
+                </div>
+             </div>
+                </form>
+              
+
+
+
             
-                  </div>
-
-                </div>
-              </div>
-
-              <div class="row">
-                
-
-                  <div class="form-outline datepicker w-100">
-                    <input type="text" class="form-control form-control-lg" id="birthdayDate"  placeholder="Birthday"/>
-
-                  </div>
-
-
-                <div class="col-md-6 mb-4">
-
-                  <h6 class="mb-2 pb-1 mt-4" >Gender: </h6>
-
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
-                      value="option1" checked />
-                    <label class="form-check-label" for="femaleGender">Female</label>
-                  </div>
-
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
-                      value="option2" />
-                    <label class="form-check-label" for="maleGender">Male</label>
-                  </div>
-
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
-                      value="option3" />
-                    <label class="form-check-label" for="otherGender">Other</label>
-                  </div>
-
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6 mb-4 pb-2">
-
-                  <div class="form-outline">
-                    <input type="email" id="emailAddress" class="form-control form-control-lg"  placeholder="Email"/>
-                  </div>
-
-                </div>
-                <div class="col-md-6 mb-4 pb-2">
-
-                  <div class="form-outline">
-                    <input type="tel" id="phoneNumber" class="form-control form-control-lg" placeholder="Phone number"/>
-                  </div>
-
-                </div>
-              </div>
-
-                <div class="row">
-                <div class="col-md-6 mb-4 pb-2">
-
-                  <div class="form-outline">
-                    <input type="email" id="SecurityPassword" class="form-control form-control-lg"  placeholder="Security Password"/>
-                  </div>
-
-                </div>
-              </div>
-                <div class="row">
-
-                  <div class="form-outline mb-4">
-                    <input type="email" id="SecurityAns" class="form-control form-control-lg"  placeholder="Security Answer"/>
-                  </div>
-
-                </div>
-                 <div class="row">
-
-                  <div class="form-outline mb-4">
-                    <input type="email" id="Password" class="form-control form-control-lg"  placeholder="Password"/>
-                  </div>
-
-                </div>
-
-
-
-            <div class="row">
-  
-
-                  <div class="form-outline mb-5">
-                    <input type="password" id="Cpassword" class="form-control form-control-lg"  placeholder="Confirm Password"/>
-                  </div>
-
-
-
-              </div>
-
-
-
-              <div class="auto-style2 center">
-                <input class="btn btn-primary btn-lg" type="submit" value="Sign Up" />
-              </div>
-
-            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
+                
+                
+              
+            
 </asp:Content>
