@@ -19,15 +19,14 @@
 
             <form>
                 <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <div class="form-outline">
+                        <div class="form-outline mb-4">
                             <asp:Label ID="lblUserName" runat="server" AssociatedControlID="txtUserName">User Name:</asp:Label>
                         <asp:TextBox ID="txtUserName" class="form-control form-control-lg" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="FirstNameRequired" runat="server" ControlToValidate="txtUserName" ErrorMessage="User name is required." ToolTip="User name is required." Display="Dynamic">*</asp:RequiredFieldValidator>
                     </div>
                 </div>
                     
-                 </div>
+
                     
 
 
@@ -86,13 +85,17 @@
                 </div>
              </div>
 
-
                 <div class="row">
                  <div class="form-outline mb-4" align="center" colspan="2" style="color:Red;">
-                     <asp:Button ID="login" class="btn btn-primary btn-lg" runat="server" Text="Login" OnClick="login_Click" />
+                     <asp:Button ID="btnRegister" class="btn btn-primary btn-lg" runat="server" Text="Register" OnClick="login_Click" />
                 </div>
+                <div class="form-outline mb-4">
+                    Already have account。
+                   <asp:LinkButton ID="lbRegister" runat="server" PostBackUrl="~/Login.aspx">Login</asp:LinkButton>
+              </div>
              </div>
                 </form>
+              
               
 
 
