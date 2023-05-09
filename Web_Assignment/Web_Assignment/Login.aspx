@@ -34,12 +34,29 @@
 
                 
               </div>
-                <asp:CheckBox ID="cbRmbMe" class="cbRmbMe" runat="server" Text="Remember me"  />
-        <asp:LinkButton ID="lbForgotPswd" class="lbForgotPswd" runat="server" PostBackUrl="~/ForgotPassword.aspx" >Forgot Password?</asp:LinkButton>
+                   <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <asp:CheckBox ID="cbRmbMe" class="cbRmbMe" runat="server" Text="Remember me"  />
+                
+                    </div>
+                </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <asp:LinkButton ID="lbForgotPswd" class="lbForgotPswd" runat="server" PostBackUrl="~/ForgotPassword.aspx" >Forgot Password?</asp:LinkButton>
+                    </div>
+                </div>
+                 </div>
+               
+        
 
 
-              <div class="auto-style2 center mt-4">
+              <div class="auto-style2 center mb-4">
                 <asp:Button ID="login" class="btn btn-primary btn-lg" runat="server" Text="Login" OnClick="login_Click"/>
+              </div>
+               <div class="auto-style2 center mt-4">
+                    Do not have account?
+                   <asp:LinkButton ID="lbRegister" runat="server" PostBackUrl="~/Register.aspx">Register</asp:LinkButton>
               </div>
 
             </form>
@@ -50,3 +67,5 @@
   </div>
 </section>
 </asp:Content>
+
+
