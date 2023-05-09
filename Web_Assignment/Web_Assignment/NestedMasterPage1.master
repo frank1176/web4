@@ -1,0 +1,23 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="NestedMasterPage1.master.cs" Inherits="Web_Assignment.NestedMasterPage1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+            <link id="css1" href="css/navigation.css" type="text/css" rel="stylesheet" />
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="container py-5 h-100">
+	<div class="row">
+		<div class="col-md-3 ">
+		     <div class="list-group mb-4">
+
+              <a href="Profile.aspx" class="list-group-item list-group-item-action <%= Request.Url.AbsolutePath.EndsWith("Profile.aspx") ? "active" : "" %>" >My Profile</a>
+              <a href="Addresslist.aspx" class="list-group-item list-group-item-action  <%= Request.Url.AbsolutePath.EndsWith("Addresslist.aspx") ? "active" : "" %>">My Saved Place</a>
+              <a href="Orderhistory.aspx" class="list-group-item list-group-item-action" <%= Request.Url.AbsolutePath.EndsWith("Orderehistory.aspx") ? "active" : "" %>">Order History </a>
+              <a href="Admin/DashBoard.aspx" class="list-group-item list-group-item-action  <%= Request.Url.AbsolutePath.EndsWith("Admin/DashBoard.aspx") ? "active" : "" %>">Admin</a>
+
+            </div> 
+            <asp:LinkButton ID="Logout" runat="server">Log Out</asp:LinkButton>
+		</div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server"></asp:ContentPlaceHolder>
+           </div> 
+		</div>
+</asp:Content>
+
