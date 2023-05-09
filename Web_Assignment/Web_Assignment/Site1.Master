@@ -66,13 +66,13 @@
                              </li>
 
                              <li class="nav-item">
-                                  <asp:LinkButton ID="btnLogout" runat="server" Font-Underline="False" Visible="False" PostBackUrl="~/Home.aspx">
+                                  <asp:LinkButton ID="btnLogout" runat="server" Font-Underline="False" Visible="False" OnClick="btnLogout_Click">
                                       <i class="fa-regular fa-user fa-xl" style="color: #ffffff;"></i>
                                       Logout
                                   </asp:LinkButton>
                              </li>
                               <li class="nav-item">
-                                  <asp:LinkButton ID="btnCart" runat="server" Font-Underline="False" Visible="True">
+                                  <asp:LinkButton ID="btnCart" runat="server" Font-Underline="False" Visible="True" PostBackUrl="~/Cart.aspx">
                                       <i class="fa-solid fa-cart-shopping fa-xl" style="color: #ffffff;"></i>
                                       Cart
                                   </asp:LinkButton>

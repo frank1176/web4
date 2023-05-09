@@ -47,6 +47,7 @@ namespace Web_Assignment.Admin
             cmdInsertProduct.ExecuteNonQuery();
 
             con.Close();
+            ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Insert is successfull')", true);
         }
     }
 }
