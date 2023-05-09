@@ -11,7 +11,13 @@ namespace Web_Assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["email"] != null)
+            {
+                Master.btnlogin.Visible = false;
+                Master.btnlogout.Visible = true;
+                Master.btnprofile.Visible = true;
 
+            }
         }
     }
 }

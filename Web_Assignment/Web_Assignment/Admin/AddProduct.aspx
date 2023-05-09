@@ -10,30 +10,30 @@
         <div class="container-fluid mx-auto">
             <%-- dfdf --%>
              <p >
-                <label for="TextBox1" class="form-label">Product Title:</label>
-                <asp:TextBox ID="TextBox1" runat="server" class="form-control w-75" ></asp:TextBox>
+                <label for="Product_Name" class="form-label">Product Name:</label>
+                <asp:TextBox ID="Product_Name" runat="server" class="form-control w-75" ></asp:TextBox>
             </p>
             <p>
-                <label for="TextArea1" class="form-label">Product Description:</label>
-                <textarea id="TextArea1" cols="20" rows="3" class="form-control w-75""></textarea>
+                <label for="Product_Description" class="form-label">Product Description:</label>
+                <asp:TextBox ID="Product_Description" runat="server" class="form-control w-75"></asp:TextBox>
+                
             </p>
             <p>
-                <label for="TextBox3" class="form-label">Product price:</label>
-                <asp:TextBox ID="TextBox3" runat="server" class="form-control w-75" placeholder="RM0.00"></asp:TextBox>
+                <label for="Product_price" class="form-label">Product price:</label>
+                <asp:TextBox ID="Product_price" runat="server" class="form-control w-75" placeholder="RM0.00"></asp:TextBox>
             </p>
             <p>
                     <label for="TextBox4" class="form-label">Category:</label>
-                <asp:DropDownList ID="DropDownList1" runat="server">
-                    <asp:ListItem>Box Meals</asp:ListItem>
-                    <asp:ListItem>Chicken</asp:ListItem>
-                    <asp:ListItem>Burgers</asp:ListItem>
+                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="categoriesName" DataValueField="CategoriesID">
+                    <asp:ListItem></asp:ListItem>
                     </asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Categories]"></asp:SqlDataSource>
             </p>
             <label for="FileUpload1" class="form-label">Upload image:</label>
             <asp:FileUpload ID="FileUpload1" runat="server" class="form-control w-75"  />
             <br />
             <br />
-            <asp:Button ID="Button1" runat="server" Text="Submit" class="btn btn-primary" />
+            <asp:Button ID="Button1" runat="server" Text="Submit" class="btn btn-primary" OnClick="Button1_Click" />
         </div>
        
     </div>

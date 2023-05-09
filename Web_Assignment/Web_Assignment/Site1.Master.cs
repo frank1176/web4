@@ -13,5 +13,34 @@ namespace Web_Assignment
         {
 
         }
+        
+        public LinkButton btnprofile
+        {
+            get
+            {
+                return this.btnprofile;
+            }
+        }
+        public LinkButton btnlogin
+        {
+            get
+            {
+                return this.btnLogin;
+            }
+        }
+        public LinkButton btnlogout
+        {
+            get
+            {
+                return this.btnLogout;
+            }
+        }
+        public LinkButton btncart
+        {
+            get
+            {
+                return this.btnCart;
+            }
+        }
     }
 }

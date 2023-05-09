@@ -24,3 +24,8 @@ footer p {
 .navbar-nav {
     align-items: center;
 }
+a:link {
+    text-decoration: none;
+}
+
+

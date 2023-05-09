@@ -19,25 +19,37 @@ namespace Web_Assignment
 
         protected void login_Click(object sender, EventArgs e)
         {
-            String email = Gmail.Text;
-            String password = Password.Text;
+            string email = Gmail.Text;
+            string password = Password.Text;
             SqlConnection con;
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             con = new SqlConnection(strCon);
             con.Open();
-            string query = "SELECT COUNT(*) FROM [User] WHERE Email=@email AND Password=@Password";
-            
-            SqlCommand cmdInsertUser = new SqlCommand(query, con);
-            
-            cmdInsertUser.Parameters.AddWithValue("@email", email);
-            cmdInsertUser.Parameters.AddWithValue("@password", password);
-            int count = Convert.ToInt32(cmdInsertUser.ExecuteScalar());
-            cmdInsertUser.ExecuteNonQuery();
+            string query = "SELECT UserName, COUNT(*) as MatchingRecords FROM [User] WHERE Email=@email AND Password=@password";
+
+            SqlCommand cmdGetUser = new SqlCommand(query, con);
+
+            cmdGetUser.Parameters.AddWithValue("@email", email);
+            cmdGetUser.Parameters.AddWithValue("@password", password);
+
+            int count = 0;
+            string userName = "";
+            using (SqlDataReader reader = cmdGetUser.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    count = Convert.ToInt32(reader["MatchingRecords"]);
+                    userName = reader["UserName"].ToString();
+                }
+            }
+            con.Close();
 
             if (count == 1)
             {
                 // User authenticated successfully, redirect to a different page
-                FormsAuthentication.SetAuthCookie("testauth", false);
+                ////FormsAuthentication.SetAuthCookie("testauth", false);
+                Session["email"] = email;
+                Session["userName"] = userName;
                 Response.Redirect("Home.aspx");
             }
             else
