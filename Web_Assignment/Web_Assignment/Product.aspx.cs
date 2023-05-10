@@ -18,8 +18,8 @@ namespace Web_Assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Check if the ProductID query string parameter is present
-            
+                // Check if the ProductID query string parameter is present
+
                 if (!string.IsNullOrEmpty(Request.QueryString["ProductID"]))
                 {
                     // Get the ProductID value from the query string parameter
@@ -27,7 +27,7 @@ namespace Web_Assignment
                     string description = string.Empty;
                     // Define the connection string and SQL query
                     string conString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-                    string sqlQuery = "SELECT ProductName, product_image, Description FROM Product WHERE ProductID = @productId";
+                    string sqlQuery = "SELECT ProductName, product_image, Description, UnitPrice FROM Product WHERE ProductID = @productId";
 
                     // Create a new SqlConnection object and open the connection
                     using (SqlConnection connection = new SqlConnection(conString))
@@ -46,35 +46,43 @@ namespace Web_Assignment
                                 // Check if there are any rows returned
                                 if (reader.Read())
                                 {
-                                    // Get the ProductName and product_image values from the SqlDataReader
-                                    string productName = reader.GetString(0);
-                                    string productImage = reader.GetString(1);
-                                    string productDesc = reader.GetString(2);
+                                // Get the ProductName and product_image values from the SqlDataReader
+                                string productName = reader.GetString(0);
+                                string productImage = reader.GetString(1);
+                                string productDesc = reader.GetString(2).Replace(Environment.NewLine, "<br>");
+                                decimal productPrice = reader.GetDecimal(3);
 
-                                    // Set the ProductName value to the innerHTML of an HTML <h3> tag with an ID "ProductName"
-                                    ProductName.InnerHtml = productName;
-                                    // Set the product_image value to the "src" attribute of an HTML <img> tag with an ID "ProductImage"
-                                    ProductImage.Attributes["src"] = "~/asset/" + productImage;
-                                    ProductDesc.InnerHtml = productDesc;
-                                }
+                                // Set the ProductName value to the innerHTML of an HTML <h3> tag with an ID "ProductName"
+                                ProductName.InnerHtml = productName;
+                                // Set the product_image value to the "src" attribute of an HTML <img> tag with an ID "ProductImage"
+                                ProductImage.Attributes["src"] = "~/asset/" + productImage;
+
+                                Addbtn.Text = "RM " + productPrice.ToString();
+
+                                string[] descLines = productDesc.Split(new char[] { '@', '#', '$' }, StringSplitOptions.RemoveEmptyEntries);
+                                productDesc = string.Join("<br>", descLines);
+
+                                ProductDesc.InnerHtml = productDesc;
+                            }
                             }
                         }
-                    
-                }
-            }
 
-            if (Session["Username"] != null)
-            {
-                Master.btnlogin.Visible = false;
-                Master.btnlogout.Visible = true;
-                Master.btnprofile.Visible = true;
-            }
-            else
-            {
-                Master.btnlogin.Visible = true;
-                Master.btnlogout.Visible = false;
-                Master.btnprofile.Visible = false;
-            }
+                    }
+                }
+
+                if (Session["Username"] != null)
+                {
+                    Master.btnlogin.Visible = false;
+                    Master.btnlogout.Visible = true;
+                    Master.btnprofile.Visible = true;
+                }
+                else
+                {
+                    Master.btnlogin.Visible = true;
+                    Master.btnlogout.Visible = false;
+                    Master.btnprofile.Visible = false;
+                }
+            
         }
 
         protected void Addbtn_Click(object sender, EventArgs e)
@@ -131,24 +139,29 @@ namespace Web_Assignment
                     cmdinsertcartProduct.Parameters.AddWithValue("@productId", productId);
                     cmdinsertcartProduct.Parameters.AddWithValue("@quantity", quantity);
                     cmdinsertcartProduct.ExecuteNonQuery();
-                }
 
-                
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Insert Product is successfull')", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Insert Product is successfull')", true);
+                }
+    
+
+                con.Close();
             }
             else
             {
-
+                string script = "alert('Please Login'); window.location.href='Login.aspx';";
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
             }
-            
-            con.Close();
-
-
-
-           
-
         }
 
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
 
     }
 }

@@ -82,7 +82,13 @@
         <div class="product-description">
 
           <h3 id="ProductName" runat ="server"> </h3>
-          <p id="ProductDesc" runat="server"></p>
+          <div id="ProductDesc" runat="server">
+              CHICKEN
+              BURGER
+
+          </div>
+            <p id="string-div"></p>
+
         </div>
 
         <!-- Product Configuration -->
@@ -92,9 +98,11 @@
           <div class="cable-config">
 
             <div class="cable-choose">
-              <button style="border-radius: 50%; width:8%; background-color:white;"> - </button>
+              
+                <asp:Button ID="Button1" runat="server" Text="-" OnClick="Button1_Click" style="border-radius: 50%; width:8%; background-color:white;" />
               <button style="width: 75%; border-radius: 25px; background-color:white;">1</button>
-              <button style="border-radius: 50%; width:8%; background-color:white;"> + </button>
+              
+                <asp:Button ID="Button2" runat="server" Text="+" style="border-radius: 50%; width:8%; background-color:white;" OnClick="Button2_Click" />
             </div>
             <div>
              
@@ -109,6 +117,6 @@
     
     </main>
        
-    
+ 
   </body>
 </asp:Content>
