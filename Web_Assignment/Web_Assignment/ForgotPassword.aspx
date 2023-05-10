@@ -52,14 +52,14 @@
                 </tr>
                 <tr >
                     <td class="auto-style5">
-                        <asp:Label ID="Email" runat="server" Text="Please enter your email address."></asp:Label>
-                        
+                        <asp:Label ID="Label1" runat="server" Text="Please enter your email address."></asp:Label>
+
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style8" align="center">
                         <asp:TextBox ID="txtEmail" class="form-control here" runat="server" placeholder="Email" ForeColor="DimGray" Height="41px" Width="320px"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ErrorMessage="Email is required" ControlToValidate="txtEmail" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="EmailFormat" runat="server" ErrorMessage="Please enter valid email" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic" ForeColor="Red"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>

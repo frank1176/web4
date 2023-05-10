@@ -21,6 +21,7 @@ namespace Web_Assignment
                 cbRmbMe.Checked = true;
             }
 
+
             if (Session["Username"] != null)
             {
                 Master.btnlogin.Visible = false;
@@ -49,10 +50,10 @@ namespace Web_Assignment
             {
                 HttpCookie cookie = new HttpCookie("LoginCookie");
                 cookie.Values["email"] = email;
-                cookie.Values["password"] = password;
                 cookie.Expires = DateTime.Now.AddDays(30); // Set the cookie to expire in 30 days
                 Response.Cookies.Add(cookie);
             }
+
             SqlConnection con;
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             con = new SqlConnection(strCon);
