@@ -59,19 +59,22 @@
                     </td>
                 </tr>
                 <tr >
-                    <td class="auto-style5">
-                        <asp:TextBox ID="txtSecAns0" runat="server" placeholder="New Password" Height="41px" Width="320px" CssClass="txtSecAns" ForeColor="DimGray"></asp:TextBox>
-
+                    <td class="auto-style5" align="center">
+                        <asp:TextBox ID="Newpassword" runat="server" placeholder="New Password" Height="41px" Width="320px" class="form-control here" ForeColor="DimGray" TextMode="Password" ></asp:TextBox><br/>
+                        <asp:RequiredFieldValidator ID="NewPasswordRequired" runat="server" ErrorMessage="New Password is required" Display="Dynamic" ForeColor="Red" ControlToValidate="Newpassword"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="PasswordFormat" runat="server" Display="Dynamic" ForeColor="Red" ControlToValidate="Newpassword" ErrorMessage="A password must contain at least 3 of the following: lowercase, uppercase, digits, special characters and at least 8 " ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style8">
-                        <asp:TextBox ID="txtSecAns" runat="server" placeholder="Confirm New Password" Height="41px" Width="320px" CssClass="txtSecAns" ForeColor="DimGray"></asp:TextBox>
+                    <td class="auto-style8" align="center">
+                        <asp:TextBox ID="CNewPassword" runat="server" placeholder="Confirm New Password" Height="41px" Width="320px" class="form-control here" ForeColor="DimGray" TextMode="Password"></asp:TextBox><br/>
+                        <asp:RequiredFieldValidator ID="CNewPasswordRequired" runat="server" ErrorMessage="ConfirmNew Password is required" Display="Dynamic" ForeColor="Red" ControlToValidate="Newpassword"></asp:RequiredFieldValidator>
+                        <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="NewPassword" ControlToValidate="CNewPassword" Display="Dynamic" ErrorMessage="The Password and Confirmation Password must match." ForeColor="Red"></asp:CompareValidator>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="Button1" runat="server" Text="Reset" CssClass="auto-style7" Height="40px" Width="302px" PostBackUrl="~/Login.aspx" />
+                        <asp:Button ID="Button1" runat="server" Text="Reset" CssClass="auto-style7" Height="40px" Width="302px" OnClick="Button1_Click" />
                     </td>
                 </tr>
             </table>

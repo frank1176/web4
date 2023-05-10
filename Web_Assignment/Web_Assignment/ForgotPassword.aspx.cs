@@ -13,7 +13,7 @@ namespace Web_Assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -41,11 +41,7 @@ namespace Web_Assignment
 
 
             }
-            else
-            {
-                // Notify user that email is not found in the database
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Email not found in the database');", true);
-            }
+
         }
     }
 }

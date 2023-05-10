@@ -14,6 +14,15 @@ namespace Web_Assignment
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((int)Session["role"] != 2)
+            {
+                Master.btnAdmin.Visible = false;
+
+            }
+            else
+            {
+                Master.btnAdmin.Visible = true;
+            }
             if (!IsPostBack)
             {
                 if (Request.QueryString["addressID"] != null)

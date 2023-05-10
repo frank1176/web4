@@ -19,6 +19,7 @@
                   <div class="form-outline mb-4">
                     <asp:TextBox ID="Email" class="form-control form-control-lg" runat="server" placeholder="Email"></asp:TextBox>
                       <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ErrorMessage="Email is required" Display="Dynamic" ForeColor="Red" ControlToValidate="Email"></asp:RequiredFieldValidator>
+                       <asp:RegularExpressionValidator ID="EmailFormat" runat="server" ErrorMessage="Please enter valid email" ControlToValidate="Email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic" ForeColor="Red"></asp:RegularExpressionValidator>
                   </div>
 
                   
@@ -31,6 +32,7 @@
                   <div class="form-outline mb-4">
                       <asp:TextBox ID="Password" class="form-control form-control-lg" runat="server" placeholder="Password"  TextMode="Password"></asp:TextBox>
                       <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ErrorMessage="Password is required" Display="Dynamic" ForeColor="Red" ControlToValidate="Password"></asp:RequiredFieldValidator>
+                  
                   </div>
                   <div class="row mb-4">
                       <asp:Label ID="Error" runat="server" Text="" ForeColor="Red" EnableViewState="True"></asp:Label>
