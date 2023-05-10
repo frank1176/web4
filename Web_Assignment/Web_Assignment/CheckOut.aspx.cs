@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -36,7 +37,7 @@ namespace Web_Assignment
                 {
 
                     int userId = Convert.ToInt32(Session["Userid"]);
-                 
+
                     con = new SqlConnection(strCon);
                     con.Open();
                     string query2 = "SELECT * FROM [Delivery_address] INNER JOIN [User] ON [Delivery_address].UserId = [User].UserId WHERE [User].UserId = @auserId";
@@ -63,12 +64,92 @@ namespace Web_Assignment
                 }
 
 
-                else
+                if (!IsPostBack)
                 {
-                    Master.btnlogin.Visible = true;
-                    Master.btnlogout.Visible = false;
-                    Master.btnprofile.Visible = false;
+
+
+                    int userId = Convert.ToInt32(Session["Userid"]);
+                    int cartID = 0;
+                    string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        string query5 = "SELECT CartID FROM Cart WHERE UserId = @UserId";
+                        SqlCommand command = new SqlCommand(query5, connection);
+                        command.Parameters.AddWithValue("@UserId", userId);
+                        connection.Open();
+                        cartID = Convert.ToInt32(command.ExecuteScalar());
+                        connection.Close();
+                    }
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        connection.Open();
+
+
+                        string query4 = @"SELECT P.ProductName, CP.quantity, (CP.quantity * P.UnitPrice) as totalPrice FROM cartProduct CP JOIN Product P ON P.productID = CP.productID WHERE CP.cartID = @cartID";
+
+
+                        SqlCommand cmd2 = new SqlCommand(query4, connection);
+                        cmd2.Parameters.AddWithValue("@cartID", cartID);
+
+                        SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
+                        DataTable dt = new DataTable();
+                        adapter2.Fill(dt);
+
+                        productRepeater.DataSource = dt;
+                        productRepeater.DataBind();
+
+
+                        string queryTest = "SELECT SUM(CP.quantity * P.UnitPrice) AS Subtotal " +
+                                           "FROM cartProduct CP " +
+                                           "INNER JOIN Product P ON CP.ProductID = P.ProductID " +
+                                           "WHERE CP.cartID = @CartID";
+
+
+                        SqlCommand cmd = new SqlCommand(queryTest, connection);
+                        cmd.Parameters.AddWithValue("@cartID", cartID);
+
+
+                        SqlDataReader reader2 = cmd.ExecuteReader();
+
+
+
+                        if (reader2.Read())
+                        {
+
+
+                            decimal subtotal = reader2.GetDecimal(0);
+                            // do something with the subtotal value, such as display it on the page
+
+                            lblSubtotal.Text = subtotal.ToString("C2");
+
+                        }
+
+                        reader2.Close();
+
+
+
+
+
+
+                        connection.Close();
+                    }
+
+
+
+
+
+
+
+
                 }
+
+            }
+            else
+            {
+                Master.btnlogin.Visible = true;
+                Master.btnlogout.Visible = false;
+                Master.btnprofile.Visible = false;
             }
         }
 
@@ -76,29 +157,122 @@ namespace Web_Assignment
         {
             if (e.CommandName == "SelectAddress")
             {
-             
+
             }
         }
 
 
+
         protected void btnCheckOut_Click(object sender, EventArgs e)
         {
+            int userId = Convert.ToInt32(Session["Userid"]);
+            int cartID = 0;
+            decimal subtotal=0;
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query5 = "SELECT CartID FROM Cart WHERE UserId = @UserId";
+                SqlCommand command = new SqlCommand(query5, connection);
+                command.Parameters.AddWithValue("@UserId", userId);
+                connection.Open();
+                cartID = Convert.ToInt32(command.ExecuteScalar());
+                connection.Close();
+            }
 
-            SqlConnection con;
-            string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            con = new SqlConnection(strCon);
-            con.Open();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query4 = @"SELECT P.ProductName, CP.quantity, (CP.quantity * P.UnitPrice) as totalPrice FROM cartProduct CP JOIN Product P ON P.productID = CP.productID WHERE CP.cartID = @cartID";
+
+
+                SqlCommand cmd2 = new SqlCommand(query4, connection);
+                cmd2.Parameters.AddWithValue("@cartID", cartID);
+
+                SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
+                DataTable dt = new DataTable();
+                adapter2.Fill(dt);
+
+                productRepeater2.DataSource = dt;
+                productRepeater2.DataBind();
+
+                string queryTest = "SELECT SUM(CP.quantity * P.UnitPrice) AS Subtotal " +
+                                   "FROM cartProduct CP " +
+                                   "INNER JOIN Product P ON CP.ProductID = P.ProductID " +
+                                   "WHERE CP.cartID = @CartID";
+
+
+                SqlCommand cmd = new SqlCommand(queryTest, connection);
+                cmd.Parameters.AddWithValue("@cartID", cartID);
+
+
+                SqlDataReader reader2 = cmd.ExecuteReader();
+
+
+
+                if (reader2.Read())
+                {
+
+
+                     subtotal = reader2.GetDecimal(0);
+                    // do something with the subtotal value, such as display it on the page
+
+                    lblSubtotal2.Text = subtotal.ToString("C2");
+
+                }
+
+                reader2.Close();
+
+
+
+                string query = "SELECT * FROM [Delivery_address] INNER JOIN [User] ON [Delivery_address].UserId = [User].UserId WHERE [User].UserId = @auserId";
+
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                command.Parameters.AddWithValue("@auserId", userId);
+
+
+
+                string order = "Not Complete";
+                string deliveryAddress = "Tarc";
+                DateTime currentTime = DateTime.Now;
+                DateTime currentDate = currentTime.Date;
+                Console.WriteLine("Current date: " + currentDate.ToShortDateString());
+
+                string insertcartProduct = @"INSERT INTO [Order] (UserId, orderStatus, subTotal, orderDateTime, DepartureDateTime, deliveryAddress)VALUES(@userID,@orderStatus,@subTotal,@orderDateTime,@DepartureDateTime,@deliveryAddress)";
+                SqlCommand cmdinsertcartProduct = new SqlCommand(insertcartProduct, connection);
+               
+                cmdinsertcartProduct.Parameters.AddWithValue("@userID", userId);
+                cmdinsertcartProduct.Parameters.AddWithValue("@orderStatus", order);
+                cmdinsertcartProduct.Parameters.AddWithValue("@subTotal", subtotal);
+                cmdinsertcartProduct.Parameters.AddWithValue("@orderDateTime", currentTime);
+                cmdinsertcartProduct.Parameters.AddWithValue("@DepartureDateTime", currentDate); 
+                cmdinsertcartProduct.Parameters.AddWithValue("@deliveryAddress", deliveryAddress);
+
+                cmdinsertcartProduct.ExecuteNonQuery();
+
+                string query7 = "SELECT CartID FROM Cart WHERE UserId = @UserId";
+                SqlCommand command1 = new SqlCommand(query7, connection);
+                command1.Parameters.AddWithValue("@UserId", userId);
+
+                cartID = (int)command1.ExecuteScalar();
+
+
+
+
+                string query6 = "DELETE FROM cartProduct WHERE cartID = @cartID"; ;
+                SqlCommand commandDelete = new SqlCommand(query6, connection);
+                commandDelete.Parameters.AddWithValue("@cartID", cartID);
+                commandDelete.ExecuteNonQuery();
+
+                //string script = @"<script type='text/javascript'>$('#Receipt').modal('show');</script>";
+               // ScriptManager.RegisterStartupScript(this, GetType(), "OpenModal", script, false);
+                string script = "alert('Order is successfull'); window.location.href='Home.aspx';";
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
+
+                connection.Close();
+            }
             
-
-            /*
-            string query = "SELECT Product.*, Categories.categoriesName FROM [Product] INNER JOIN [Categories] ON Product.CategoriesID = Categories.CategoriesID WHERE ProductID=@productid";
-
-            SqlCommand cmdSelectProduct = new SqlCommand(query, con);
-
-            cmdSelectProduct.Parameters.AddWithValue("@productid", productID);
-
-            SqlDataReader reader = cmdSelectProduct.ExecuteReader();
-            */
         }
     }
 }

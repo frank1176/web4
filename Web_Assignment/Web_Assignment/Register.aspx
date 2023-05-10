@@ -98,7 +98,7 @@
 
                 <div class="row">
                  <div class="form-outline mb-4" align="center" colspan="2" style="color:Red;">
-                     <asp:Button ID="btnRegister" class="btn btn-primary btn-lg" runat="server" Text="Register" OnClick="Register_Click" PostBackUrl="~/Login.aspx" />
+                     <asp:Button ID="btnRegister" class="btn btn-primary btn-lg" runat="server" Text="Register" OnClick="Register_Click" />
                 </div>
               
                                  </div>

@@ -1,5 +1,6 @@
 ﻿
 <%@ Page Title="" Language="C#" MasterPageFile="~/NestedMasterPage1.master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="Web_Assignment.WebForm11" %>
+<%@ MasterType VirtualPath="~/NestedMasterPage1.master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
        <div class="col-md-9">
 		    <div class="card">

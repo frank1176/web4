@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -34,6 +35,31 @@ namespace Web_Assignment.Admin
 
             con.Close();
 
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            SqlConnection con;
+            string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            con = new SqlConnection(strCon);
+            con.Open();
+            string dd = DropDownList1.SelectedValue.ToString();
+            int dduser = int.Parse(dd);
+
+            string roleid = DropDownList2.SelectedValue.ToString();
+            int ddroleid = int.Parse(roleid);
+
+            // Parameterized SQL statement
+            string strUpdate = "UPDATE [User] SET Roleid = @role WHERE UserId = @userid";
+
+            // Execute SQL query
+            SqlCommand cmdUpdate = new SqlCommand(strUpdate, con);
+            cmdUpdate.Parameters.AddWithValue("@role", ddroleid);
+            cmdUpdate.Parameters.AddWithValue("@userid", dduser);
+            cmdUpdate.ExecuteNonQuery();
+
+            con.Close();
+            Response.Redirect("Managerole.aspx");
         }
     }
 }

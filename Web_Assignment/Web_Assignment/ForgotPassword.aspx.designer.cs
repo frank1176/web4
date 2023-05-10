@@ -15,13 +15,13 @@ namespace Web_Assignment
     {
 
         /// <summary>
-        /// Email control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Email;
+        protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
         /// txtEmail control.
@@ -33,13 +33,13 @@ namespace Web_Assignment
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
-        /// EmailRequired control.
+        /// EmailFormat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator EmailRequired;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator EmailFormat;
 
         /// <summary>
         /// Button1 control.

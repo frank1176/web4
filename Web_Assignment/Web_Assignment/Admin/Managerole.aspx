@@ -23,14 +23,12 @@
              </asp:DropDownList>
              <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [User]"></asp:SqlDataSource>
              Role :<asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource1" DataTextField="Rolename" DataValueField="Roleid">
-                 <asp:ListItem>Admin</asp:ListItem>
-                 <asp:ListItem>Staff</asp:ListItem>
-                 <asp:ListItem>User</asp:ListItem>
+                 
              </asp:DropDownList>
 
              <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Role]"></asp:SqlDataSource>
 
-             <asp:Button ID="Button2" runat="server" Text="Assign" class="btn btn-primary" />
+             <asp:Button ID="Button2" runat="server" Text="Assign" class="btn btn-primary" OnClick="Button2_Click" />
         </div>
     </div>
 
