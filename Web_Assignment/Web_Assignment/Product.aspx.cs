@@ -83,39 +83,46 @@ namespace Web_Assignment
             int productId = Convert.ToInt32(Request.QueryString["ProductID"]);
             int userId = Convert.ToInt32(Session["Userid"]);
             int cartID;
-
+            System.Diagnostics.Debug.WriteLine("product: " + productId);
+            System.Diagnostics.Debug.WriteLine("user: " + userId);
             SqlConnection con;
             string conString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             con = new SqlConnection(conString);
-
-            // Check if the item already exists in the cart
             con.Open();
+            string strselectcart = @"SELECT * FROM [Cart] WHERE UserId=@userId";
+            SqlCommand cmdselectcart = new SqlCommand(strselectcart, con);
+            cmdselectcart.Parameters.AddWithValue("@userId", userId);
 
-            string query5 = "SELECT cartID FROM Cart WHERE UserId = @UserId";
-            SqlCommand command = new SqlCommand(query5, con);
-            command.Parameters.AddWithValue("@UserId", userId);
-            cartID = Convert.ToInt32(command.ExecuteScalar());
+            SqlDataReader reader = cmdselectcart.ExecuteReader();
 
-            command.Dispose();
+            if (reader.HasRows)
+            {
+                reader.Read();
+                cartID = int.Parse(reader["cartID"].ToString());
+                int count= int.Parse(reader["count"].ToString());
+                int quantity = 1;
+                reader.Close();
+                //string insertcartProduct = @"SELECT * FROM [cartProduct] WHERE cartID=@cartID";
+                string insertcartProduct = @"INSERT INTO [cartProduct] (cartID, productID, quantity)VALUES(@cartID,@productId,@quantity)";
+                SqlCommand cmdinsertcartProduct = new SqlCommand(insertcartProduct, con);
+                cmdinsertcartProduct.Parameters.AddWithValue("@cartID", cartID);
+                cmdinsertcartProduct.Parameters.AddWithValue("@count", count);
+                cmdinsertcartProduct.Parameters.AddWithValue("@productId", productId);
+                cmdinsertcartProduct.Parameters.AddWithValue("@quantity", quantity);
+                cmdinsertcartProduct.ExecuteNonQuery();
+                
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Insert Product is successfull')", true);
+            }
+            else
+            {
+
+            }
+            
             con.Close();
 
-            int quantity = 1;
-
-            // Add a new item to the cart
-            string queryInsert = "INSERT INTO [cartProduct] (cartID, productID, quantity) VALUES (@cartId, @productId, @quantity)";
-            SqlCommand cmdTest = new SqlCommand(queryInsert, con);
-            cmdTest.Parameters.AddWithValue("@cartId", cartID);
-            cmdTest.Parameters.AddWithValue("@productId", productId);
-            cmdTest.Parameters.AddWithValue("@quantity", quantity);
-            con.Open();
-            cmdTest.ExecuteNonQuery();
-            con.Close();
-
-            System.Diagnostics.Debug.WriteLine("product: " + productId);
-            System.Diagnostics.Debug.WriteLine("user: " + userId);
-            System.Diagnostics.Debug.WriteLine("cartID: " + cartID);
 
 
+           
 
         }
 
