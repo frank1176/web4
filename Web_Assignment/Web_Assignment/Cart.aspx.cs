@@ -8,6 +8,8 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Web.Security;
 using System.Data;
+using System.Drawing;
+using System.Diagnostics.Eventing.Reader;
 
 namespace Web_Assignment
 {
@@ -107,20 +109,82 @@ namespace Web_Assignment
            
         }
 
+       
 
-        protected void cartRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
+            protected void cartRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            
-                if (e.CommandName == "RemoveCartItem")
+
+            int cartID = 0;
+            int userId = Convert.ToInt32(Session["Userid"]);
+            int productId = Convert.ToInt32(e.CommandArgument);
+            int quantity = Convert.ToInt32((e.Item.FindControl("QuantityTextBox") as TextBox).Text);
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            if (e.CommandName == "Plus")
+            {
+                // increase the quantity of the product with the given ID
+
+                using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    int productId = Convert.ToInt32(e.CommandArgument);
-
-                  
-
-                   
+                    con.Open();
+                    string query4 = "SELECT CartID FROM Cart WHERE UserId = @UserId";
+                    SqlCommand command1 = new SqlCommand(query4, con);
+                    command1.Parameters.AddWithValue("@UserId", userId);
+                    cartID = (int)command1.ExecuteScalar();
+                    string queryCartItem = @"SELECT quantity FROM cartProduct WHERE cartID = @cartId AND productID = @productId";
+                    SqlCommand commandCartItem = new SqlCommand(queryCartItem, con);
+                    commandCartItem.Parameters.AddWithValue("@cartId", cartID);
+                    commandCartItem.Parameters.AddWithValue("@productId", productId);
+                    int existingQuantity = Convert.ToInt32(commandCartItem.ExecuteScalar());
+                    string queryUpdate = @"UPDATE cartProduct SET quantity = @newQuantity WHERE cartID = @cartId AND productID = @productId";
+                    SqlCommand commandUpdate = new SqlCommand(queryUpdate, con);
+                    commandUpdate.Parameters.AddWithValue("@cartId", cartID);
+                    commandUpdate.Parameters.AddWithValue("@productId", productId);
+                    commandUpdate.Parameters.AddWithValue("@newQuantity", existingQuantity + 1);
+                    commandUpdate.ExecuteNonQuery();
+                    con.Close();
                 }
-            
+
+
+
+
             }
+            else if (e.CommandName == "Minus")
+            {
+                // decrease the quantity of the product with the given ID
+                // ...
+                if (quantity > 1)
+                {
+
+                    using (SqlConnection con = new SqlConnection(connectionString))
+                    {
+                        con.Open();
+                        string query4 = "SELECT CartID FROM Cart WHERE UserId = @UserId";
+                        SqlCommand command1 = new SqlCommand(query4, con);
+                        command1.Parameters.AddWithValue("@UserId", userId);
+                        cartID = (int)command1.ExecuteScalar();
+                        string queryCartItem = @"SELECT quantity FROM cartProduct WHERE cartID = @cartId AND productID = @productId";
+                        SqlCommand commandCartItem = new SqlCommand(queryCartItem, con);
+                        commandCartItem.Parameters.AddWithValue("@cartId", cartID);
+                        commandCartItem.Parameters.AddWithValue("@productId", productId);
+                        int existingQuantity = Convert.ToInt32(commandCartItem.ExecuteScalar());
+                        string queryUpdate = @"UPDATE cartProduct SET quantity = @newQuantity WHERE cartID = @cartId AND productID = @productId";
+                        SqlCommand commandUpdate = new SqlCommand(queryUpdate, con);
+                        commandUpdate.Parameters.AddWithValue("@cartId", cartID);
+                        commandUpdate.Parameters.AddWithValue("@productId", productId);
+                        commandUpdate.Parameters.AddWithValue("@newQuantity", existingQuantity - 1);
+                        commandUpdate.ExecuteNonQuery();
+                        con.Close();
+                    }
+
+                }
+                else
+                {
+                    Response.Redirect("Cart.aspx");
+                }
+            }
+            Response.Redirect("Cart.aspx");
+
+        }
 
 
       
@@ -167,24 +231,9 @@ namespace Web_Assignment
 
 
 
-                string query3 = "SELECT * FROM Product INNER JOIN cartProduct ON Product.ProductID = cartProduct.ProductID WHERE cartID = @CartID";
+                Response.Redirect("Cart.aspx");
 
-                SqlCommand cmd3 = new SqlCommand("UPDATE Cart SET Count = (SELECT SUM(quantity) FROM CartProduct WHERE CartId = @CartId) WHERE CartId = @CartId", con);
-              //  cmd.Parameters.AddWithValue("@CartId", cartID);
-
-
-                SqlCommand commandNew = new SqlCommand(query3, con);
-                commandNew.Parameters.AddWithValue("@cartID", cartID);
-                SqlDataAdapter adapter = new SqlDataAdapter(commandNew);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
-                    cartRepeater.DataSource = dataTable;
-                    cartRepeater.DataBind();
-                    
-                
-                con.Close();
-
-                }
+            }
             
                 
             

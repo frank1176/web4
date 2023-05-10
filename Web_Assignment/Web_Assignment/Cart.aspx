@@ -100,21 +100,22 @@
               <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                 <!-- Quantity -->
                 <div class="d-flex mb-2" style="max-width: 300px">
-                   <button class="btn btn-link px-2"
-                 >
-                  <i class="fas fa-minus"></i>
-                </button>
+                   
+                 <asp:Button ID="BtnMinus" runat="server" Text="-" style="width: 25%; text-align: center;height: 30px; border-radius: 40px; margin-top:10px; background-color:cornflowerblue;" CommandArgument='<%# Eval("ProductID") %>' CommandName="Minus" />
+            
 
-                <input id="form1" min="0" name="quantity" value="2" type="number"
-                  class="form-control form-control-sm" />
+        
 
-                <button class="btn btn-link px-2"
-                 >
-                  <i class="fas fa-plus"></i>
-                </button>
-                    
+                    <asp:TextBox ID="quantityTextBox" runat="server" style="width: 75%; height: 30px; border-radius: 40px;  margin-top:10px;background-color:white; text-align:center;" Text='<%# Eval("quantity") %>' Enabled="False" ></asp:TextBox>
+
+             
+                 <asp:Button ID="BtnPlus" runat="server" Text="+" style="width: 25%; text-align: center;height: 30px; border-radius: 40px; margin-top:10px; background-color:cornflowerblue;" CommandArgument='<%# Eval("ProductID") %>' CommandName="Plus"/>
+              
+      
 
                    
+
+
 
                 </div>
                 <!-- Quantity -->
