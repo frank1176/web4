@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Web_Assignment.Admin
 {
@@ -20,6 +21,8 @@ namespace Web_Assignment.Admin
                 if (Request.QueryString["ProductID"] != null)
                 {
                     int productID = Convert.ToInt32(Request.QueryString["ProductID"]);
+                    System.Diagnostics.Debug.WriteLine("babi");
+                    System.Diagnostics.Debug.WriteLine("productID original: " + productID);
                     // Load product details using the productID and populate the form for editing
                     SqlConnection con;
                     string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
