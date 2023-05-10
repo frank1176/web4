@@ -57,12 +57,16 @@ namespace Web_Assignment
                                 // Set the product_image value to the "src" attribute of an HTML <img> tag with an ID "ProductImage"
                                 ProductImage.Attributes["src"] = "~/asset/" + productImage;
 
-                                Addbtn.Text = "RM " + productPrice.ToString();
+                                int quantity = int.Parse(quantityTextBox.Text);
+                                decimal total = productPrice * quantity;
 
+                                Addbtn.Text = "Add To Cart - RM " + total.ToString();
+                                Addbtn.CommandArgument = total.ToString();
                                 string[] descLines = productDesc.Split(new char[] { '@', '#', '$' }, StringSplitOptions.RemoveEmptyEntries);
                                 productDesc = string.Join("<br>", descLines);
 
                                 ProductDesc.InnerHtml = productDesc;
+                                
                             }
                             }
                         }
@@ -111,7 +115,8 @@ namespace Web_Assignment
                     reader.Read();
                     cartID = int.Parse(reader["cartID"].ToString());
                     int count = int.Parse(reader["count"].ToString());
-                    int quantity = 1;
+                    
+                    int quantity = int.Parse(quantityTextBox.Text);
                     reader.Close();
 
                     string queryCartItem = @"SELECT quantity FROM cartProduct WHERE cartID = @cartId AND productID = @productId";
@@ -127,7 +132,7 @@ namespace Web_Assignment
                         SqlCommand commandUpdate = new SqlCommand(queryUpdate, con);
                         commandUpdate.Parameters.AddWithValue("@cartId", cartID);
                         commandUpdate.Parameters.AddWithValue("@productId", productId);
-                        commandUpdate.Parameters.AddWithValue("@newQuantity", existingQuantity + 1);
+                        commandUpdate.Parameters.AddWithValue("@newQuantity", existingQuantity + quantity);
                         commandUpdate.ExecuteNonQuery();
                     }
                     else
@@ -159,13 +164,25 @@ namespace Web_Assignment
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-           
+            int quantity = int.Parse(quantityTextBox.Text);
+            if (quantity > 1)
+            {
+                quantity--;
+                quantityTextBox.Text = quantity.ToString();
+            }
+            
+
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+            int qty = int.Parse(quantityTextBox.Text);
+            qty++;
+            quantityTextBox.Text = qty.ToString();
+            
 
         }
+
 
     }
 }

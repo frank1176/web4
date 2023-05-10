@@ -16,8 +16,8 @@
                               <div class="form-group row mb-4">
                                 <label for="username" class="col-4 col-form-label">User Name*</label> 
                                 <div class="col-8">
-                                    <asp:TextBox ID="txtUsername" runat="server" class="form-control here"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="UsernameRequired" runat="server" ErrorMessage="Username is required" ControlToValidate="txtUsername"></asp:RequiredFieldValidator>
+                                    <asp:TextBox ID="txtUsername" placeholder="Username" runat="server" class="form-control here"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="UsernameRequired" runat="server" ControlToValidate="txtUserName" ErrorMessage="User name is required." ToolTip="User name is required." Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                              
                                 </div>
                               </div>
@@ -30,7 +30,8 @@
                                 <label for="email" class="col-4 col-form-label">Email*</label> 
                                 <div class="col-8">
                                   <asp:TextBox ID="txtEmail" placeholder="Email" class="form-control here" runat="server"></asp:TextBox>
-                                  <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Username is required" ControlToValidate="txtUsername"></asp:RequiredFieldValidator>
+                                  <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="txtEmail" ErrorMessage="E-mail is required." ToolTip="E-mail is required." Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="EmailFormat" runat="server" ErrorMessage="Please enter valid email" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic" ForeColor="Red"></asp:RegularExpressionValidator>
                              
                                     
                                 </div>
@@ -39,6 +40,8 @@
                                 <label for="phone" class="col-4 col-form-label">Contact Number</label> 
                                 <div class="col-8">
                                   <asp:TextBox ID="txtPhone" placeholder="Phone" class="form-control here" runat="server"></asp:TextBox>
+                                     <asp:RequiredFieldValidator ID="PhoneRequired" runat="server" ControlToValidate="txtPhone" ErrorMessage="Phone is required." ToolTip="Phone is required." Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="PhoneFormat" runat="server" ControlToValidate="txtPhone" Font-Overline="False" ValidationExpression="^(?:\+?6?01)[0-46-9]-*[0-9]{7,8}$" Display="Dynamic" ErrorMessage="Please enter valid phone number" ForeColor="Red"></asp:RegularExpressionValidator>
                                 </div>
                               </div>
                           
