@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -18,7 +19,7 @@ namespace Web_Assignment
         {
             get
             {
-                return this.btnprofile;
+                return this.btnProfile;
             }
         }
         public LinkButton btnlogin
@@ -41,6 +42,14 @@ namespace Web_Assignment
             {
                 return this.btnCart;
             }
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

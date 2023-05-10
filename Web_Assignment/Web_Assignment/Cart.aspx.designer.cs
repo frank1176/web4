@@ -33,39 +33,44 @@ namespace Web_Assignment
         protected global::System.Web.UI.WebControls.LinkButton ChangeAddress;
 
         /// <summary>
-        /// HyperLink1 control.
+        /// cartRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
+        protected global::System.Web.UI.WebControls.Repeater cartRepeater;
 
         /// <summary>
-        /// HyperLink2 control.
+        /// lblSubtotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
+        protected global::System.Web.UI.WebControls.Label lblSubtotal;
 
         /// <summary>
-        /// HyperLink3 control.
+        /// btnReview control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink3;
+        protected global::System.Web.UI.WebControls.Button btnReview;
 
         /// <summary>
-        /// HyperLink4 control.
+        /// Master property.
         /// </summary>
         /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// Auto-generated property.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink4;
+        public new Web_Assignment.Site1 Master
+        {
+            get
+            {
+                return ((Web_Assignment.Site1)(base.Master));
+            }
+        }
     }
 }

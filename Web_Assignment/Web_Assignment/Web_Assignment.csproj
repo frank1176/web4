@@ -67,6 +67,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Addaddress.aspx" />
+    <Content Include="Addresslist.aspx" />
     <Content Include="Admin\DashBoard.aspx" />
     <Content Include="Admin\Orders.aspx" />
     <Content Include="Admin\AddProduct.aspx" />
@@ -120,6 +122,7 @@
     <Content Include="css\SignIn.css" />
     <Content Include="css\style.css" />
     <Content Include="css\Track.css" />
+    <Content Include="Editaddress.aspx" />
     <Content Include="Forgot2.aspx" />
     <Content Include="Forgot3.aspx" />
     <Content Include="ForgotPassword.aspx" />
@@ -135,6 +138,20 @@
     <Content Include="CheckOut.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Addaddress.aspx.cs">
+      <DependentUpon>Addaddress.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Addaddress.aspx.designer.cs">
+      <DependentUpon>Addaddress.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Addresslist.aspx.cs">
+      <DependentUpon>Addresslist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Addresslist.aspx.designer.cs">
+      <DependentUpon>Addresslist.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\admin.Master.cs">
       <DependentUpon>admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -198,6 +215,13 @@
     <Compile Include="Changepassword.aspx.designer.cs">
       <DependentUpon>Changepassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Editaddress.aspx.cs">
+      <DependentUpon>Editaddress.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Editaddress.aspx.designer.cs">
+      <DependentUpon>Editaddress.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Forgot2.aspx.cs">
       <DependentUpon>Forgot2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -225,6 +249,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NestedMasterPage1.master.cs">
+      <DependentUpon>NestedMasterPage1.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NestedMasterPage1.master.designer.cs">
+      <DependentUpon>NestedMasterPage1.master</DependentUpon>
     </Compile>
     <Compile Include="Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
@@ -294,6 +325,7 @@
   <ItemGroup>
     <Content Include="Admin\admin.Master" />
     <Content Include="Admin\Web.config" />
+    <Content Include="NestedMasterPage1.master" />
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
     <None Include="Web.Debug.config">

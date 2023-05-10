@@ -19,37 +19,34 @@ namespace Web_Assignment
 
         protected void login_Click(object sender, EventArgs e)
         {
-            string email = Gmail.Text;
-            string password = Password.Text;
+            String email = Gmail.Text;
+            String password = Password.Text;
             SqlConnection con;
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             con = new SqlConnection(strCon);
             con.Open();
-            string query = "SELECT UserName, COUNT(*) as MatchingRecords FROM [User] WHERE Email=@email AND Password=@password";
+            string query = "SELECT * FROM [User] WHERE Email=@email AND Password=@Password";
 
-            SqlCommand cmdGetUser = new SqlCommand(query, con);
+            SqlCommand cmdSelectUser = new SqlCommand(query, con);
 
-            cmdGetUser.Parameters.AddWithValue("@email", email);
-            cmdGetUser.Parameters.AddWithValue("@password", password);
+            cmdSelectUser.Parameters.AddWithValue("@email", email);
+            cmdSelectUser.Parameters.AddWithValue("@password", password);
 
-            int count = 0;
-            string userName = "";
-            using (SqlDataReader reader = cmdGetUser.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    count = Convert.ToInt32(reader["MatchingRecords"]);
-                    userName = reader["UserName"].ToString();
-                }
-            }
-            con.Close();
+            SqlDataReader reader = cmdSelectUser.ExecuteReader();
 
-            if (count == 1)
+            if (reader.HasRows)
             {
                 // User authenticated successfully, redirect to a different page
-                ////FormsAuthentication.SetAuthCookie("testauth", false);
-                Session["email"] = email;
-                Session["userName"] = userName;
+                /*FormsAuthentication.SetAuthCookie("testauth", false);*/
+
+                reader.Read(); // Read the first row of the result set
+                int userid = int.Parse(reader["UserId"].ToString());
+                string username = reader["Username"].ToString(); // Replace "Username" with the column name for username in your database
+                int role = int.Parse(reader["Roleid"].ToString());
+                // Store the username somewhere (e.g., in a session variable) to use later
+                Session["Userid"] = userid;
+                Session["Username"] = username;
+                Session["role"] = role;
                 Response.Redirect("Home.aspx");
             }
             else
