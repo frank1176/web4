@@ -52,36 +52,21 @@
        <a href="#" class="nav-link">view all</a>
     </div>
 
-    <div style:"display = flex; flex-wrap = wrap;" class="card-deck d-flex flex-column flex-sm-row justify-content-between container-fluid menu_class2 ">
-        <asp:Repeater ID="cartRepeater" runat="server" >
-            <HeaderTemplate>
-                 
-             </HeaderTemplate>
-                     <ItemTemplate>
-        <div class="card " style="width: 50%;">
-          <img src="asset/<%# Eval("product_image") %>" class="card-img-top " alt="...">
-          <div class="card-body">
-            <h5 class="card-title"><%# Eval("ProductName") %></h5>
-              <asp:LinkButton ID="LinkButton1" runat="server" 
-                    PostBackUrl='<%# "~/Product.aspx?ProductID=" + Eval("ProductID") %>' 
-                    CssClass="btn btn-danger">More details</asp:LinkButton>
-          </div>
-        </div>
-
-            </ItemTemplate>
-
-           
-        
-                   <FooterTemplate>
-                        
-                       
-                      
-                  </FooterTemplate>
-
+        <div style="display: flex; flex-wrap: wrap;" class="card-deck d-flex flex-column flex-sm-row justify-content-between container-fluid menu_class2">
+            <asp:Repeater ID="cartRepeater" runat="server">
+                <HeaderTemplate></HeaderTemplate>
+                <ItemTemplate>
+                    <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
+                        <img src="asset/<%# Eval("product_image") %>" class="card-img-top" alt="...">
+                        <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-between;">
+                            <h5 class="card-title"><%# Eval("ProductName") %></h5>
+                            <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl='<%# "~/Product.aspx?ProductID=" + Eval("ProductID") %>' CssClass="btn btn-danger">More details</asp:LinkButton>
+                        </div>
+                    </div>
+                </ItemTemplate>
+                <FooterTemplate></FooterTemplate>
             </asp:Repeater>
-
-
-    </div>
+        </div>
 
 
     <!--FAMILY BUCKETS-->
@@ -91,37 +76,21 @@
        <a href="#" class="nav-link">view all</a>
     </div>
 
-    <div class="card-deck d-flex flex-column flex-sm-row justify-content-between container-fluid menu_class2 ">
-
-          <asp:Repeater ID="Repeater2" runat="server" >
-            <HeaderTemplate>
-                 
-             </HeaderTemplate>
-                     <ItemTemplate>
-        <div class="card " style="width: 18rem;">
-          <img src="asset/<%# Eval("product_image") %>" class="card-img-top " alt="...">
-          <div class="card-body">
-            <h5 class="card-title"><%# Eval("ProductName") %></h5>
-              <asp:LinkButton ID="LinkButton1" runat="server" 
-                    PostBackUrl='<%# "~/Product.aspx?ProductID=" + Eval("ProductID") %>' 
-                    CssClass="btn btn-danger">More details</asp:LinkButton>
-          </div>
-        </div>
-
-            </ItemTemplate>
-
-           
-        
-                   <FooterTemplate>
-                        
-                       
-                      
-                  </FooterTemplate>
-
+        <div style="display: flex; flex-wrap: wrap;" class="card-deck d-flex flex-column flex-sm-row justify-content-between container-fluid menu_class2">
+            <asp:Repeater ID="Repeater2" runat="server">
+                <HeaderTemplate></HeaderTemplate>
+                <ItemTemplate>
+                    <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
+                        <img src="asset/<%# Eval("product_image") %>" class="card-img-top" alt="...">
+                        <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-between;">
+                            <h5 class="card-title"><%# Eval("ProductName") %></h5>
+                            <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl='<%# "~/Product.aspx?ProductID=" + Eval("ProductID") %>' CssClass="btn btn-danger">More details</asp:LinkButton>
+                        </div>
+                    </div>
+                </ItemTemplate>
+                <FooterTemplate></FooterTemplate>
             </asp:Repeater>
-
-
-    </div>
+        </div>
 
 
     <!--BOX MEALS-->
@@ -138,10 +107,11 @@
                  
              </HeaderTemplate>
                      <ItemTemplate>
-        <div class="card " style="width: 18rem;">
+        <div class="card " style="width: 18rem; display: flex; flex-direction: column;">
           <img src="asset/<%# Eval("product_image") %>" class="card-img-top " alt="...">
-          <div class="card-body">
+          <div class="card-body" style ="display: flex; flex-direction: column; justify-content: space-between;">
             <h5 class="card-title"><%# Eval("ProductName") %></h5>
+          
               <asp:LinkButton ID="LinkButton1" runat="server" 
                     PostBackUrl='<%# "~/Product.aspx?ProductID=" + Eval("ProductID") %>' 
                     CssClass="btn btn-danger">More details</asp:LinkButton>
@@ -181,10 +151,11 @@
                  
              </HeaderTemplate>
                      <ItemTemplate>
-        <div class="card " style="width: 18rem;">
+        <div class="card " style="width: 18rem; display: flex; flex-direction: column;">
           <img src="asset/<%# Eval("product_image") %>" class="card-img-top " alt="...">
-          <div class="card-body">
+          <div class="card-body" style ="display: flex; flex-direction: column; justify-content: space-between;">
             <h5 class="card-title"><%# Eval("ProductName") %></h5>
+          
               <asp:LinkButton ID="LinkButton1" runat="server" 
                     PostBackUrl='<%# "~/Product.aspx?ProductID=" + Eval("ProductID") %>' 
                     CssClass="btn btn-danger">More details</asp:LinkButton>
