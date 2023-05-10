@@ -19,11 +19,12 @@ namespace Web_Assignment
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             con = new SqlConnection(strCon);
             con.Open();
-            string query = "SELECT * FROM [Delivery_address] INNER JOIN [User] ON [Delivery_address].UserId = [User].UserId; ";
+            string query = "SELECT * FROM [Delivery_address] INNER JOIN [User] ON [Delivery_address].UserId = [User].UserId WHERE [User].UserId = @userId";
+
 
             SqlCommand command = new SqlCommand(query, con);
 
-            command.Parameters.AddWithValue("@userId", userId);
+            command.Parameters.AddWithValue("@userId", 4);
 
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable dataTable = new DataTable();
