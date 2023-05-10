@@ -71,6 +71,8 @@ namespace Web_Assignment
             cmdinsertcart.Parameters.AddWithValue("@userId", userId);
             cmdinsertcart.ExecuteNonQuery();
             con.Close();
+
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

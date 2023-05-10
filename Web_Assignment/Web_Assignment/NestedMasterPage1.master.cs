@@ -24,6 +24,7 @@ namespace Web_Assignment
                 Master.btnlogin.Visible = true;
                 Master.btnlogout.Visible = false;
                 Master.btnprofile.Visible = false;
+                
             }
 
 
