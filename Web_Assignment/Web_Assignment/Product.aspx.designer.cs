@@ -13,5 +13,19 @@ namespace Web_Assignment
 
     public partial class WebForm4
     {
+
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new Web_Assignment.Site1 Master
+        {
+            get
+            {
+                return ((Web_Assignment.Site1)(base.Master));
+            }
+        }
     }
 }

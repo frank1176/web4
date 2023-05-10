@@ -47,6 +47,7 @@ namespace Web_Assignment
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             FormsAuthentication.SignOut();
+            Session.Clear();
             Session.Abandon();
             Response.Redirect("~/Login.aspx");
         }

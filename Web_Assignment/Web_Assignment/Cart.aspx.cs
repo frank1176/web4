@@ -16,9 +16,9 @@ namespace Web_Assignment
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            int userId = Convert.ToInt32(Session["UserId"]);
+            int userId = Convert.ToInt32(Session["Userid"]);
             int cartID=0;
-            if (Session["UserId"] == null)
+            if (Session["Userid"] == null)
             {
                 // Redirect to login page if user is not logged in
                
