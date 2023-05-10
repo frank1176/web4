@@ -27,8 +27,16 @@
                             <div class="row">
                                 <p><strong>Delivery Address</strong></p>
 
-
-                                <p class="mb-0">Kiongho address</p>
+                                	<asp:Repeater ID="Repeater2" runat="server" >
+						<ItemTemplate>
+							
+											<h5 class="card-title"><%# Eval("AddressLabel") %></h5>
+											<p class="mb-0"> <%# Eval("Address") %>, <%# Eval("City") %>, <%# Eval("State") %> <%# Eval("Postcode") %> <%# Eval("Note") %></p>
+									
+							 
+						</ItemTemplate>
+					</asp:Repeater>
+                               
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Address">
                                     Open modal
                                 </button>
@@ -40,13 +48,33 @@
 
                                             <!-- Modal Header -->
                                             <div class="modal-header">
-                                                <h4 class="modal-title">Modal Heading</h4>
+                                                <h4 class="modal-title">Address</h4>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                             </div>
 
                                             <!-- Modal body -->
                                             <div class="modal-body">
-                                                Modal body..
+                                                	<asp:Repeater ID="addressRepeater" runat="server" OnItemCommand="addressRepeater_ItemCommand" >
+						<ItemTemplate>
+							<div class="card mb-4">
+                                 
+								<div class="card-body">
+                                    <input type="radio" name="address" id="address_<%# Eval("addressID") %>" class="form-check-input" CommandName="SelectAddress" CommandArgument='<%# Eval("addressID") %>' />
+									<div class="row">
+										<div class="col-md-11">
+											<h5 class="card-title"><%# Eval("AddressLabel") %></h5>
+											<p class="card-text"><%# Eval("Address") %>, <%# Eval("City") %>, <%# Eval("State") %> <%# Eval("Postcode") %> <%# Eval("Note") %></p>
+										</div>
+										
+									
+											
+									</div>
+								</div>
+
+							</div>
+							 
+						</ItemTemplate>
+					</asp:Repeater>
                                             </div>
 
                                             <!-- Modal footer -->

@@ -15,47 +15,64 @@ namespace Web_Assignment
         {
             if (!IsPostBack)
             {
-                if (Request.QueryString["UserID"] != null)
+
+                int userId = Convert.ToInt32(Request.QueryString["UserID"]);
+                // Load product details using the productID and populate the form for editing
+                SqlConnection con;
+                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                con = new SqlConnection(strCon);
+                con.Open();
+                string query = "SELECT * FROM [User] WHERE UserId=@userID";
+
+                SqlCommand cmdSelectProduct = new SqlCommand(query, con);
+
+                cmdSelectProduct.Parameters.AddWithValue("@userID", userId);
+
+                SqlDataReader reader = cmdSelectProduct.ExecuteReader();
+
+                if (reader.HasRows)
                 {
-                    int userId = Convert.ToInt32(Request.QueryString["UserID"]);
-                    // Load product details using the productID and populate the form for editing
-                    SqlConnection con;
-                    string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-                    con = new SqlConnection(strCon);
-                    con.Open();
-                    string query = "SELECT * FROM [User] WHERE UserId=@userID";
-
-                    SqlCommand cmdSelectProduct = new SqlCommand(query, con);
-
-                    cmdSelectProduct.Parameters.AddWithValue("@userID", userId);
-
-                    SqlDataReader reader = cmdSelectProduct.ExecuteReader();
-
-                    if (reader.HasRows)
-                    {
-                        reader.Read();
-                        lblSecQ.Text = reader["Question"].ToString();
-                        String answer = reader["Answer"].ToString();
-                        if (txtSecAns.Text.Equals(answer))
-                        {
-                            Response.Redirect("Forgot3.aspx");
-                        }
-                        else
-                        {
-                            ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Wrong answer')", true);
-                        }
-                    }
-                    else
-                    {
-
-
-                    }
+                    reader.Read();
+                    lblSecQ.Text = reader["Question"].ToString();
                 }
-                else
-                {
+                con.Close();
+            }
+            else
+            {
 
+            }
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+            int userId = Convert.ToInt32(Request.QueryString["UserID"]);
+            // Load product details using the productID and populate the form for editing
+            SqlConnection con;
+            string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            con = new SqlConnection(strCon);
+            con.Open();
+            string query = "SELECT * FROM [User] WHERE UserId=@userID";
+
+            SqlCommand cmdSelectProduct = new SqlCommand(query, con);
+
+            cmdSelectProduct.Parameters.AddWithValue("@userID", userId);
+
+            SqlDataReader reader = cmdSelectProduct.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                reader.Read();
+                String answer = reader["Question"].ToString();
+                if (txtSecAns.Text == answer)
+                {
+                    Response.Redirect("Forgot3.aspx?UserID=" + userId);
                 }
             }
+            con.Close();
         }
+
+
     }
 }

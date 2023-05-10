@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -31,6 +32,27 @@ namespace Web_Assignment
                 cmdSelectUser.Parameters.AddWithValue("@userid", uid);
                 SqlDataReader reader = cmdSelectUser.ExecuteReader();
 
+                if (!IsPostBack)
+                {
+
+                    int userId = Convert.ToInt32(Session["Userid"]);
+                 
+                    con = new SqlConnection(strCon);
+                    con.Open();
+                    string query2 = "SELECT * FROM [Delivery_address] INNER JOIN [User] ON [Delivery_address].UserId = [User].UserId WHERE [User].UserId = @auserId";
+
+
+                    SqlCommand command = new SqlCommand(query2, con);
+
+                    command.Parameters.AddWithValue("@auserId", userId);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    addressRepeater.DataSource = dataTable;
+                    addressRepeater.DataBind();
+                }
+
                 if (reader.HasRows)
                 {
                     reader.Read();
@@ -49,6 +71,15 @@ namespace Web_Assignment
                 }
             }
         }
+
+        protected void addressRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "SelectAddress")
+            {
+             
+            }
+        }
+
 
         protected void btnCheckOut_Click(object sender, EventArgs e)
         {

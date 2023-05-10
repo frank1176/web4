@@ -26,22 +26,22 @@ namespace Web_Assignment
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            int auserId = Convert.ToInt32(Request.QueryString["UserId"]);
+            int auserId = Convert.ToInt32(Session["Userid"]);
             //String role = TextBox1.Text;
-                String alabel = txtLabel.Text;
+            String alabel = txtLabel.Text;
                 String aaddress = txtAddress.Text;
                 String acity = txtCity.Text;
                 String astate = txtState.Text;
                 String apostcode = txtPostcode.Text;
                 String anote = txtNote.Text;
-                
 
-                SqlConnection con;
+            System.Diagnostics.Debug.WriteLine("babi: ");
+            SqlConnection con;
                 string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
                 con = new SqlConnection(strCon);
                 con.Open();
-
-                string query = @"INSERT INTO [Delivery_address] (AddressLabel, Address, City, State, Postcode, Note, UserId)
+            System.Diagnostics.Debug.WriteLine("babi" + auserId);
+            string query = @"INSERT INTO [Delivery_address] (AddressLabel, Address, City, State, Postcode, Note, UserId)
                              VALUES (@label, @address, @city, @state, @postcode, @note,  @userId)";
                 SqlCommand command = new SqlCommand(query, con);
                 command.Parameters.AddWithValue("@label", alabel);
@@ -54,8 +54,9 @@ namespace Web_Assignment
                 command.ExecuteNonQuery();
 
                 con.Close();
-            }
-
+            Response.Redirect("Addresslist.aspx");
+        }
+       
         }
 
     }

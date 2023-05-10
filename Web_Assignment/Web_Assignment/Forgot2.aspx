@@ -74,12 +74,13 @@
                 </tr>
                 <tr>
                     <td class="auto-style8">
-                        <asp:TextBox ID="txtSecAns" runat="server" placeholder="Security Question" Height="41px" Width="320px" CssClass="txtSecAns" ForeColor="DimGray"></asp:TextBox>
+                        <asp:TextBox ID="txtSecAns" runat="server" placeholder="Security Answer" Height="41px" Width="320px" CssClass="txtSecAns" ForeColor="DimGray"></asp:TextBox><br/>
+                         <asp:RequiredFieldValidator ID="SecAnsRequired" runat="server" ErrorMessage="Security Answer is required" Display="Dynamic" ForeColor="Red" ControlToValidate="txtSecAns"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="Button1" runat="server" Text="Next" CssClass="auto-style7" Height="40px" Width="302px" PostBackUrl="~/Forgot3.aspx" />
+                        <asp:Button ID="Button1" runat="server" Text="Next" CssClass="auto-style7" Height="40px" Width="302px" OnClick="Button1_Click" />
                     </td>
                 </tr>
             </table>
