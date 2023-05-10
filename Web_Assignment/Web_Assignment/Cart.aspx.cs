@@ -130,25 +130,26 @@ namespace Web_Assignment
                     cmd.ExecuteNonQuery();
 
 
+                // find cart id
                 
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    string query4 = "SELECT CartId FROM Carts WHERE UserId = @UserId";
-                    
-                    cmd.Parameters.AddWithValue("@UserId", userId);
-                    connection.Open();
-                    cartID = (int)cmd.ExecuteScalar();
-                }
+                  // string query4 = "SELECT CartId FROM Carts WHERE UserId = @UserId";
+                //SqlCommand cmd2 = new SqlCommand(query4, con);
+               // cmd2.Parameters.AddWithValue("@UserId", userId);
+                 //   cmd2.ExecuteNonQuery();
+
+                   
+                    //cartID = (int)cmd.ExecuteScalar();
+                
 
                 string query = "SELECT * FROM Product";
                 string query3 = "SELECT * FROM Product INNER JOIN cartProduct ON Product.ProductID = cartProduct.ProductID WHERE CartID = @CartID";
 
-                SqlCommand cmd2 = new SqlCommand("UPDATE Cart SET Count = (SELECT SUM(quantity) FROM CartProduct WHERE CartId = @CartId) WHERE CartId = @CartId", con);
-                cmd.Parameters.AddWithValue("@CartId", cartID);
+                SqlCommand cmd3 = new SqlCommand("UPDATE Cart SET Count = (SELECT SUM(quantity) FROM CartProduct WHERE CartId = @CartId) WHERE CartId = @CartId", con);
+              //  cmd.Parameters.AddWithValue("@CartId", cartID);
 
 
                 SqlCommand command = new SqlCommand(query, con);
-                command.Parameters.AddWithValue("@CartID", cartID);
+                //command.Parameters.AddWithValue("@CartID", cartID);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
