@@ -56,6 +56,7 @@ namespace Web_Assignment
                 int userid = int.Parse(reader["UserId"].ToString());
                 string username = reader["Username"].ToString(); // Replace "Username" with the column name for username in your database
                 int role = int.Parse(reader["Roleid"].ToString());
+               
                 // Store the username somewhere (e.g., in a session variable) to use later
                 Session["Userid"] = userid;
                 Session["Username"] = username;
