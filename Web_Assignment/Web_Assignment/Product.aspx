@@ -4,6 +4,8 @@
     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+
     <title>Product</title>
     
     <head>
@@ -24,7 +26,7 @@
       <!-- Left Column / Headphones Image -->
       <div class="left-column">
 
-        <img data-image="red" class="active" src="asset/arabian_spice_crunch_box_meal_coleslaw.jpg" alt="">
+        <img data-image="red" class="active" alt="" runat="server" id="ProductImage" src="">
        <!-- <div class="form-check">
   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
   <label class="form-check-label" for="flexRadioDefault1">
@@ -38,7 +40,7 @@
   </label>
 </div>   -->
           <div style="margin-top: 20px; width:98%;">
-        <span><b>Choose Your Drink </b>  <i>(pick1)</i></span><br><br>
+        <span ><b>Choose Your Drink </b>  <i>(pick1)</i></span><br><br>
         
         <input class="btnr" type="radio" id="fname" name="fname" value="Coca-Cola (M)" checked>
         <label for="fname">Coca-Cola (M)</label>  <br><hr />
@@ -79,11 +81,8 @@
         <!-- Product Description -->
         <div class="product-description">
 
-          <h3>3-pc Arabian Spice Crunch Combo</h3>
-          <p>3 Arabian Spice Crunch<br>
-            1 Whipped Potato (4oz)<br>
-            1 Coleslaw (4oz)<br>
-            1 Coca-Cola (M)</p>
+          <h3 id="ProductName" runat ="server"> </h3>
+          <p id="ProductDesc" runat="server"></p>
         </div>
 
         <!-- Product Configuration -->

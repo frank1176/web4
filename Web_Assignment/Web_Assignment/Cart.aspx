@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="Web_Assignment.WebForm3" %>
-<%@ MasterType VirtualPath="~/Site1.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <%@ MasterType VirtualPath="~/Site1.Master" %>
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
       <link href="css/Cart.css" rel="stylesheet" type="text/css" media="all"/>
@@ -63,13 +63,21 @@
                 
             <!-- Address -->
           <div class="card-body">
+    <asp:Repeater ID="cartRepeater" runat="server" OnItemCommand="cartRepeater_ItemCommand">
+    
+               <HeaderTemplate>
+                 
+             </HeaderTemplate>
+                     <ItemTemplate>
             <!-- Single item -->
             <div class="row">
               <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                    
+                  
                 <!-- Image -->
                 <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                  <img src= "asset/3pc_arabian_spice_crunch_coleslaw.jpg"
-                    class="w-100" alt="Blue Jeans Jacket" />
+                  <img src= "asset/<%# Eval("product_image") %>"
+                    class="w-100"/>
                   <a href="#!">
                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
                   </a>
@@ -79,41 +87,32 @@
 
               <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                 <!-- Data -->
-                <p><strong>3pc_arabian_spice_crunch</strong></p>
-                <p>6 piece chicken</p>
-                <p>Size: M</p>
-                <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
-                  title="Remove item">
-                  <i class="fas fa-edit"></i>
-                    <asp:HyperLink ID="HyperLink1" runat="server">Edit Item</asp:HyperLink>
-                </button>
-                <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
-                  title="Move to the wish list">
-                  <i class="fas fa-trash"></i>
-                    <asp:HyperLink ID="HyperLink2" runat="server">Remove Item</asp:HyperLink>
-                </button>
+                <p><strong><%# Eval("ProductName") %></strong></p>
+                <p><%# Eval("Description") %></p>
+                <asp:Button ID="BtnEdit" runat="server" Text="Edit Item" class="btn btn-primary btn-sm mb-2" data-mdb-toggle="tooltip" />
+                  
+                <asp:Button ID="BtnRemove" runat="server" Text="Remove Item"  class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip" CommandName="RemoveCartItem" CommandArgument='<%# Eval("ProductID") %>' onClick="BtnRemove_Click"/>
+
+                
                 <!-- Data -->
               </div>
 
               <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                 <!-- Quantity -->
                 <div class="d-flex mb-2" style="max-width: 300px">
-                  <button class="btn btn-link px-3 me-4"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                    <i class="fas fa-minus"></i>
-                  </button>
+                   <button class="btn btn-link px-2"
+                 >
+                  <i class="fas fa-minus"></i>
+                </button>
 
-                 
-                    <input id="form2" min="1" name="quantity" value="1" type="number" class="form-control" />
-                    <label class="form-label" for="form2"></label>
-                 
+                <input id="form1" min="0" name="quantity" value="2" type="number"
+                  class="form-control form-control-sm" />
 
-                  <button class="btn btn-link px-3 ms-2"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                    <i class="fas fa-plus"></i>
-
-                  </button>
-
+                <button class="btn btn-link px-2"
+                 >
+                  <i class="fas fa-plus"></i>
+                </button>
+                    
 
                    
 
@@ -122,78 +121,30 @@
 
                 <!-- Price -->
                 <p class="text-start text-md-center">
-                  <strong>$17.99</strong>
+                  <strong><%# Eval("UnitPrice") %></strong>
                 </p>
                 <!-- Price -->
+                 
+                 
               </div>
             </div>
-            <!-- Single item -->
+                     
+                           <hr class="my-4" />
+                         </ItemTemplate>
 
-            <hr class="my-4" />
-
-            <!-- Single item -->
-            <div class="row">
-              <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                <!-- Image -->
-                <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                  <img src="asset/2pc_arabian_spice_crunch_coleslaw.jpg"
-                    class="w-100" />
-                  <a href="#!">
-                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
-                  </a>
-                </div>
-                <!-- Image -->
-              </div>
-
-              <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                <!-- Data -->
-                <p><strong>2-pieces chicken</strong></p>
-                <p>Donut x 1 </p>
-                <p>Burger x 1</p>
-                  <p>Coca-cola x 1</p>
-                <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
-                  title="Remove item">
-                  <i class="fas fa-edit"></i>
-                    <asp:HyperLink ID="HyperLink3" runat="server">Edit Item</asp:HyperLink>
-                </button>
-                <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
-                  title="Move to the wish list">
-                   
-                  <i class="fas fa-trash"></i>
-                     <asp:HyperLink ID="HyperLink4" runat="server">Remove Item</asp:HyperLink>
-                </button>
-                <!-- Data -->
-              </div>
-
-              <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                <!-- Quantity -->
-                <div class="d-flex mb-4" style="max-width: 300px">
-                    <button class="btn btn-link px-3 me-4"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                    <i class="fas fa-minus"></i>
-                  </button>
-
+           
+        
+                   <FooterTemplate>
+                        
+                       
+                      
+                  </FooterTemplate>
                  
-                    <input id="form1" min="1" name="quantity" value="1" type="number" class="form-control" />
-                    <label class="form-label" for="form1"></label>
-                 
+  </asp:Repeater>
 
-                  <button class="btn btn-link px-3 ms-2"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                    <i class="fas fa-plus"></i>
+           
 
-                  </button>
-                </div>
-                <!-- Quantity -->
-
-                <!-- Price -->
-                <p class="text-start text-md-center">
-                  <strong>$17.99</strong>
-                </p>
-                <!-- Price -->
-              </div>
-            </div>
-            <!-- Single item -->
+          
           </div>
         </div>
      
@@ -246,13 +197,12 @@
                     <p class="mb-0">(incl. SST)</p>
                   </strong>
                 </div>
-                <span><strong>RM57.98</strong></span>
+                <span><strong>
+                    <asp:Label ID="lblSubtotal" runat="server" Text="Label"></asp:Label></strong></span>
               </li>
             </ul>
                
-            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="document.location='CheckOut.aspx'">
-             Review Payment & Address
-            </button>
+            <asp:Button runat="server" ID="btnReview" class="btn btn-primary btn-lg btn-block" Text="Review Payment & Address" PostBackUrl="~/CheckOut.aspx" />
                    
           </div>
         </div>

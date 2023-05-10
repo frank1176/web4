@@ -10,23 +10,24 @@
 		                </div>
 
 					</div>
-					<asp:Repeater ID="Repeater1" runat="server">
-						<itemTemplate>
+					<h5 id="Username" runat="server"></h5>
+					<asp:Repeater ID="addressRepeater" runat="server">
+						<ItemTemplate>
 							<div class="card mb-4">
-							<div class="card-body">
-								<div class="row">
-								  <div class="col-md-11">
-									  <h5 class="card-title"><%# Eval("addressName") %></h5>
-									  <p class="card-text"><%# Eval("Unit") %>, <%# Eval("Address") %>, <%# Eval("City") %> <%# Eval("Postcode") %> <%# Eval ("State") %> <%# Eval ("Note") %></p>
-								  </div>
-									<div class="col-md-1">
-										<a href="EditAddress.aspx" class="btn btn-primary">Edit</a>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-11">
+											<h5 class="card-title"><%# Eval("AddressLabel") %></h5>
+											<p class="card-text"><%# Eval("Address") %>, <%# Eval("City") %>, <%# Eval("State") %> <%# Eval("Postcode") %> <%# Eval("Note") %></p>
+											<asp:HiddenField ID="hfAddressId" runat="server" Value='<%# Eval("addressId") %>' />
+										</div>
+										<div class="col-md-1">
+											<asp:Button ID="btnEdit" class="btn btn-primary" runat="server" Text="Edit" OnClick="btnEdit_Click" PostBackUrl="~/Editaddress.aspx"/>
+										</div>
 									</div>
-								</div>
-								
-							</div>
-
-						</itemTemplate>
+									</div>
+							 </div>
+						</ItemTemplate>
 					</asp:Repeater>
 					</div>
 						<div class="card mb-4">

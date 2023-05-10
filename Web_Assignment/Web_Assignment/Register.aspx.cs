@@ -29,6 +29,7 @@ namespace Web_Assignment
                 Master.btnprofile.Visible = false;
                
             }
+
         }
 
         protected void Register_Click(object sender, EventArgs e)

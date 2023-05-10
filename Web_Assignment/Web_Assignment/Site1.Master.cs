@@ -50,7 +50,6 @@ namespace Web_Assignment
             Session.Clear();
             Session.Abandon();
             Response.Redirect("~/Login.aspx");
-            
         }
     }
 }

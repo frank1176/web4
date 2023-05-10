@@ -14,42 +14,46 @@
 		                <div class="col-md-12">
 		                    <form>
                               <div class="form-group row mb-4">
-                                <label for="username" class="col-4 col-form-label">Name*</label> 
+                                <label for="username" class="col-4 col-form-label">Label*</label> 
                                 <div class="col-8">
-                                  <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text">
+                                    <asp:TextBox ID="txtLabel"  placeholder="Label" class="form-control here" runat="server"></asp:TextBox>
                                 </div>
                               </div>
                               <div class="form-group row mb-4">
                                 <label for="name" class="col-4 col-form-label">Address</label> 
                                 <div class="col-8">
-                                  <input id="name" name="name" placeholder="First Name" class="form-control here" type="text">
+                                   <asp:TextBox ID="txtAddress"  placeholder="Address" class="form-control here" runat="server"></asp:TextBox>
                                 </div>
                               </div>
                               <div class="form-group row mb-4">
                                 <label for="lastname" class="col-4 col-form-label">City</label> 
                                 <div class="col-8">
-                                  <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text">
+                                  <asp:TextBox ID="txtCity"  placeholder="City" class="form-control here" runat="server"></asp:TextBox>
                                 </div>
                               </div>
                               <div class="form-group row mb-4">
                                 <label for="text" class="col-4 col-form-label">State</label> 
                                 <div class="col-8">
-                                  <input id="text" name="text" placeholder="Nick Name" class="form-control here" required="required" type="text">
+                                <asp:TextBox ID="txtState"  placeholder="State" class="form-control here" runat="server"></asp:TextBox>
                                 </div>
                               </div>
                               <div class="form-group row mb-4">
                                 <label for="select" class="col-4 col-form-label">Postcode</label> 
                                 <div class="col-8">
-                                  <input id="text" name="text" placeholder="Nick Name" class="form-control here" required="required" type="text">
+                                  <asp:TextBox ID="txtPostcode"  placeholder="Postcode" class="form-control here" runat="server"></asp:TextBox>
                                 </div>
                               </div>
                               <div class="form-group row mb-4">
                                 <label for="email" class="col-4 col-form-label">Note to rider*</label> 
                                 <div class="col-8">
-                                  <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
+                                   <asp:TextBox ID="txtNote"  placeholder="Note" class="form-control here" runat="server"></asp:TextBox>
                                 </div>
                               </div>
-                             
+                              <div class="form-group row mb-4">
+                                <div class="offset-4 col-8">
+                                    <asp:Button ID="Button1"  class="btn btn-primary" runat="server" Text="Add address" OnClick="Button1_Click" />
+                                </div>
+                              </div>
                             </form>
 		                </div>
 		            </div>

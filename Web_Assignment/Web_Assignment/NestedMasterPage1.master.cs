@@ -26,7 +26,7 @@ namespace Web_Assignment
                 Master.btnprofile.Visible = false;
             }
 
-            
+
         }
 
         public LinkButton btnAdmin
@@ -36,6 +36,6 @@ namespace Web_Assignment
                 return this.btnadmin;
             }
         }
-        
+
     }
 }
