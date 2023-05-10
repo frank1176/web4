@@ -1,6 +1,5 @@
 ﻿
 <%@ Page Title="" Language="C#" MasterPageFile="~/NestedMasterPage1.master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="Web_Assignment.WebForm11" %>
-<%@ MasterType VirtualPath="~/NestedMasterPage1.master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
        <div class="col-md-9">
 		    <div class="card">
@@ -38,7 +37,7 @@
                           
                               <div class="form-group row mb-4">
                                 <div class="offset-4 col-8">
-                                  <!--<button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>-->
+                                  <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
                                 </div>
                               </div>
                             </form>
