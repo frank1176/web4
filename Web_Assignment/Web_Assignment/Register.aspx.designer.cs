@@ -69,6 +69,15 @@ namespace Web_Assignment
         protected global::System.Web.UI.WebControls.RequiredFieldValidator EmailRequired;
 
         /// <summary>
+        /// EmailFormat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator EmailFormat;
+
+        /// <summary>
         /// PhoneLabel control.
         /// </summary>
         /// <remarks>
@@ -94,6 +103,15 @@ namespace Web_Assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator PhoneRequired;
+
+        /// <summary>
+        /// PhoneFormat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator PhoneFormat;
 
         /// <summary>
         /// PasswordLabel control.
@@ -159,13 +177,13 @@ namespace Web_Assignment
         protected global::System.Web.UI.WebControls.CompareValidator PasswordCompare;
 
         /// <summary>
-        /// QuestionLabel control.
+        /// labelquestion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label QuestionLabel;
+        protected global::System.Web.UI.WebControls.Label labelquestion;
 
         /// <summary>
         /// Question control.
@@ -174,16 +192,7 @@ namespace Web_Assignment
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Question;
-
-        /// <summary>
-        /// QuestionRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator QuestionRequired;
+        protected global::System.Web.UI.WebControls.DropDownList Question;
 
         /// <summary>
         /// AnswerLabel control.
