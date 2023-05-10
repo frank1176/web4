@@ -42,7 +42,7 @@ namespace Web_Assignment
                     SqlCommand command = new SqlCommand(query5, connection);
                     command.Parameters.AddWithValue("@UserId", userId);
                     connection.Open();
-                    cartID = (int)command.ExecuteScalar();
+                    cartID = Convert.ToInt32(command.ExecuteScalar());
                     connection.Close();
                 }
             
@@ -58,34 +58,46 @@ namespace Web_Assignment
                       
                         SqlCommand command = new SqlCommand(query2, connection);
                         command.Parameters.AddWithValue("@CartID", cartID);
-                        SqlDataAdapter adapter = new SqlDataAdapter(command);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-                        cartRepeater.DataSource = dataTable;
-                        cartRepeater.DataBind();
+                        SqlDataReader readerCartItem = command.ExecuteReader();
+                        if (readerCartItem.HasRows)
+                        {
+                            readerCartItem.Close(); 
+                            SqlDataAdapter adapter = new SqlDataAdapter(command);
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+                            cartRepeater.DataSource = dataTable;
+                            cartRepeater.DataBind();
 
-                        string queryTest = "SELECT SUM(CP.quantity * P.UnitPrice) AS Subtotal " +
-               "FROM cartProduct CP " +
-               "INNER JOIN Product P ON CP.ProductID = P.ProductID " +
-               "WHERE CP.cartID = @CartID";
+                            string queryTest = "SELECT SUM(CP.quantity * P.UnitPrice) AS Subtotal " +
+                                               "FROM cartProduct CP " +
+                                               "INNER JOIN Product P ON CP.ProductID = P.ProductID " +
+                                               "WHERE CP.cartID = @CartID";
 
-                        
+
                             SqlCommand cmd = new SqlCommand(queryTest, connection);
                             cmd.Parameters.AddWithValue("@cartID", cartID);
 
-                           
+
                             SqlDataReader reader = cmd.ExecuteReader();
 
                             if (reader.Read())
                             {
 
-                            
-                              decimal subtotal = reader.GetDecimal(0);
-                            // do something with the subtotal value, such as display it on the page
-                            lblSubtotal.Text = subtotal.ToString("C2");
-                        }
 
-                        connection.Close();
+                                decimal subtotal = reader.GetDecimal(0);
+                                // do something with the subtotal value, such as display it on the page
+                                lblSubtotal.Text = subtotal.ToString("C2");
+                            }
+
+                            connection.Close();
+                        }
+                        else
+                        {
+                            string script = "alert('Please Go add item'); window.location.href='Login.aspx';";
+                            ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
+                            //Show not product item text
+                        }
+                        
                     
 
                        

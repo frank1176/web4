@@ -61,7 +61,7 @@ namespace Web_Assignment
             cmdInsertUser.Parameters.AddWithValue("@roleId", role);
             cmdInsertUser.Parameters.AddWithValue("@question", q);
             cmdInsertUser.Parameters.AddWithValue("@answer", a);
-            cmdInsertUser.ExecuteNonQuery();
+           
 
             int userId = Convert.ToInt32(cmdInsertUser.ExecuteScalar());
             int count = 0;
