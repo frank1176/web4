@@ -43,9 +43,17 @@ namespace Web_Assignment
                 SqlCommand command2 = new SqlCommand(query2, connection);
                 SqlDataAdapter adapter2 = new SqlDataAdapter(command2);
                 DataTable dataTable2 = new DataTable();
-                adapter1.Fill(dataTable2);
-                Repeater2.DataSource = dataTable2;
-                Repeater2.DataBind();
+                adapter2.Fill(dataTable2);
+                Repeater3.DataSource = dataTable2;
+                Repeater3.DataBind();
+
+                string query3 = "SELECT * FROM Product WHERE CategoriesID = 4";
+                SqlCommand command3 = new SqlCommand(query3, connection);
+                SqlDataAdapter adapter3 = new SqlDataAdapter(command3);
+                DataTable dataTable3 = new DataTable();
+                adapter3.Fill(dataTable3);
+                Repeater4.DataSource = dataTable3;
+                Repeater4.DataBind();
 
                 connection.Close();
 
