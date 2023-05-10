@@ -12,6 +12,7 @@
               <a href="Profile.aspx" class="list-group-item list-group-item-action <%= Request.Url.AbsolutePath.EndsWith("Profile.aspx") ? "active" : "" %>" >My Profile</a>
               <a href="Addresslist.aspx" class="list-group-item list-group-item-action  <%= Request.Url.AbsolutePath.EndsWith("Addresslist.aspx") ? "active" : "" %>">My Saved Place</a>
               <a href="Orderhistory.aspx" class="list-group-item list-group-item-action" <%= Request.Url.AbsolutePath.EndsWith("Orderehistory.aspx") ? "active" : "" %>">Order History </a>
+                 <a href="Changepassword.aspx" class="list-group-item list-group-item-action" <%= Request.Url.AbsolutePath.EndsWith("Changepassword.aspx") ? "active" : "" %>">Change password </a>
                <asp:LinkButton ID="btnadmin" runat="server" PostBackUrl="~/Admin/DashBoard.aspx">Admin</asp:LinkButton>
             </div> 
 

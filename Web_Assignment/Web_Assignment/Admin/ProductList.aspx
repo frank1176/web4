@@ -44,7 +44,7 @@
             <asp:BoundField DataField="UnitPrice" HeaderText="UnitPrice" SortExpression="UnitPrice" />
             <asp:TemplateField HeaderText="Product Image">
             <ItemTemplate>
-                <img src= "../asset/<%# Eval("product_image") %>" width="50%" height="100" class="rounded mx-auto d-block"/>
+                <img src= "../asset/<%# Eval("product_image") %>" width="200" height="100" class="img-fluid rounded mx-auto d-block"/>
             </ItemTemplate>
         </asp:TemplateField>
           <asp:TemplateField HeaderText="Actions">
