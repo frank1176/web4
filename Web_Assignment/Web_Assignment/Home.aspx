@@ -40,39 +40,25 @@
 
     <div class="card-deck d-flex flex-column flex-sm-row justify-content-between container-fluid menu_class2 ">
 
+        <asp:Repeater ID="menuRepeater" runat="server" >
+            <HeaderTemplate>                 
+             </HeaderTemplate>
+                     <ItemTemplate>
         <div class="card " style="width: 18rem;">
-          <img src="asset/arabian_spice_crunch_box_meal_coleslaw.jpg" class="card-img-top " alt="...">
+          <img src="asset/<%# Eval("product_image") %>" class="card-img-top " alt="...">
           <div class="card-body">
-            <h5 class="card-title">Arabian Spice Crunch Box Meal Coleslaw</h5>
-            <a href="#" class="btn btn-danger">More details</a>
+            <h5 class="card-title"><%# Eval("ProductName") %></h5>
+              <asp:LinkButton ID="LinkButton1" runat="server" 
+                    PostBackUrl='<%# "~/Product.aspx?ProductID=" + Eval("ProductID") %>' 
+                    CssClass="btn btn-danger">More details</asp:LinkButton>
           </div>
         </div>
 
-
-         <div class="card" style="width: 18rem;">
-          <img src="asset/2pc_arabian_spice_crunch_coleslaw.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">2pc arabian spice crunch coleslaw</h5>
-            <a href="#" class="btn btn-danger">More details</a>
-          </div>
-        </div>
-
-        <div class="card" style="width: 18rem;">
-          <img src="asset/3pc_arabian_spice_crunch_coleslaw.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">3pc arabian spice crunch coleslaw</h5>
-            <a href="#" class="btn btn-danger">More details</a>
-          </div>
-        </div>
-
-        <div class="card" style="width: 18rem;">
-          <img src="asset/6pc_bucket_kongsi_with_spicy_nuggets.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">6pc bucket kongsi with spicy nuggets</h5>
-            <a href="#" class="btn btn-danger">More details</a>
-          </div>
-        </div>
-
+            </ItemTemplate>
+      
+                   <FooterTemplate>                                          
+                  </FooterTemplate>
+            </asp:Repeater>
     </div>
 
  
