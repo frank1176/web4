@@ -51,7 +51,7 @@
                               </div>
                               <div class="form-group row mb-4">
                                 <div class="offset-4 col-8">
-                                    <asp:Button ID="Button1"  class="btn btn-primary" runat="server" Text="Add address" OnClick="Button1_Click" PostBackUrl="~/Addresslist.aspx" />
+                                    <asp:Button ID="Button1"  class="btn btn-primary" runat="server" Text="Add address" OnClick="Button1_Click" />
                                 </div>
                               </div>
                             </form>
