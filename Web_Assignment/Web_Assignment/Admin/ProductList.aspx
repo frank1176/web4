@@ -50,7 +50,7 @@
           <asp:TemplateField HeaderText="Actions">
             <ItemTemplate>
                 <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="btn btn-primary"  CommandArgument='<%# Eval("ProductID") %>'  OnClick="btnEdit_Click" />
-                <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-danger" OnClick="btnDelete_Click"/>
+                <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-danger" CommandArgument='<%# Eval("ProductID") %>' OnClick="btnDelete_Click"/>
             </ItemTemplate>
         </asp:TemplateField>
         </Columns>

@@ -106,7 +106,7 @@
             </div>
             <div>
              
-                <asp:Button style="width: 95%; height: 50px; border-radius: 20px; margin-top:10px; background-color:orangered;" id="addbtn" runat="server" Text="Add To Cart - RM24.99" OnClick="addbtn_Click" />
+                <asp:Button ID="Addbtn" runat="server" style="width: 95%; height: 50px; border-radius: 20px; margin-top:10px; background-color:orangered;" Text="Add To Cart - RM24.99" OnClick="Addbtn_Click" />
             </div>
 
           

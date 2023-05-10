@@ -116,7 +116,7 @@ namespace Web_Assignment
         protected void BtnRemove_Click(object sender, EventArgs e)
         {
             int cartID;
-            int userId = Convert.ToInt32(Session["UserId"]);
+            int userId = Convert.ToInt32(Session["Userid"]);
             Button btn = (Button)sender;
                 int productId = Convert.ToInt32(btn.CommandArgument);
                 string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;

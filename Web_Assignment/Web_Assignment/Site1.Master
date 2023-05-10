@@ -59,7 +59,7 @@
                              </li>
 
                              <li class="nav-item">  
-                                  <asp:LinkButton ID="btnLogin" runat="server" Font-Underline="False" PostBackUrl="~/Login.aspx">
+                                  <asp:LinkButton ID="btnLogin" runat="server" Font-Underline="False" PostBackUrl="~/Login.aspx" CausesValidation="False">
                                       <i class="fa-regular fa-user fa-xl" style="color: #ffffff;"></i>
                                       Login
                                   </asp:LinkButton>
@@ -72,7 +72,7 @@
                                   </asp:LinkButton>
                              </li>
                               <li class="nav-item">
-                                  <asp:LinkButton ID="btnCart" runat="server" Font-Underline="False" Visible="True" PostBackUrl="~/Cart.aspx">
+                                  <asp:LinkButton ID="btnCart" runat="server" Font-Underline="False" Visible="True" PostBackUrl="~/Cart.aspx" CausesValidation="False">
                                       <i class="fa-solid fa-cart-shopping fa-xl" style="color: #ffffff;"></i>
                                       Cart
                                   </asp:LinkButton>

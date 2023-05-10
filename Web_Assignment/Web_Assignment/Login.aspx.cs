@@ -14,6 +14,7 @@ namespace Web_Assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (Session["Username"] != null)
             {
                 Master.btnlogin.Visible = false;
@@ -28,11 +29,14 @@ namespace Web_Assignment
                 Master.btnprofile.Visible = false;
 
             }
+
+
         }
 
         protected void login_Click(object sender, EventArgs e)
         {
-            String email = Gmail.Text;
+
+            String email = Email.Text;
             String password = Password.Text;
             SqlConnection con;
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -56,6 +60,7 @@ namespace Web_Assignment
                 int userid = int.Parse(reader["UserId"].ToString());
                 string username = reader["Username"].ToString(); // Replace "Username" with the column name for username in your database
                 int role = int.Parse(reader["Roleid"].ToString());
+               
                 // Store the username somewhere (e.g., in a session variable) to use later
                 Session["Userid"] = userid;
                 Session["Username"] = username;
@@ -65,8 +70,10 @@ namespace Web_Assignment
             else
             {
                 // Invalid credentials
-                Response.Redirect("Register.aspx");
+                Error.Text = "Wrong password or Email";
             }
         }
+
+
     }
 }
