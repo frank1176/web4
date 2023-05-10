@@ -55,6 +55,7 @@
                      <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
                      <asp:TextBox ID="Password" class="form-control form-control-lg" runat="server" TextMode="Password"></asp:TextBox>
                      <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Password is required." ToolTip="Password is required." Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                     <asp:RegularExpressionValidator ID="PasswordFormat" runat="server" Display="Dynamic" ForeColor="Red" ControlToValidate="Password" ErrorMessage="A password must contain at least 3 of the following: lowercase, uppercase, digits, special characters and at least 8 " ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$"></asp:RegularExpressionValidator>
                 </div>
              </div>
 
@@ -64,6 +65,7 @@
                      <asp:Label ID="ConfirmPasswordLabel" runat="server" AssociatedControlID="ConfirmPassword">Confirm Password:</asp:Label>
                        <asp:TextBox ID="ConfirmPassword" class="form-control form-control-lg" runat="server" TextMode="Password"></asp:TextBox>
                        <asp:RequiredFieldValidator ID="ConfirmPasswordRequired" runat="server" ControlToValidate="ConfirmPassword" ErrorMessage="Confirm Password is required." ToolTip="Confirm Password is required." Display="Dynamic"  ForeColor="Red"></asp:RequiredFieldValidator>
+
                         <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword" Display="Dynamic" ErrorMessage="The Password and Confirmation Password must match." ForeColor="Red"></asp:CompareValidator>
                  </div>
              </div>
@@ -96,7 +98,7 @@
 
                 <div class="row">
                  <div class="form-outline mb-4" align="center" colspan="2" style="color:Red;">
-                     <asp:Button ID="btnRegister" class="btn btn-primary btn-lg" runat="server" Text="Register" OnClick="Register_Click" />
+                     <asp:Button ID="btnRegister" class="btn btn-primary btn-lg" runat="server" Text="Register" OnClick="Register_Click" PostBackUrl="~/Login.aspx" />
                 </div>
               
                                  </div>

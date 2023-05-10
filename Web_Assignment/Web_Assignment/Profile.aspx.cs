@@ -11,15 +11,12 @@ namespace Web_Assignment
 {
     public partial class WebForm11 : System.Web.UI.Page
     {
-        string username;
-        string email;
-        string phnum;
-        int userId = 4;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-
+                int userId = Convert.ToInt32(Session["Userid"]);
                 SqlConnection con;
                 string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
                 con = new SqlConnection(strCon);
@@ -49,45 +46,39 @@ namespace Web_Assignment
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            username = txtUsername.Text;
-            email = txtEmail.Text;
-            phnum = txtPhone.Text;
-            //String role = TextBox1.Text;
+            int userId = Convert.ToInt32(Request.QueryString["UserId"]);
+            string username = txtUsername.Text;
+            string email = txtEmail.Text;
+            string phnum = txtPhone.Text;
 
-            int userId = 5; // Replace with the appropriate UserId value
 
             SqlConnection con;
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             con = new SqlConnection(strCon);
             con.Open();
 
-            string strInsertUser = "UPDATE [User] SET Phonenumber = @phone, Email = @email, Username = @username WHERE UserId = @userId";
-            SqlCommand command = new SqlCommand(strInsertUser, con);
-            command.Parameters.AddWithValue("@username", username);
-            command.Parameters.AddWithValue("@email", email);
-            command.Parameters.AddWithValue("@phone", phnum);
-            command.Parameters.AddWithValue("@userId", userId);
-            try
-            {
-                int rowsAffected = command.ExecuteNonQuery();
 
-                if (rowsAffected > 0)
-                {
-                    // Update successful
-                }
-                else
-                {
-                    // Update failed - handle error
-                }
-            }
-            catch (Exception ex)
+            string query = "UPDATE [Delivery_address] SET addressLabel=@label, Address=@address, City=@city, State=@state,  Postcode=@postcode, Note=@note WHERE addressID=@addressId";
+            SqlCommand command = new SqlCommand(query, con);
+            command.Parameters.AddWithValue("@label", username);
+            command.Parameters.AddWithValue("@address", email);
+            command.Parameters.AddWithValue("@city", phnum);
+
+            int rowsAffected = command.ExecuteNonQuery();
+
+            if (rowsAffected > 0)
             {
-                // Handle exception
+
+                Response.Redirect("Addresslist.aspx");
             }
-            finally
+            else
             {
-                con.Close();
+                // Update failed, you can show an error message
             }
+
+            con.Close();
+
+
         }
     }
 }
