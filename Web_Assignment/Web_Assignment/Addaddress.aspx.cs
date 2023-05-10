@@ -18,33 +18,36 @@ namespace Web_Assignment
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            int auserId = Convert.ToInt32(Request.QueryString["UserId"]);
             //String role = TextBox1.Text;
-            String alabel = txtLabel.Text;
-            String aaddress = txtAddress.Text;
-            String acity = txtCity.Text;
-            String astate = txtState.Text;
-            String apostcode = txtPostcode.Text;
-            String anote = txtNote.Text;
-            int auserId = Convert.ToInt32(Session["Userid"]);
+                String alabel = txtLabel.Text;
+                String aaddress = txtAddress.Text;
+                String acity = txtCity.Text;
+                String astate = txtState.Text;
+                String apostcode = txtPostcode.Text;
+                String anote = txtNote.Text;
+                
 
-            SqlConnection con;
-            string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            con = new SqlConnection(strCon);
-            con.Open();
+                SqlConnection con;
+                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                con = new SqlConnection(strCon);
+                con.Open();
 
-            string strInsertUser = @"INSERT INTO [Delivery_address] (AddressLabel, Address, City, State, Postcode, Note, UserId)
+                string query = @"INSERT INTO [Delivery_address] (AddressLabel, Address, City, State, Postcode, Note, UserId)
                              VALUES (@label, @address, @city, @state, @postcode, @note,  @userId)";
-            SqlCommand cmdInsertUser = new SqlCommand(strInsertUser, con);
-            cmdInsertUser.Parameters.AddWithValue("@label", alabel);
-            cmdInsertUser.Parameters.AddWithValue("@address", aaddress);
-            cmdInsertUser.Parameters.AddWithValue("@city", acity);
-            cmdInsertUser.Parameters.AddWithValue("@state", astate);
-            cmdInsertUser.Parameters.AddWithValue("@postcode", apostcode);
-            cmdInsertUser.Parameters.AddWithValue("@note", anote);
-            cmdInsertUser.Parameters.AddWithValue("@userId", auserId);
-            cmdInsertUser.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@label", alabel);
+                command.Parameters.AddWithValue("@address", aaddress);
+                command.Parameters.AddWithValue("@city", acity);
+                command.Parameters.AddWithValue("@state", astate);
+                command.Parameters.AddWithValue("@postcode", apostcode);
+                command.Parameters.AddWithValue("@note", anote);
+                command.Parameters.AddWithValue("@userId", auserId);
+                command.ExecuteNonQuery();
 
-            con.Close();
+                con.Close();
+            }
+
         }
+
     }
-}
