@@ -33,30 +33,53 @@ namespace Web_Assignment
         protected global::System.Web.UI.WebControls.LinkButton ChangeAddress;
 
         /// <summary>
-        /// cartRepeater control.
+        /// HyperLink1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater cartRepeater;
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
 
         /// <summary>
-        /// lblSubtotal control.
+        /// HyperLink2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSubtotal;
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
 
         /// <summary>
-        /// btnReview control.
+        /// HyperLink3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReview;
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink3;
+
+        /// <summary>
+        /// HyperLink4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink4;
+
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new Web_Assignment.Site1 Master
+        {
+            get
+            {
+                return ((Web_Assignment.Site1)(base.Master));
+            }
+        }
     }
 }
