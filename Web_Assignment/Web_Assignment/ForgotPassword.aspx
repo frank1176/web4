@@ -56,15 +56,16 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style8">
-                        <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" ForeColor="DimGray" Height="41px" Width="320px"></asp:TextBox>
+                    <td class="auto-style8" align="center">
+                        <asp:TextBox ID="txtEmail" class="form-control here" runat="server" placeholder="Email" ForeColor="DimGray" Height="41px" Width="320px"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="Button1" runat="server" Text="Send" CssClass="auto-style7" Height="40px" Width="302px" PostBackUrl="~/Forgot2.aspx" />
+                        <asp:Button ID="Button1" runat="server" Text="Send" class="btn btn-primary" Height="40px" Width="302px"  OnClick="Button1_Click" />
                     </td>
                 </tr>
+
             </table>
         </div>
         <br />

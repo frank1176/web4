@@ -41,7 +41,13 @@
 </div>   -->
           <div style="margin-top: 20px; width:98%;">
         <span ><b>Choose Your Drink </b>  <i>(pick1)</i></span><br><br>
-        
+              
+              <asp:RadioButton ID="colaM" runat="server" GroupName="Drinks" Text=" Coca-Cola (M)" OnCheckedChanged="colaM_CheckedChanged" AutoPostBack="True" Checked="True" /> <br><hr />
+              <asp:RadioButton ID="colaL" runat="server" GroupName="Drinks" Text=" Coca-Cola (L)" AutoPostBack="True" OnCheckedChanged="colaL_CheckedChanged" /> <br><hr />
+              <asp:RadioButton ID="spriteM" runat="server" GroupName="Drinks" Text=" Sprite (M)" AutoPostBack="True" OnCheckedChanged="spriteM_CheckedChanged" /> <br><hr />
+              <asp:RadioButton ID="fantaM" runat="server" Text=" Fanta Orange (M)" GroupName="Drinks" AutoPostBack="True" OnCheckedChanged="fantaM_CheckedChanged" /> <br><hr />
+        <br><hr />
+        <!--
         <input class="btnr" type="radio" id="fname" name="fname" value="Coca-Cola (M)" checked>
         <label for="fname">Coca-Cola (M)</label>  <br><hr />
 
@@ -53,7 +59,7 @@
 
         <input class="btnr" type="radio" id="fname" name="fname" value="Fanta Orange (M)">
         <label for="fname">Fanta Orange (M)</label><br><hr />
-        <!--
+        
         <input class="btnr" type="radio" id="fname" name="fname" value="Coca-Cola (L)">
         <label for="fname">Coca-Cola (L)</label> <span style="float:right;">+RM 1.20</span> <br><hr />
 
@@ -83,11 +89,10 @@
 
           <h3 id="ProductName" runat ="server"> </h3>
           <div id="ProductDesc" runat="server">
-              CHICKEN
-              BURGER
+              
 
-          </div>
-            <p id="string-div"></p>
+          </div><br />
+            <p id="drinks" runat="server"> helo </p>
 
         </div>
 

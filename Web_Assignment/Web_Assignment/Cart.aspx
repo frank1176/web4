@@ -207,7 +207,7 @@
               </li>
             </ul>
                
-            <asp:Button runat="server" ID="btnReview" class="btn btn-primary btn-lg btn-block" Text="Review Payment & Address" PostBackUrl="~/CheckOut.aspx" />
+            <asp:Button runat="server" ID="btnReview" class="btn btn-primary btn-lg btn-block" Text="Review Payment & Address" PostBackUrl="~/CheckOut.aspx" onclick="btnReview_Click"/>
                    
           </div>
         </div>

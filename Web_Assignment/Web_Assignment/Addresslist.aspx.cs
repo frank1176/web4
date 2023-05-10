@@ -14,24 +14,26 @@ namespace Web_Assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int userId = Convert.ToInt32(Session["Userid"]);
-            SqlConnection con;
-            string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            con = new SqlConnection(strCon);
-            con.Open();
-            string query = "SELECT * FROM [Delivery_address] INNER JOIN [User] ON [Delivery_address].UserId = [User].UserId WHERE [User].UserId = @userId";
+            if (!IsPostBack)
+            {
+                int userId = Convert.ToInt32(Session["Userid"]);
+                SqlConnection con;
+                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                con = new SqlConnection(strCon);
+                con.Open();
+                string query = "SELECT * FROM [Delivery_address] INNER JOIN [User] ON [Delivery_address].UserId = [User].UserId WHERE [User].UserId = @auserId";
 
 
-            SqlCommand command = new SqlCommand(query, con);
+                SqlCommand command = new SqlCommand(query, con);
 
-            command.Parameters.AddWithValue("@userId", 4);
+                command.Parameters.AddWithValue("@auserId", userId);
 
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            addressRepeater.DataSource = dataTable;
-            addressRepeater.DataBind();
-
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                addressRepeater.DataSource = dataTable;
+                addressRepeater.DataBind();
+            }
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
@@ -39,28 +41,30 @@ namespace Web_Assignment
             Button btnDelete = (Button)sender;
             int addressId = Convert.ToInt32(btnDelete.CommandArgument);
 
+
             SqlConnection con;
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             con = new SqlConnection(strCon);
             con.Open();
-            string query = "DELETE FROM Delivery_address WHERE addressID = @AddressId";
+            string query = "DELETE FROM [Delivery_address] WHERE addressID=@AddressId";
             SqlCommand command = new SqlCommand(query, con);
-            command.Parameters.AddWithValue("@addressId", addressId);
+
+            command.Parameters.AddWithValue("@AddressId", addressId);
 
             int rowsAffected = command.ExecuteNonQuery();
-
             if (rowsAffected > 0)
             {
-
                 Response.Redirect("Addresslist.aspx");
             }
             else
             {
-                // Update failed, you can show an error message
+                // Delete failed, you can show an error message
             }
 
             con.Close();
 
         }
+
+        
     }
 }

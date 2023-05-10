@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NestedMasterPage1.master" AutoEventWireup="true" CodeBehind="Addresslist.aspx.cs" Inherits="Web_Assignment.WebForm14" %>
+﻿
+<%@ Page Title="" Language="C#" MasterPageFile="~/NestedMasterPage1.master" AutoEventWireup="true" CodeBehind="Addresslist.aspx.cs" Inherits="Web_Assignment.WebForm14" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
        <div class="col-md-9">
 		    <div class="card">
@@ -19,15 +20,14 @@
 										<div class="col-md-11">
 											<h5 class="card-title"><%# Eval("AddressLabel") %></h5>
 											<p class="card-text"><%# Eval("Address") %>, <%# Eval("City") %>, <%# Eval("State") %> <%# Eval("Postcode") %> <%# Eval("Note") %></p>
-											<asp:HiddenField ID="hfAddressId" runat="server" Value='<%# Eval("addressId") %>' />
 										</div>
 										<div class="col-md-1">
 											<div class="mb-4">
-												<asp:Button ID="btnEdit" class="btn btn-primary" runat="server" Text="Edit" CommandArgument='<%# Eval("addressID") %>' PostBackUrl='<%# "~/Editaddress.aspx?addressID=" + Eval("addressID")%>'/>
+												<asp:Button ID="btnEdit" class="btn btn-primary" runat="server" Text="Edit"  PostBackUrl='<%# "~/Editaddress.aspx?addressID=" + Eval("addressID")%>'/>
 											
 											</div>
 											<div>
-											<asp:Button ID="btnDelete" class="btn btn-primary" runat="server" Text="Clear" OnClick="btnDelete_Click"/>
+											<asp:Button ID="btnDelete" class="btn btn-primary" runat="server" Text="Clear" CommandArgument='<%# Eval("addressID") %>' OnClick="btnDelete_Click"/>
 											
 										</div>
 									</div>

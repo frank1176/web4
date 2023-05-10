@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,7 +13,39 @@ namespace Web_Assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            string email = txtEmail.Text;
+            SqlConnection con;
+            string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            con = new SqlConnection(strCon);
+            con.Open();
+            string query = "SELECT * FROM [User] WHERE Email = @aemail";
+            SqlCommand cmdSelectUser = new SqlCommand(query, con);
+            cmdSelectUser.Parameters.AddWithValue("@aemail", email);
+            SqlDataReader reader = cmdSelectUser.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                // User authenticated successfully, redirect to a different page
+                /*FormsAuthentication.SetAuthCookie("testauth", false);*/
+
+                reader.Read(); // Read the first row of the result set
+                               // Replace "Username" with the column name for username in your database
+
+                string userId = reader["UserId"].ToString();
+                Response.Redirect("Forgot2.aspx?UserID=" + userId);
+
+
+            }
+            else
+            {
+                // Notify user that email is not found in the database
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Email not found in the database');", true);
+            }
         }
     }
 }
