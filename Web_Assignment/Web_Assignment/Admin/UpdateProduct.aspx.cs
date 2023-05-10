@@ -21,7 +21,7 @@ namespace Web_Assignment.Admin
                 if (Request.QueryString["ProductID"] != null)
                 {
                     int productID = Convert.ToInt32(Request.QueryString["ProductID"]);
-                    System.Diagnostics.Debug.WriteLine("babi");
+                    
                     System.Diagnostics.Debug.WriteLine("productID original: " + productID);
                     // Load product details using the productID and populate the form for editing
                     SqlConnection con;

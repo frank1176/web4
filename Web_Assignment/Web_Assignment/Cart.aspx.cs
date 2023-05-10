@@ -10,6 +10,7 @@ using System.Web.Security;
 using System.Data;
 using System.Drawing;
 using System.Diagnostics.Eventing.Reader;
+using System.Diagnostics;
 
 namespace Web_Assignment
 {
@@ -69,6 +70,8 @@ namespace Web_Assignment
                             adapter.Fill(dataTable);
                             cartRepeater.DataSource = dataTable;
                             cartRepeater.DataBind();
+                            productRepeater.DataSource = dataTable;
+                            productRepeater.DataBind();
 
                             string queryTest = "SELECT SUM(CP.quantity * P.UnitPrice) AS Subtotal " +
                                                "FROM cartProduct CP " +
@@ -82,15 +85,38 @@ namespace Web_Assignment
 
                             SqlDataReader reader = cmd.ExecuteReader();
 
+                            
+
                             if (reader.Read())
                             {
 
 
                                 decimal subtotal = reader.GetDecimal(0);
                                 // do something with the subtotal value, such as display it on the page
-                                lblSubtotal.Text = subtotal.ToString("C2");
+                               
+                                    lblSubtotal.Text = subtotal.ToString("C2");
+                                
                             }
 
+                            reader.Close();
+                            string queryTest1 = " SELECT SUM(quantity * UnitPrice) as totalPrice" +
+                                                   " FROM cartProduct CP " +
+                                               "JOIN Product P ON P.productID = CP.productID " +
+                                               "WHERE cartID = @cartID";
+                            SqlCommand cmdC = new SqlCommand(queryTest1, connection);
+                            cmdC.Parameters.AddWithValue("@cartID", cartID);
+                            SqlDataReader reader2 = cmdC.ExecuteReader();
+
+                            if (reader2.Read())
+                            {
+
+
+                                decimal total = reader2.GetDecimal(0);
+                                // do something with the subtotal value, such as display it on the page
+
+                                lblPrice.Text = total.ToString("C2");
+
+                            }
                             connection.Close();
                         }
                         else
@@ -239,8 +265,9 @@ namespace Web_Assignment
             
         }
 
-
-
-        
+        protected void btnReview_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

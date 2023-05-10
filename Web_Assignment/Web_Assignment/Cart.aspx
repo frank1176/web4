@@ -176,16 +176,18 @@
           </div>
           <div class="card-body">
             <ul class="list-group list-group-flush">
-              <li
+                <asp:Repeater ID="productRepeater" runat="server" OnItemCommand="cartRepeater_ItemCommand">
+                <ItemTemplate>
+                    <li
                 class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                Products
-                <span>RM53.98</span>
+                <%# Eval("ProductName") %> (Qty: <%# Eval("quantity") %>)
+                <span> <asp:Label ID="lblPrice" runat="server" Text="LabelPrice"></asp:Label></span>
               </li>
-                 <li
-                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                Products2
-                <span>RM0.00</span>
-              </li>
+                 </ItemTemplate>
+           
+                 
+  </asp:Repeater>
+                 
               <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                 Delivery Fee
                 <span>RM4.00</span>
@@ -199,11 +201,11 @@
                   </strong>
                 </div>
                 <span><strong>
-                    <asp:Label ID="lblSubtotal" runat="server" Text="Label"></asp:Label></strong></span>
+                    <asp:Label ID="lblSubtotal" runat="server" Text="LabelSubtotal"></asp:Label></strong></span>
               </li>
             </ul>
                
-            <asp:Button runat="server" ID="btnReview" class="btn btn-primary btn-lg btn-block" Text="Review Payment & Address" PostBackUrl="~/CheckOut.aspx" />
+            <asp:Button runat="server" ID="btnReview" class="btn btn-primary btn-lg btn-block" Text="Review Payment & Address" PostBackUrl="~/CheckOut.aspx" onclick="btnReview_Click"/>
                    
           </div>
         </div>

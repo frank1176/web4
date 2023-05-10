@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="CheckOut.aspx.cs" Inherits="Web_Assignment.WebForm6" %>
+<%@ MasterType VirtualPath="~/Site1.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -68,21 +69,23 @@
                         <div class="row">
                             <p><strong>Add Your Details</strong></p>
                             <form class="row g-3">
-                                <div class="col-md-6">
-                                    <label for="inputFname" class="form-label">First Name</label>
-                                    <input type="text" class="form-control" id="inputinputFname" placeholder="E.g John">
+                                <div class="col-md-12">
+                                    
+                                    <label for="inputFname" class="form-label">User Name</label>
+                                    <asp:TextBox ID="Username" runat="server" class="form-control"></asp:TextBox>
+                      
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="inputLname" class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" id="inputLName" placeholder="E.g Wick">
-                                </div>
+
+                               
                                 <div class="col-12">
                                     <label for="inputEmail" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="E.g example@gmail.com">
+                                    <asp:TextBox ID="Email" runat="server" class="form-control"></asp:TextBox>
+                                   
                                 </div>
                                 <div class="col-12">
                                     <label for="inputNumber" class="form-label">Mobile Number</label>
-                                    <input type="tel" class="form-control" id="inputAddress2" placeholder="E.g : 012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                                    <asp:TextBox ID="tel" runat="server" class="form-control" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required></asp:TextBox>
+                                   
                                 </div>
                              
                       
