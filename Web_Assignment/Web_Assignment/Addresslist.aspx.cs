@@ -14,6 +14,7 @@ namespace Web_Assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            int userId = Convert.ToInt32(Session["Userid"]);
             SqlConnection con;
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             con = new SqlConnection(strCon);
@@ -22,7 +23,7 @@ namespace Web_Assignment
 
             SqlCommand command = new SqlCommand(query, con);
 
-            command.Parameters.AddWithValue("@userId", 4);
+            command.Parameters.AddWithValue("@userId", userId);
 
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable dataTable = new DataTable();
@@ -32,15 +33,33 @@ namespace Web_Assignment
 
         }
 
-        protected void btnEdit_Click(object sender, EventArgs e)
+        protected void btnDelete_Click(object sender, EventArgs e)
         {
-            // Get the index and AddressId of the current repeater item
-            RepeaterItem item = (sender as Button).NamingContainer as RepeaterItem;
-            int addressId = Convert.ToInt32((item.FindControl("hfAddressId") as HiddenField).Value);
+            Button btnDelete = (Button)sender;
+            int addressId = Convert.ToInt32(btnDelete.CommandArgument);
 
-            // Redirect to the next page with the index and AddressId as query string parameters
-            Response.Redirect("Editaddress.aspx?addressId=" + addressId);
+            SqlConnection con;
+            string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            con = new SqlConnection(strCon);
+            con.Open();
+            string query = "DELETE FROM Delivery_address WHERE addressID = @AddressId";
+            SqlCommand command = new SqlCommand(query, con);
+            command.Parameters.AddWithValue("@addressId", addressId);
+
+            int rowsAffected = command.ExecuteNonQuery();
+
+            if (rowsAffected > 0)
+            {
+
+                Response.Redirect("Addresslist.aspx");
+            }
+            else
+            {
+                // Update failed, you can show an error message
+            }
+
+            con.Close();
+
         }
-
     }
 }
