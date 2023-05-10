@@ -15,10 +15,23 @@ namespace Web_Assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-          
+            if (Session["Username"] != null)
+            {
+                Master.btnlogin.Visible = false;
+                Master.btnlogout.Visible = true;
+                Master.btnprofile.Visible = true;
+                Response.Redirect("Home.aspx");
+            }
+            else
+            {
+                Master.btnlogin.Visible = true;
+                Master.btnlogout.Visible = false;
+                Master.btnprofile.Visible = false;
+               
+            }
         }
 
-        protected void login_Click(object sender, EventArgs e)
+        protected void Register_Click(object sender, EventArgs e)
         {
             //String role = TextBox1.Text;
             String username = txtUserName.Text;
@@ -35,26 +48,9 @@ namespace Web_Assignment
             con = new SqlConnection(strCon);
             con.Open();
 
-            //// Parameterized SQL statement
-            //string strInsert = "INSERT INTO [User] VALUES (@username,@email,@pass,@phnum,@role,@q,@a)";
-
-            //// Execute SQL query
-            //SqlCommand cmdInsert = new SqlCommand(strInsert, con);
-
-            ////cmdInsert.Parameters.AddWithValue("@role", role);
-            //cmdInsert.Parameters.AddWithValue("@username", username);
-            //cmdInsert.Parameters.AddWithValue("@email", email);
-            //cmdInsert.Parameters.AddWithValue("@phnum", phnum);
-            //cmdInsert.Parameters.AddWithValue("@pass", pass);
-            //cmdInsert.Parameters.AddWithValue("@role", role);
-            //cmdInsert.Parameters.AddWithValue("@q", q);
-            //cmdInsert.Parameters.AddWithValue("@a", a);
-
-            //cmdInsert.ExecuteNonQuery();
-
-            //con.Close();
             string strInsertUser = @"INSERT INTO [User] (Username, Email, Password, Phonenumber, Roleid, Question, Answer)
-                             VALUES (@username, @email, @password, @phoneNumber, @roleId, @question, @answer)";
+                             VALUES (@username, @email, @password, @phoneNumber, @roleId, @question, @answer);
+                               SELECT SCOPE_IDENTITY()";
             SqlCommand cmdInsertUser = new SqlCommand(strInsertUser, con);
             cmdInsertUser.Parameters.AddWithValue("@username", username);
             cmdInsertUser.Parameters.AddWithValue("@email", email);
@@ -65,6 +61,13 @@ namespace Web_Assignment
             cmdInsertUser.Parameters.AddWithValue("@answer", a);
             cmdInsertUser.ExecuteNonQuery();
 
+            int userId = Convert.ToInt32(cmdInsertUser.ExecuteScalar());
+            int count = 0;
+            string strinsertcart = @"INSERT INTO [Cart] (count,UserId) VALUES(@count, @userId)"; // Correct the parameter name
+            SqlCommand cmdinsertcart = new SqlCommand(strinsertcart, con);
+            cmdinsertcart.Parameters.AddWithValue("@count", count);
+            cmdinsertcart.Parameters.AddWithValue("@userId", userId);
+            cmdinsertcart.ExecuteNonQuery();
             con.Close();
         }
     }

@@ -13,5 +13,25 @@ namespace Web_Assignment.Admin
         {
 
         }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            Button btnEdit = (Button)sender;
+            int productID = Convert.ToInt32(btnEdit.CommandArgument);
+            Response.Redirect("UpdateProduct.aspx?ProductID=" + productID);
+           
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            Button btnEdit = (Button)sender;
+            int productID = Convert.ToInt32(btnEdit.CommandArgument);
+
+        }
     }
 }

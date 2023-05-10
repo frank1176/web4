@@ -32,85 +32,33 @@
         </div>
     </div>
 
-    <div class="container-fluid">
-        <table class="table table-striped table-borderless">
-          <thead>
-            <tr>
-              <th scope="col">Product ID</th>
-              <th scope="col">Product Name</th>
-              <th scope="col">Product Details</th>
-              <th scope="col">Unit Price</th>
-              <th scope="col">Category</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td> 
-                  <p>
-                     <asp:Image ID="Image1" runat="server" ImageUrl="~/asset/2pc_arabian_spice_crunch_coleslaw.jpg" width="50" Height="50"/>
-                    <span>2pc_arabian_spice_crunch_coleslaw</span>
-                  </p>
-                  
-              </td>
-              <td>
-                  <p>2 Arabian Spice Crunch,
-                    1 Whipped Potato (4oz),
-                    1 Coleslaw (4oz),
-                    1 Coca-Cola (M).</p>
-                    
-              </td>
-              <td>RM19.49</td>
-              <td>Chicken</td>
-              <td class="d-flex">
-                  <asp:Button ID="Button1" runat="server" Text="Edit" class="btn btn-primary" PostBackUrl="~/Admin/UpdateProduct.aspx" />
-                  <asp:Button ID="Button4" runat="server" Text="Delete" class="btn btn-danger" />
-                </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>
-                  <img src="../asset/2pc_arabian_spice_crunch_coleslaw.jpg" width="50" height="50" />
-                  <span>2pc_arabian_spice_crunch_coleslaw</span>
-          
-              </td>
-              <td>
-                    2 Arabian Spice Crunch,
-                    1 Whipped Potato (4oz),
-                    1 Coleslaw (4oz),
-                    1 Coca-Cola (M).
-              </td>
-              <td>RM19.49</td>
-              <td>Chicken</td>
-              <td class="d-flex">
-                  <asp:Button ID="Button2" runat="server" Text="Edit" class="btn btn-primary" PostBackUrl="~/Admin/UpdateProduct.aspx" />
-                  <asp:Button ID="Button5" runat="server" Text="Delete" class="btn btn-danger" />
-                </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>
-                  <img src="../asset/2pc_arabian_spice_crunch_coleslaw.jpg" width="50" height="50" />
-                  <span>2pc_arabian_spice_crunch_coleslaw</span>
-          
-              </td>
-              <td>
-                    2 Arabian Spice Crunch,
-                    1 Whipped Potato (4oz),
-                    1 Coleslaw (4oz),
-                    1 Coca-Cola (M).
-              </td>
-              <td>RM19.49</td>
-              <td>Chicken</td>
-              <td class="auto-style1 d-flex">
-                  <asp:Button ID="Button3" runat="server" Text="Edit" class="btn btn-primary" PostBackUrl="~/Admin/UpdateProduct.aspx" />
-                  <asp:Button ID="Button6" runat="server" Text="Delete" class="btn  btn-danger" />
-              </td>
+   <div class="container-fluid table-responsive">
+        
+   
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" class="table table-bordered table-condensed table-responsive table-hover " DataKeyNames="ProductID" DataSourceID="SqlDataSource2" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+        <Columns>
+            <asp:BoundField DataField="ProductID" HeaderText="ProductID" InsertVisible="False" ReadOnly="True" SortExpression="ProductID" />
+            <asp:BoundField DataField="ProductName" HeaderText="ProductName" SortExpression="ProductName" />
+            <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
+            <asp:BoundField DataField="categoriesName" HeaderText="categoriesName" SortExpression="categoriesName" />
+            <asp:BoundField DataField="UnitPrice" HeaderText="UnitPrice" SortExpression="UnitPrice" />
+            <asp:TemplateField HeaderText="Product Image">
+            <ItemTemplate>
+                <img src= "../asset/<%# Eval("product_image") %>" width="50%" height="100" class="rounded mx-auto d-block"/>
+            </ItemTemplate>
+        </asp:TemplateField>
+          <asp:TemplateField HeaderText="Actions">
+            <ItemTemplate>
+                <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="btn btn-primary"  CommandArgument='<%# Eval("ProductID") %>'  OnClick="btnEdit_Click" />
+                <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-danger" OnClick="btnDelete_Click"/>
+            </ItemTemplate>
+        </asp:TemplateField>
+        </Columns>
+    </asp:GridView>
+   </div>
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT Product.ProductID, Product.ProductName, Product.Description, Categories.categoriesName, Product.UnitPrice, Product.product_image FROM Product INNER JOIN Categories ON Product.CategoriesID = Categories.CategoriesID"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Product]"></asp:SqlDataSource>
 
-            </tr>
-          </tbody>
-        </table>
-    </div>
-    
-</asp:Content>
+
+  
+    </asp:Content>

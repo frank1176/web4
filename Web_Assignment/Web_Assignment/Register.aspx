@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="Web_Assignment.WebForm8" %>
+<%@ MasterType VirtualPath="~/Site1.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     
     <link id="css" href="css/register.css" type="text/css" rel="stylesheet" />
@@ -87,7 +88,7 @@
 
                 <div class="row">
                  <div class="form-outline mb-4" align="center" colspan="2" style="color:Red;">
-                     <asp:Button ID="btnRegister" class="btn btn-primary btn-lg" runat="server" Text="Register" OnClick="login_Click" />
+                     <asp:Button ID="btnRegister" class="btn btn-primary btn-lg" runat="server" Text="Register" OnClick="Register_Click" />
                 </div>
                 <div class="form-outline mb-4">
                     Already have account。
