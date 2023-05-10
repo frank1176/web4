@@ -1,6 +1,5 @@
 ﻿
 <%@ Page Title="" Language="C#" MasterPageFile="~/NestedMasterPage1.master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="Web_Assignment.WebForm11" %>
-<%@ MasterType VirtualPath="~/NestedMasterPage1.master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
        <div class="col-md-9">
 		    <div class="card">
@@ -17,30 +16,39 @@
                               <div class="form-group row mb-4">
                                 <label for="username" class="col-4 col-form-label">User Name*</label> 
                                 <div class="col-8">
-                                  <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text">
+                                    <asp:TextBox ID="txtUsername" runat="server" class="form-control here"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="UsernameRequired" runat="server" ErrorMessage="Username is required" ControlToValidate="txtUsername"></asp:RequiredFieldValidator>
+                             
                                 </div>
                               </div>
                               
-                              <div class="form-group row mb-4">
+       
+                             
+              
                              
                               <div class="form-group row mb-4">
                                 <label for="email" class="col-4 col-form-label">Email*</label> 
                                 <div class="col-8">
-                                  <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
+                                  <asp:TextBox ID="txtEmail" placeholder="Email" class="form-control here" runat="server"></asp:TextBox>
+                                  <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Username is required" ControlToValidate="txtUsername"></asp:RequiredFieldValidator>
+                             
+                                    
                                 </div>
                               </div>
                               <div class="form-group row mb-4">
-                                <label for="website" class="col-4 col-form-label">Contact</label> 
+                                <label for="phone" class="col-4 col-form-label">Contact Number</label> 
                                 <div class="col-8">
-                                  <input id="website" name="website" placeholder="website" class="form-control here" type="text">
+                                  <asp:TextBox ID="txtPhone" placeholder="Phone" class="form-control here" runat="server"></asp:TextBox>
                                 </div>
                               </div>
                           
-                              <div class="form-group row mb-4">
+                            <div class="form-group row mb-4">
                                 <div class="offset-4 col-8">
-                                 <!--<button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>-->
-                                </div>
-                              </div>
+                                <asp:Button ID="Button1" class="btn btn-primary" runat="server" Text="Update My Profile" OnClick="Button1_Click" />
+                              
+                            </div>
+                            </div>
+                                <asp:TextBox ID="txt" runat="server"></asp:TextBox>
                             </form>
 		                </div>
 		            </div>
