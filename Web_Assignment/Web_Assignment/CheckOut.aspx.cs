@@ -81,5 +81,24 @@ namespace Web_Assignment
         }
 
 
+        protected void btnCheckOut_Click(object sender, EventArgs e)
+        {
+
+            SqlConnection con;
+            string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            con = new SqlConnection(strCon);
+            con.Open();
+            
+
+            /*
+            string query = "SELECT Product.*, Categories.categoriesName FROM [Product] INNER JOIN [Categories] ON Product.CategoriesID = Categories.CategoriesID WHERE ProductID=@productid";
+
+            SqlCommand cmdSelectProduct = new SqlCommand(query, con);
+
+            cmdSelectProduct.Parameters.AddWithValue("@productid", productID);
+
+            SqlDataReader reader = cmdSelectProduct.ExecuteReader();
+            */
+        }
     }
 }
