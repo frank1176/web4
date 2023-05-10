@@ -12,13 +12,13 @@
     <div id="carouselExampleControls" class="carousel slide mt-4" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="asset/slide1.jpg" alt="First slide">
+          <img class="d-block w-100" src="asset/slide1.jpg" alt="First slide" onerror="imgError(this);">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="asset/slide2.jpg" alt="Second slide">
+          <img class="d-block w-100" src="asset/slide2.jpg" alt="Second slide" onerror="imgError(this);">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="asset/slide3.jpg" alt="Third slide">
+          <img class="d-block w-100" src="asset/slide3.jpg" alt="Third slide" onerror="imgError(this);">
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -31,6 +31,17 @@
       </a>
     </div>
 
+    <script>
+          function imgError(image) {
+            try {
+              // Handle the error here
+              console.log('Error loading image: ' + image.src);
+            } catch (error) {
+                console.error(error);
+                alert("An error occurred: unable to load the image" + error.message);
+            }
+          }
+    </script>
 
     <div class="menu_class">
       <h2>Menu</h2>

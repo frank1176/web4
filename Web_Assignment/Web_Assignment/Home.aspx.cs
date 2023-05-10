@@ -20,7 +20,7 @@ namespace Web_Assignment
             {
                 connection.Open();
 
-                string query = "SELECT TOP 4 * FROM Product WHERE CategoriesID = 2";
+                string query = "SELECT TOP 4 * FROM Product WHERE CategoriesID = 1";
                 SqlCommand command = new SqlCommand(query, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();

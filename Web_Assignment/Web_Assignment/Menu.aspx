@@ -142,28 +142,6 @@
             </asp:Repeater>
         </div>
 
-    <div class="card-deck d-flex flex-column flex-sm-row container-fluid menu_class2 ">
-
-        <div class="card " style="width: 18rem;">
-          <img src="asset/arabian_spice_crunch_box_meal_coleslaw.jpg" class="card-img-top " alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Arabian Spice Crunch Box Meal Coleslaw</h5>
-            <a href="#" class="btn btn-danger">More details</a>
-          </div>
-        </div>
-
-
-         <div class="card" style="width: 18rem;">
-          <img src="asset/2pc_arabian_spice_crunch_coleslaw.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">2pc_arabian_spice_crunch_coleslaw</h5>
-            <a href="#" class="btn btn-danger">More details</a>
-          </div>
-        </div>
-
-
-
-    </div>
 
     
 </asp:Content>
