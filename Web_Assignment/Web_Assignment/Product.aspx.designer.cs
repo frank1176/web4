@@ -24,6 +24,42 @@ namespace Web_Assignment
         protected global::System.Web.UI.HtmlControls.HtmlImage ProductImage;
 
         /// <summary>
+        /// colaM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton colaM;
+
+        /// <summary>
+        /// colaL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton colaL;
+
+        /// <summary>
+        /// spriteM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton spriteM;
+
+        /// <summary>
+        /// fantaM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton fantaM;
+
+        /// <summary>
         /// ProductName control.
         /// </summary>
         /// <remarks>
@@ -40,6 +76,15 @@ namespace Web_Assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ProductDesc;
+
+        /// <summary>
+        /// drinks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl drinks;
 
         /// <summary>
         /// Button1 control.

@@ -18,9 +18,13 @@ namespace Web_Assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-                // Check if the ProductID query string parameter is present
-
-                if (!string.IsNullOrEmpty(Request.QueryString["ProductID"]))
+            // Check if the ProductID query string parameter is present
+            if (colaM.Checked)
+            {
+                drinks.InnerHtml = "1" + colaM.Text;
+            }
+            
+            if (!string.IsNullOrEmpty(Request.QueryString["ProductID"]))
                 {
                     // Get the ProductID value from the query string parameter
                     int productId = Convert.ToInt32(Request.QueryString["ProductID"]);
@@ -183,6 +187,24 @@ namespace Web_Assignment
 
         }
 
+        protected void colaM_CheckedChanged(object sender, EventArgs e)
+        {
+            drinks.InnerHtml = "1" + colaM.Text;
+        }
 
+        protected void colaL_CheckedChanged(object sender, EventArgs e)
+        {
+            drinks.InnerHtml = "1" + colaL.Text;
+        }
+
+        protected void spriteM_CheckedChanged(object sender, EventArgs e)
+        {
+            drinks.InnerHtml = "1" + spriteM.Text;
+        }
+
+        protected void fantaM_CheckedChanged(object sender, EventArgs e)
+        {
+            drinks.InnerHtml = "1" + fantaM.Text;
+        }
     }
 }
