@@ -52,13 +52,13 @@
        <a href="#" class="nav-link">view all</a>
     </div>
 
-    <div class="card-deck d-flex flex-column flex-sm-row justify-content-between container-fluid menu_class2 ">
+    <div style:"display = flex; flex-wrap = wrap;" class="card-deck d-flex flex-column flex-sm-row justify-content-between container-fluid menu_class2 ">
         <asp:Repeater ID="cartRepeater" runat="server" >
             <HeaderTemplate>
                  
              </HeaderTemplate>
                      <ItemTemplate>
-        <div class="card " style="width: 18rem;">
+        <div class="card " style="width: 50%;">
           <img src="asset/<%# Eval("product_image") %>" class="card-img-top " alt="...">
           <div class="card-body">
             <h5 class="card-title"><%# Eval("ProductName") %></h5>
