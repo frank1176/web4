@@ -40,11 +40,18 @@
 
     <h1>Add Categories</h1>
     <div>
-        <asp:TextBox ID="cat" runat="server" class="form-control w-25"></asp:TextBox>
+        <asp:TextBox ID="addcat" runat="server" class="form-control w-25" placeholder="Category Name"></asp:TextBox>
+        <asp:TextBox ID="addcatdesc" runat="server" placeholder="Categories Description" class="form-control w-25"></asp:TextBox><br>
+        <asp:Button ID="Button2" runat="server" Text="Add Categories" class="btn btn-primary" onclick="Button2_Click"/>
+        <h1>Edit Categories</h1>
+        <asp:Label ID="Categoriesid" runat="server" Text=" Categories id:" Visible="False"></asp:Label>
+       <asp:TextBox ID="catidtext" runat="server" Visible="False" class="form-control w-25" Enabled="False"></asp:TextBox><br>
+        <asp:Label ID="CategoriesName" runat="server" Text="Categories Name:" Visible="False"></asp:Label>
+        <asp:TextBox ID="catname" runat="server" Visible="False" class="form-control w-25"></asp:TextBox>
+        <asp:Label ID="CategoriesDescription" runat="server" Text="Categories Description:" Visible="False"></asp:Label>
+        <asp:TextBox ID="catdesc" runat="server" Visible="False" class="form-control w-25"></asp:TextBox>
+        <asp:Button ID="btnupcat" runat="server" Text="Update" Visible="False" CssClass="btn btn-primary" onclick="Button3_Click"/>
         
-        <asp:Button ID="Button2" runat="server" Text="Add Categories" class="btn btn-primary" />
-
-
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="CategoriesID" DataSourceID="SqlDataSource2" class="table table-bordered table-condensed table-responsive table-hover">
             <Columns>
                 <asp:BoundField DataField="CategoriesID" HeaderText="CategoriesID" InsertVisible="False" ReadOnly="True" SortExpression="CategoriesID" />
@@ -52,13 +59,16 @@
                 <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
                 <asp:TemplateField HeaderText="Actions">
             <ItemTemplate>
-                <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="btn btn-primary"   />
-                <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-danger" />
+                <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="btn btn-primary" Onclick="btnEdit_Click"  CommandArgument='<%# Eval("CategoriesID") %>'/>
+                <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-danger" Onclick="btnDelete_Click" CommandArgument='<%# Eval("CategoriesID") %>'/>
             </ItemTemplate>
         </asp:TemplateField>
             </Columns>
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Categories]"></asp:SqlDataSource>
+
+
+        
     </div>
 
 </asp:Content>
