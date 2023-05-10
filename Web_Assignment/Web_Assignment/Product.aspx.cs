@@ -102,7 +102,6 @@ namespace Web_Assignment
                 int count= int.Parse(reader["count"].ToString());
                 int quantity = 1;
                 reader.Close();
-                //string insertcartProduct = @"SELECT * FROM [cartProduct] WHERE cartID=@cartID";
                 string insertcartProduct = @"INSERT INTO [cartProduct] (cartID, productID, quantity)VALUES(@cartID,@productId,@quantity)";
                 SqlCommand cmdinsertcartProduct = new SqlCommand(insertcartProduct, con);
                 cmdinsertcartProduct.Parameters.AddWithValue("@cartID", cartID);

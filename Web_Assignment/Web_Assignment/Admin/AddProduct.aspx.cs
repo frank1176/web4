@@ -35,6 +35,16 @@ namespace Web_Assignment.Admin
 
             FileUpload1.SaveAs(Request.PhysicalApplicationPath + "./asset/" + FileUpload1.FileName.ToString());
             String image = FileUpload1.FileName.ToString();
+
+            /*String image = FileUpload1.FileName.ToString();
+            string imagePath = Request.PhysicalApplicationPath + "./asset/" + image;
+
+            // Check if the image file already exists
+            if (!File.Exists(imagePath))
+            {
+                FileUpload1.SaveAs(imagePath);
+            }
+            */
             string strInsertProduct = @"INSERT INTO [Product] (ProductName, Description, CategoriesID, UnitPrice, product_image)
                              VALUES (@productname, @pdesc, @ddi, @price, @image)";
             SqlCommand cmdInsertProduct = new SqlCommand(strInsertProduct, con);
