@@ -232,10 +232,8 @@
                         </ul>
 
 
-
-                        <button type="button" class="btn btn-primary btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#Receipt">
-                                    Check Out
-                                </button>
+                        <asp:Button ID="btnCheckOut" runat="server" Text="Check Out" onclick="btnCheckOut_Click" class="btn btn-primary btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#Receipt"/>
+                   
 <!--example-->
  <!-- The Modal -->
                                <div class="modal" id="Receipt" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
