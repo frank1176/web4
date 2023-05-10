@@ -10,7 +10,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<section class="auto-style3 gradient-custom">
+    <section class="auto-style3 gradient-custom">
   <div class="container py-5 h-100 ">
     <div class="row justify-content-center align-items-center h-100">
       <div class="col-12 col-lg-9 col-xl-7">
@@ -63,7 +63,7 @@
                  <div class="form-outline mb-4">
                      <asp:Label ID="ConfirmPasswordLabel" runat="server" AssociatedControlID="ConfirmPassword">Confirm Password:</asp:Label>
                        <asp:TextBox ID="ConfirmPassword" class="form-control form-control-lg" runat="server" TextMode="Password"></asp:TextBox>
-                       <asp:RequiredFieldValidator ID="ConfirmPasswordRequired" runat="server" ControlToValidate="ConfirmPassword" ErrorMessage="Confirm Password is required." ToolTip="Confirm Password is required." Display="Dynamic"></asp:RequiredFieldValidator>
+                       <asp:RequiredFieldValidator ID="ConfirmPasswordRequired" runat="server" ControlToValidate="ConfirmPassword" ErrorMessage="Confirm Password is required." ToolTip="Confirm Password is required." Display="Dynamic"  ForeColor="Red"></asp:RequiredFieldValidator>
                         <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword" Display="Dynamic" ErrorMessage="The Password and Confirmation Password must match." ForeColor="Red"></asp:CompareValidator>
                  </div>
              </div>
@@ -71,12 +71,12 @@
 
              <div class="row">
                  <div class="form-outline">
-                     <asp:Label ID="labelquestion" runat="server" AssociatedControlID="Question">Security Question:</asp:Label>
+                     <asp:Label ID="labelquestion" runat="server" AssociatedControlID="DropDownList1">Security Question:</asp:Label>
                 </div>
              </div>
              <div class="row">
                  <div class="form-outline mb-4">
-                     <asp:DropDownList  ID="Question" class="form-control form-control-lg" runat="server">
+                     <asp:DropDownList  ID="DropDownList1" class="form-control form-control-lg" runat="server">
                           <asp:ListItem Selected="True">What is your mother&#39;s maiden name?</asp:ListItem>
                          <asp:ListItem>In what city or town was your first job?</asp:ListItem>
                          <asp:ListItem>What is the name of your favorite childhood friend?</asp:ListItem>
@@ -98,15 +98,15 @@
                  <div class="form-outline mb-4" align="center" colspan="2" style="color:Red;">
                      <asp:Button ID="btnRegister" class="btn btn-primary btn-lg" runat="server" Text="Register" OnClick="Register_Click" />
                 </div>
+              
+                                 </div>
+                </form>
                <div class="row">
                 <div class="form-outline mb-4" align="center" ">
                     Already have account.
-                   <asp:LinkButton ID="lbRegister" runat="server" PostBackUrl="~/Login.aspx">Login</asp:LinkButton>
+                   <a href="Login.aspx" >Login</a>
               </div>
              </div>
-                                 </div>
-                </form>
-              
               
 
 

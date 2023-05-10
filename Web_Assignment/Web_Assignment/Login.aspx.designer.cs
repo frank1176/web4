@@ -15,13 +15,22 @@ namespace Web_Assignment
     {
 
         /// <summary>
-        /// Gmail control.
+        /// Email control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Gmail;
+        protected global::System.Web.UI.WebControls.TextBox Email;
+
+        /// <summary>
+        /// EmailRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator EmailRequired;
 
         /// <summary>
         /// Password control.
@@ -33,6 +42,24 @@ namespace Web_Assignment
         protected global::System.Web.UI.WebControls.TextBox Password;
 
         /// <summary>
+        /// PasswordRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordRequired;
+
+        /// <summary>
+        /// Error control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Error;
+
+        /// <summary>
         /// cbRmbMe control.
         /// </summary>
         /// <remarks>
@@ -42,15 +69,6 @@ namespace Web_Assignment
         protected global::System.Web.UI.WebControls.CheckBox cbRmbMe;
 
         /// <summary>
-        /// lbForgotPswd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbForgotPswd;
-
-        /// <summary>
         /// login control.
         /// </summary>
         /// <remarks>
@@ -58,15 +76,6 @@ namespace Web_Assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button login;
-
-        /// <summary>
-        /// lbRegister control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbRegister;
 
         /// <summary>
         /// Master property.
