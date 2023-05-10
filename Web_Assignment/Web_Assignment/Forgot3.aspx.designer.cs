@@ -24,22 +24,58 @@ namespace Web_Assignment
         protected global::System.Web.UI.WebControls.Label lblQ;
 
         /// <summary>
-        /// txtSecAns0 control.
+        /// Newpassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSecAns0;
+        protected global::System.Web.UI.WebControls.TextBox Newpassword;
 
         /// <summary>
-        /// txtSecAns control.
+        /// NewPasswordRequired control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSecAns;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator NewPasswordRequired;
+
+        /// <summary>
+        /// PasswordFormat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator PasswordFormat;
+
+        /// <summary>
+        /// CNewPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox CNewPassword;
+
+        /// <summary>
+        /// CNewPasswordRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator CNewPasswordRequired;
+
+        /// <summary>
+        /// PasswordCompare control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator PasswordCompare;
 
         /// <summary>
         /// Button1 control.
