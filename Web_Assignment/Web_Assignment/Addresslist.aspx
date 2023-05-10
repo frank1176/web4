@@ -11,7 +11,7 @@
 
 					</div>
 					<h5 id="Username" runat="server"></h5>
-					<asp:Repeater ID="addressRepeater" runat="server">
+					<asp:Repeater ID="addressRepeater" runat="server" >
 						<ItemTemplate>
 							<div class="card mb-4">
 								<div class="card-body">
@@ -22,7 +22,13 @@
 											<asp:HiddenField ID="hfAddressId" runat="server" Value='<%# Eval("addressId") %>' />
 										</div>
 										<div class="col-md-1">
-											<asp:Button ID="btnEdit" class="btn btn-primary" runat="server" Text="Edit" OnClick="btnEdit_Click" PostBackUrl="~/Editaddress.aspx"/>
+											<div class="mb-4">
+												<asp:Button ID="btnEdit" class="btn btn-primary" runat="server" Text="Edit" CommandArgument='<%# Eval("addressID") %>' PostBackUrl='<%# "~/Editaddress.aspx?addressID=" + Eval("addressID")%>'/>
+											
+											</div>
+											<div>
+											<asp:Button ID="btnDelete" class="btn btn-primary" runat="server" Text="Clear" OnClick="btnDelete_Click"/>
+											
 										</div>
 									</div>
 									</div>

@@ -25,7 +25,7 @@ namespace Web_Assignment
             String astate = txtState.Text;
             String apostcode = txtPostcode.Text;
             String anote = txtNote.Text;
-            int auserId = 4;
+            int auserId = Convert.ToInt32(Session["Userid"]);
 
             SqlConnection con;
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;

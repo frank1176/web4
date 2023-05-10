@@ -29,7 +29,7 @@
   
 
                   <div class="form-outline mb-4">
-                      <asp:TextBox ID="Password" class="form-control form-control-lg" runat="server" placeholder="Password"></asp:TextBox>
+                      <asp:TextBox ID="Password" class="form-control form-control-lg" runat="server" placeholder="Password"  TextMode="Password"></asp:TextBox>
                       <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ErrorMessage="Password is required" Display="Dynamic" ForeColor="Red" ControlToValidate="Password"></asp:RequiredFieldValidator>
                   </div>
                   <div class="row mb-4">
