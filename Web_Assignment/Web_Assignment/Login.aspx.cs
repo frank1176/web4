@@ -18,7 +18,6 @@ namespace Web_Assignment
             if (cookie != null)
             {
                 Email.Text = cookie.Values["email"];
-                Password.Text = cookie.Values["password"];
                 cbRmbMe.Checked = true;
             }
 
