@@ -181,7 +181,9 @@
                     <li
                 class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                 <%# Eval("ProductName") %> (Qty: <%# Eval("quantity") %>)
-                <span> <asp:Label ID="lblPrice" runat="server" Text="LabelPrice"></asp:Label></span>
+                <span>   <asp:Label ID="lblPrice" runat="server" Text='<%# Eval("totalPrice", "{0:C2}") %>'></asp:Label>
+
+                </span>
               </li>
                  </ItemTemplate>
            

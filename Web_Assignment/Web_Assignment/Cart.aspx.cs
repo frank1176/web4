@@ -11,6 +11,7 @@ using System.Data;
 using System.Drawing;
 using System.Diagnostics.Eventing.Reader;
 using System.Diagnostics;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Web_Assignment
 {
@@ -64,14 +65,28 @@ namespace Web_Assignment
                         SqlDataReader readerCartItem = command.ExecuteReader();
                         if (readerCartItem.HasRows)
                         {
-                            readerCartItem.Close(); 
+                            readerCartItem.Close();
+
                             SqlDataAdapter adapter = new SqlDataAdapter(command);
                             DataTable dataTable = new DataTable();
                             adapter.Fill(dataTable);
                             cartRepeater.DataSource = dataTable;
                             cartRepeater.DataBind();
-                            productRepeater.DataSource = dataTable;
+
+                            
+                            string query = @"SELECT P.ProductName, CP.quantity, (CP.quantity * P.UnitPrice) as totalPrice FROM cartProduct CP JOIN Product P ON P.productID = CP.productID WHERE CP.cartID = @cartID";
+
+
+                            SqlCommand cmd2 = new SqlCommand(query, connection);
+                            cmd2.Parameters.AddWithValue("@cartID", cartID);
+
+                            SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
+                            DataTable dt = new DataTable();
+                            adapter2.Fill(dt);
+
+                            productRepeater.DataSource = dt;
                             productRepeater.DataBind();
+
 
                             string queryTest = "SELECT SUM(CP.quantity * P.UnitPrice) AS Subtotal " +
                                                "FROM cartProduct CP " +
@@ -99,24 +114,12 @@ namespace Web_Assignment
                             }
 
                             reader.Close();
-                            string queryTest1 = " SELECT SUM(quantity * UnitPrice) as totalPrice" +
-                                                   " FROM cartProduct CP " +
-                                               "JOIN Product P ON P.productID = CP.productID " +
-                                               "WHERE cartID = @cartID";
-                            SqlCommand cmdC = new SqlCommand(queryTest1, connection);
-                            cmdC.Parameters.AddWithValue("@cartID", cartID);
-                            SqlDataReader reader2 = cmdC.ExecuteReader();
 
-                            if (reader2.Read())
-                            {
+                         
+
+                           
 
 
-                                decimal total = reader2.GetDecimal(0);
-                                // do something with the subtotal value, such as display it on the page
-
-                                lblPrice.Text = total.ToString("C2");
-
-                            }
                             connection.Close();
                         }
                         else
@@ -125,10 +128,12 @@ namespace Web_Assignment
                             ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
                             //Show not product item text
                         }
-                        
-                    
+
+
 
                        
+
+
                     }
                 }
             }
@@ -139,6 +144,8 @@ namespace Web_Assignment
 
             protected void cartRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
+
+
 
             int cartID = 0;
             int userId = Convert.ToInt32(Session["Userid"]);
@@ -212,10 +219,11 @@ namespace Web_Assignment
 
         }
 
-
+       
       
 
-        protected void BtnRemove_Click(object sender, EventArgs e)
+
+    protected void BtnRemove_Click(object sender, EventArgs e)
         {
             int cartProductID;
             int cartID = 0;
