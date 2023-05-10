@@ -67,7 +67,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Address.aspx" />
     <Content Include="Admin\DashBoard.aspx" />
     <Content Include="Admin\Orders.aspx" />
     <Content Include="Admin\AddProduct.aspx" />
@@ -88,6 +87,7 @@
     <Content Include="asset\5matcha.jpg" />
     <Content Include="asset\6kongsi.jpg" />
     <Content Include="asset\6pc_bucket_kongsi_with_spicy_nuggets.jpg" />
+    <Content Include="asset\9pc-combo.jpg" />
     <Content Include="asset\cash.png" />
     <Content Include="asset\cheezilla.jpg" />
     <Content Include="asset\colonel.jpg" />
@@ -124,7 +124,6 @@
     <Content Include="Forgot3.aspx" />
     <Content Include="ForgotPassword.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="OrderHistory.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Web.config" />
@@ -136,13 +135,6 @@
     <Content Include="CheckOut.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Address.aspx.cs">
-      <DependentUpon>Address.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Address.aspx.designer.cs">
-      <DependentUpon>Address.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\admin.Master.cs">
       <DependentUpon>admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -233,13 +225,6 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="OrderHistory.aspx.cs">
-      <DependentUpon>OrderHistory.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="OrderHistory.aspx.designer.cs">
-      <DependentUpon>OrderHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
