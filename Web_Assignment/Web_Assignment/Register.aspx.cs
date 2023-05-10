@@ -17,6 +17,7 @@ namespace Web_Assignment
         {
             if (Session["Username"] != null)
             {
+                
                 Master.btnlogin.Visible = false;
                 Master.btnlogout.Visible = true;
                 Master.btnprofile.Visible = true;

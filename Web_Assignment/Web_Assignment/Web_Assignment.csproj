@@ -128,6 +128,7 @@
     <Content Include="Forgot3.aspx" />
     <Content Include="ForgotPassword.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Orderhistory.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Web.config" />
@@ -257,6 +258,13 @@
     </Compile>
     <Compile Include="NestedMasterPage1.master.designer.cs">
       <DependentUpon>NestedMasterPage1.master</DependentUpon>
+    </Compile>
+    <Compile Include="Orderhistory.aspx.cs">
+      <DependentUpon>Orderhistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Orderhistory.aspx.designer.cs">
+      <DependentUpon>Orderhistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>

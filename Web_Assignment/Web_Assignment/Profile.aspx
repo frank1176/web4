@@ -48,7 +48,6 @@
                               
                             </div>
                             </div>
-                                <asp:TextBox ID="txt" runat="server"></asp:TextBox>
                             </form>
 		                </div>
 		            </div>

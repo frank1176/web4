@@ -232,21 +232,25 @@ namespace Web_Assignment
 
         /// <summary>
         /// lbRegister control.
-        /// btnRegister control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegister;
+        protected global::System.Web.UI.WebControls.LinkButton lbRegister;
 
         /// <summary>
-        /// lbRegister control.
+        /// Master property.
         /// </summary>
         /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// Auto-generated property.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button login;
+        public new Web_Assignment.Site1 Master
+        {
+            get
+            {
+                return ((Web_Assignment.Site1)(base.Master));
+            }
+        }
     }
 }
