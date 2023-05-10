@@ -41,7 +41,7 @@
                    <div class="row">
                     <div class="col-md-6 mb-4">
                         <div class="form-outline">
-                            <asp:CheckBox ID="cbRmbMe" class="cbRmbMe" runat="server" Text="Remember me" OnCheckedChanged="cbRmbMe_CheckedChanged"  />
+                            <asp:CheckBox ID="cbRmbMe" class="cbRmbMe" runat="server" Text="Remember me"   />
                 
                     </div>
                 </div>

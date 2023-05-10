@@ -12,8 +12,6 @@ namespace Web_Assignment
 {
     public partial class WebForm7 : System.Web.UI.Page
     {
-        String email;
-        String password;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -37,14 +35,9 @@ namespace Web_Assignment
 
         protected void login_Click(object sender, EventArgs e)
         {
-            if (cbRmbMe.Checked == true)
-            {
-                email = Email.Text;
-                password = Email.Text;
-            }
 
-            email = Email.Text;
-            password = Password.Text;
+            String email = Email.Text;
+            String password = Password.Text;
             SqlConnection con;
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             con = new SqlConnection(strCon);
