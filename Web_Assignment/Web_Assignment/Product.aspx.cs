@@ -18,28 +18,16 @@ namespace Web_Assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+                // Check if the ProductID query string parameter is present
 
-            // Check if the ProductID query string parameter is present
-
-            if (!string.IsNullOrEmpty(Request.QueryString["ProductID"]))
-            {
-                // Get the ProductID value from the query string parameter
-                int productId = Convert.ToInt32(Request.QueryString["ProductID"]);
-                string description = string.Empty;
-                // Define the connection string and SQL query
-                string conString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-                string sqlQuery = "SELECT ProductName, product_image, Description, UnitPrice FROM Product WHERE ProductID = @productId";
-
-                // Create a new SqlConnection object and open the connection
-                using (SqlConnection connection = new SqlConnection(conString))
+                if (!string.IsNullOrEmpty(Request.QueryString["ProductID"]))
                 {
                     // Get the ProductID value from the query string parameter
                     int productId = Convert.ToInt32(Request.QueryString["ProductID"]);
                     string description = string.Empty;
                     // Define the connection string and SQL query
                     string conString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-                    string sqlQuery = "SELECT ProductName, product_image, Description FROM Product WHERE ProductID = @productId";
+                    string sqlQuery = "SELECT ProductName, product_image, Description, UnitPrice FROM Product WHERE ProductID = @productId";
 
                     // Create a new SqlConnection object and open the connection
                     using (SqlConnection connection = new SqlConnection(conString))
@@ -49,9 +37,15 @@ namespace Web_Assignment
                         // Create a new SqlCommand object with the SQL query and SqlConnection object
                         using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                         {
-                            // Check if there are any rows returned
-                            if (reader.Read())
+                            // Add a parameter to the SqlCommand object for the ProductID value
+                            command.Parameters.AddWithValue("@productId", productId);
+
+                            // Execute the SQL query and get the results using a SqlDataReader
+                            using (SqlDataReader reader = command.ExecuteReader())
                             {
+                                // Check if there are any rows returned
+                                if (reader.Read())
+                                {
                                 // Get the ProductName and product_image values from the SqlDataReader
                                 string productName = reader.GetString(0);
                                 string productImage = reader.GetString(1);
@@ -62,79 +56,83 @@ namespace Web_Assignment
                                 ProductName.InnerHtml = productName;
                                 // Set the product_image value to the "src" attribute of an HTML <img> tag with an ID "ProductImage"
                                 ProductImage.Attributes["src"] = "~/asset/" + productImage;
-                                
-                                addbtn.Text= "RM " + productPrice.ToString();
+
+                                Addbtn.Text = "RM " + productPrice.ToString();
 
                                 string[] descLines = productDesc.Split(new char[] { '@', '#', '$' }, StringSplitOptions.RemoveEmptyEntries);
                                 productDesc = string.Join("<br>", descLines);
 
                                 ProductDesc.InnerHtml = productDesc;
                             }
+                            }
                         }
-                    
-                }
-            }
 
-            if (Session["Username"] != null)
-            {
-                Master.btnlogin.Visible = false;
-                Master.btnlogout.Visible = true;
-                Master.btnprofile.Visible = true;
-            }
-            else
-            {
-                Master.btnlogin.Visible = true;
-                Master.btnlogout.Visible = false;
-                Master.btnprofile.Visible = false;
-            }
+                    }
+                }
+
+                if (Session["Username"] != null)
+                {
+                    Master.btnlogin.Visible = false;
+                    Master.btnlogout.Visible = true;
+                    Master.btnprofile.Visible = true;
+                }
+                else
+                {
+                    Master.btnlogin.Visible = true;
+                    Master.btnlogout.Visible = false;
+                    Master.btnprofile.Visible = false;
+                }
+            
         }
 
         protected void Addbtn_Click(object sender, EventArgs e)
         {
-
-            int productId = Convert.ToInt32(Request.QueryString["ProductID"]);
-            int userId = Convert.ToInt32(Session["Userid"]);
-            int cartID;
-            System.Diagnostics.Debug.WriteLine("product: " + productId);
-            System.Diagnostics.Debug.WriteLine("user: " + userId);
-            SqlConnection con;
-            string conString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            con = new SqlConnection(conString);
-            con.Open();
-            string strselectcart = @"SELECT * FROM [Cart] WHERE UserId=@userId";
-            SqlCommand cmdselectcart = new SqlCommand(strselectcart, con);
-            cmdselectcart.Parameters.AddWithValue("@userId", userId);
-
-            SqlDataReader reader = cmdselectcart.ExecuteReader();
-
-            if (reader.HasRows)
+            if (Session["Username"] != null)
             {
-                reader.Read();
-                cartID = int.Parse(reader["cartID"].ToString());
-                int count= int.Parse(reader["count"].ToString());
-                int quantity = 1;
-                reader.Close();
-                string insertcartProduct = @"INSERT INTO [cartProduct] (cartID, productID, quantity)VALUES(@cartID,@productId,@quantity)";
-                SqlCommand cmdinsertcartProduct = new SqlCommand(insertcartProduct, con);
-                cmdinsertcartProduct.Parameters.AddWithValue("@cartID", cartID);
-                cmdinsertcartProduct.Parameters.AddWithValue("@count", count);
-                cmdinsertcartProduct.Parameters.AddWithValue("@productId", productId);
-                cmdinsertcartProduct.Parameters.AddWithValue("@quantity", quantity);
-                cmdinsertcartProduct.ExecuteNonQuery();
-                
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Insert Product is successfull')", true);
+                int productId = Convert.ToInt32(Request.QueryString["ProductID"]);
+                int userId = Convert.ToInt32(Session["Userid"]);
+                int cartID;
+                System.Diagnostics.Debug.WriteLine("product: " + productId);
+                System.Diagnostics.Debug.WriteLine("user: " + userId);
+                SqlConnection con;
+                string conString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                con = new SqlConnection(conString);
+                con.Open();
+                string strselectcart = @"SELECT * FROM [Cart] WHERE UserId=@userId";
+                SqlCommand cmdselectcart = new SqlCommand(strselectcart, con);
+                cmdselectcart.Parameters.AddWithValue("@userId", userId);
+
+                SqlDataReader reader = cmdselectcart.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    cartID = int.Parse(reader["cartID"].ToString());
+                    int count = int.Parse(reader["count"].ToString());
+                    int quantity = 1;
+                    reader.Close();
+                    string insertcartProduct = @"INSERT INTO [cartProduct] (cartID, productID, quantity)VALUES(@cartID,@productId,@quantity)";
+                    SqlCommand cmdinsertcartProduct = new SqlCommand(insertcartProduct, con);
+                    cmdinsertcartProduct.Parameters.AddWithValue("@cartID", cartID);
+                    cmdinsertcartProduct.Parameters.AddWithValue("@count", count);
+                    cmdinsertcartProduct.Parameters.AddWithValue("@productId", productId);
+                    cmdinsertcartProduct.Parameters.AddWithValue("@quantity", quantity);
+                    cmdinsertcartProduct.ExecuteNonQuery();
+
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Insert Product is successfull')", true);
+                }
+                else
+                {
+
+                }
+
+                con.Close();
             }
             else
             {
-
+                string script = "alert('Please Login'); window.location.href='Login.aspx';";
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
             }
-            
-            con.Close();
-
-
-
-           
-
         }
 
         protected void Button1_Click(object sender, EventArgs e)
