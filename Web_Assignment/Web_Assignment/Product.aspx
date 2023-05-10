@@ -19,7 +19,7 @@
   </head>
 
   <body>
-      <span style="margin-left:8%; margin-top:10%; color: gray;"><i>Home > Menu > 3-pc Arabian Spice Crunch Combo</i></span>
+      <span style="margin-left:8%; margin-top:10%; color: gray;"><i>Home > Menu > Product</i></span>
     <main class="container">
         
 
@@ -53,7 +53,7 @@
 
         <input class="btnr" type="radio" id="fname" name="fname" value="Fanta Orange (M)">
         <label for="fname">Fanta Orange (M)</label><br><hr />
-
+        <!--
         <input class="btnr" type="radio" id="fname" name="fname" value="Coca-Cola (L)">
         <label for="fname">Coca-Cola (L)</label> <span style="float:right;">+RM 1.20</span> <br><hr />
 
@@ -68,7 +68,7 @@
 
         <input class="btnr" type="radio" id="fname" name="fname" value="Ice Milo (M)">
         <label for="fname">Ice Milo (M)</label> <span style="float:right;">+RM 2.20</span> <br> <hr />
-       
+        -->
     </div>
       
     </div>
@@ -100,13 +100,15 @@
             <div class="cable-choose">
               
                 <asp:Button ID="Button1" runat="server" Text="-" OnClick="Button1_Click" style="border-radius: 50%; width:8%; background-color:white;" />
-              <button style="width: 75%; border-radius: 25px; background-color:white;">1</button>
+             <!-- <button id="qtyBtn" style="width: 75%; border-radius: 25px; background-color:white;" value ="1" > 1 </button> -->
+                <asp:TextBox ID="quantityTextBox" runat="server" Text="1" style="width: 75%; border-radius: 25px; background-color:white; text-align:center;" value ="1" Enabled="False" ></asp:TextBox>
+
               
                 <asp:Button ID="Button2" runat="server" Text="+" style="border-radius: 50%; width:8%; background-color:white;" OnClick="Button2_Click" />
             </div>
             <div>
              
-                <asp:Button ID="Addbtn" runat="server" style="width: 95%; height: 50px; border-radius: 20px; margin-top:10px; background-color:orangered;" Text="Add To Cart - RM24.99" OnClick="Addbtn_Click" />
+                <asp:Button ID="Addbtn" runat="server" style="width: 95%; height: 50px; border-radius: 20px; margin-top:10px; background-color:orangered;" Text="" OnClick="Addbtn_Click" />
             </div>
 
           
