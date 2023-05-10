@@ -42,7 +42,7 @@ namespace Web_Assignment
             String pass = Password.Text;
 
             int role = 1;
-            String q = Question.Text;
+            String q = DropDownList1.Text;
             String a = Answer.Text;
 
             SqlConnection con;
