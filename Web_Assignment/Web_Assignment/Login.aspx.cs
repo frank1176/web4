@@ -41,9 +41,10 @@ namespace Web_Assignment
 
                 reader.Read(); // Read the first row of the result set
                 string username = reader["Username"].ToString(); // Replace "Username" with the column name for username in your database
-
+                
                 // Store the username somewhere (e.g., in a session variable) to use later
                 Session["Username"] = username;
+                Session["UserId"] = reader["UserId"].ToString();
                 Response.Redirect("Home.aspx");
             }
             else
