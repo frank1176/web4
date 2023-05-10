@@ -87,70 +87,74 @@ namespace Web_Assignment
 
         protected void Addbtn_Click(object sender, EventArgs e)
         {
-
-            int productId = Convert.ToInt32(Request.QueryString["ProductID"]);
-            int userId = Convert.ToInt32(Session["Userid"]);
-            int cartID;
-            System.Diagnostics.Debug.WriteLine("product: " + productId);
-            System.Diagnostics.Debug.WriteLine("user: " + userId);
-            SqlConnection con;
-            string conString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            con = new SqlConnection(conString);
-            con.Open();
-            string strselectcart = @"SELECT * FROM [Cart] WHERE UserId=@userId";
-            SqlCommand cmdselectcart = new SqlCommand(strselectcart, con);
-            cmdselectcart.Parameters.AddWithValue("@userId", userId);
-
-
-
-            SqlDataReader reader = cmdselectcart.ExecuteReader();
-
-            if (reader.HasRows)
+            if (Session["Username"] != null)
             {
-                reader.Read();
-                cartID = int.Parse(reader["cartID"].ToString());
-                int count= int.Parse(reader["count"].ToString());
-                int quantity = 1;
-                reader.Close();
+                int productId = Convert.ToInt32(Request.QueryString["ProductID"]);
+                int userId = Convert.ToInt32(Session["Userid"]);
+                int cartID;
+                System.Diagnostics.Debug.WriteLine("product: " + productId);
+                System.Diagnostics.Debug.WriteLine("user: " + userId);
+                SqlConnection con;
+                string conString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                con = new SqlConnection(conString);
+                con.Open();
+                string strselectcart = @"SELECT * FROM [Cart] WHERE UserId=@userId";
+                SqlCommand cmdselectcart = new SqlCommand(strselectcart, con);
+                cmdselectcart.Parameters.AddWithValue("@userId", userId);
+                System.Diagnostics.Debug.WriteLine("babi" + userId);
 
-                string queryCartItem = @"SELECT quantity FROM cartProduct WHERE cartID = @cartId AND productID = @productId";
-                SqlCommand commandCartItem = new SqlCommand(queryCartItem, con);
-                commandCartItem.Parameters.AddWithValue("@cartId", cartID);
-                commandCartItem.Parameters.AddWithValue("@productId", productId);
-                int existingQuantity = Convert.ToInt32(commandCartItem.ExecuteScalar());
 
-                if (existingQuantity > 0)
+                SqlDataReader reader = cmdselectcart.ExecuteReader();
+
+                if (reader.HasRows)
                 {
-                    // Update the existing cart item with a new quantity
-                    string queryUpdate = @"UPDATE cartProduct SET quantity = @newQuantity WHERE cartID = @cartId AND productID = @productId";
-                    SqlCommand commandUpdate = new SqlCommand(queryUpdate, con);
-                    commandUpdate.Parameters.AddWithValue("@cartId", cartID);
-                    commandUpdate.Parameters.AddWithValue("@productId", productId);
-                    commandUpdate.Parameters.AddWithValue("@newQuantity", existingQuantity + 1);
-                    commandUpdate.ExecuteNonQuery();
-                }
-                else
-                {
-                    // Add a new item to the cart
-                    string insertcartProduct = @"INSERT INTO [cartProduct] (cartID, productID, quantity)VALUES(@cartID,@productId,@quantity)";
-                    SqlCommand cmdinsertcartProduct = new SqlCommand(insertcartProduct, con);
-                    cmdinsertcartProduct.Parameters.AddWithValue("@cartID", cartID);
-                    cmdinsertcartProduct.Parameters.AddWithValue("@count", count);
-                    cmdinsertcartProduct.Parameters.AddWithValue("@productId", productId);
-                    cmdinsertcartProduct.Parameters.AddWithValue("@quantity", quantity);
-                    cmdinsertcartProduct.ExecuteNonQuery();
+                    reader.Read();
+                    cartID = int.Parse(reader["cartID"].ToString());
+                    int count = int.Parse(reader["count"].ToString());
+                    int quantity = 1;
+                    reader.Close();
 
-                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Insert Product is successfull')", true);
-                }
-    
+                    string queryCartItem = @"SELECT quantity FROM cartProduct WHERE cartID = @cartId AND productID = @productId";
+                    SqlCommand commandCartItem = new SqlCommand(queryCartItem, con);
+                    commandCartItem.Parameters.AddWithValue("@cartId", cartID);
+                    commandCartItem.Parameters.AddWithValue("@productId", productId);
+                    int existingQuantity = Convert.ToInt32(commandCartItem.ExecuteScalar());
 
-                con.Close();
+                    if (existingQuantity > 0)
+                    {
+                        // Update the existing cart item with a new quantity
+                        string queryUpdate = @"UPDATE cartProduct SET quantity = @newQuantity WHERE cartID = @cartId AND productID = @productId";
+                        SqlCommand commandUpdate = new SqlCommand(queryUpdate, con);
+                        commandUpdate.Parameters.AddWithValue("@cartId", cartID);
+                        commandUpdate.Parameters.AddWithValue("@productId", productId);
+                        commandUpdate.Parameters.AddWithValue("@newQuantity", existingQuantity + 1);
+                        commandUpdate.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        // Add a new item to the cart
+                        string insertcartProduct = @"INSERT INTO [cartProduct] (cartID, productID, quantity)VALUES(@cartID,@productId,@quantity)";
+                        SqlCommand cmdinsertcartProduct = new SqlCommand(insertcartProduct, con);
+                        cmdinsertcartProduct.Parameters.AddWithValue("@cartID", cartID);
+                        cmdinsertcartProduct.Parameters.AddWithValue("@count", count);
+                        cmdinsertcartProduct.Parameters.AddWithValue("@productId", productId);
+                        cmdinsertcartProduct.Parameters.AddWithValue("@quantity", quantity);
+                        cmdinsertcartProduct.ExecuteNonQuery();
+
+                        ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Insert Product is successfull')", true);
+                    }
+
+
+                    con.Close();
+                }
             }
             else
             {
                 string script = "alert('Please Login'); window.location.href='Login.aspx';";
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
             }
+            
+           
         }
 
         protected void Button1_Click(object sender, EventArgs e)
