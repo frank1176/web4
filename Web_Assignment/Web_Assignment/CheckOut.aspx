@@ -197,7 +197,7 @@
 
       
                           <div class="form-group">
-                            <label for="numeric" class="control-label">Card Holder Nae</label>
+                            <label for="numeric" class="control-label">Card Holder Name</label>
                             <input  type="text" class="input-lg form-control">
                           </div>
 

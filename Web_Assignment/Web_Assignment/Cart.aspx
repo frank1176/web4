@@ -46,8 +46,16 @@
               <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                 <!-- Data -->
                 <p><strong><%# Eval("ProductName") %></strong></p>
-                <p><%# Eval("Description") %></p>
-                <asp:Button ID="BtnEdit" runat="server" Text="Edit Item" class="btn btn-primary btn-sm mb-2" data-mdb-toggle="tooltip" />
+
+                  
+                <ul>
+            <%# Eval("Description")
+                .ToString()
+                .Split(new char[] { '@', '#', '$' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(s => $"<li>{s}</li>")
+                .Aggregate((s1, s2) => s1 + s2) %>
+        </ul>
+                <asp:Button ID="BtnEdit" runat="server" Text="Edit Item" class="btn btn-primary btn-sm mb-2" CommandArgument='<%# Eval("ProductID") %>'/>
                   
                 <asp:Button ID="BtnRemove" runat="server" Text="Remove Item"  class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip" CommandName="RemoveCartItem" CommandArgument='<%# Eval("ProductID") %>' onClick="BtnRemove_Click"/>
 

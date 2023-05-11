@@ -12,6 +12,7 @@ using System.Drawing;
 using System.Diagnostics.Eventing.Reader;
 using System.Diagnostics;
 using static System.Net.Mime.MediaTypeNames;
+using System.Runtime.Remoting.Messaging;
 
 namespace Web_Assignment
 {
@@ -63,8 +64,13 @@ namespace Web_Assignment
                         SqlCommand command = new SqlCommand(query2, connection);
                         command.Parameters.AddWithValue("@CartID", cartID);
                         SqlDataReader readerCartItem = command.ExecuteReader();
+
+                      
+                         
+                        
                         if (readerCartItem.HasRows)
                         {
+                            
                             readerCartItem.Close();
 
                             SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -73,6 +79,8 @@ namespace Web_Assignment
                             cartRepeater.DataSource = dataTable;
                             cartRepeater.DataBind();
 
+
+                 
 
                             string query = @"SELECT P.ProductName, CP.quantity, (CP.quantity * P.UnitPrice) as totalPrice FROM cartProduct CP JOIN Product P ON P.productID = CP.productID WHERE CP.cartID = @cartID";
 
