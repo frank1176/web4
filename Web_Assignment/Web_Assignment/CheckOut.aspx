@@ -316,8 +316,8 @@
 
                 <div class="text-center mt-5">
 
-
-                    <button class="btn btn-primary" onclick="document.location='Delivery.aspx'">Track your order</button>
+                    <asp:Button ID="btnGoOut" runat="server" class="btn btn-primary" Text="Track your order" OnClick="btnGoOut_Click" />
+                    
                     
 
 

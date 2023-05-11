@@ -167,7 +167,7 @@ namespace Web_Assignment
         {
             int userId = Convert.ToInt32(Session["Userid"]);
             int cartID = 0;
-            decimal subtotal=0;
+            decimal subtotal = 0;
             string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -213,7 +213,7 @@ namespace Web_Assignment
                 {
 
 
-                     subtotal = reader2.GetDecimal(0);
+                    subtotal = reader2.GetDecimal(0);
                     // do something with the subtotal value, such as display it on the page
 
                     lblSubtotal2.Text = subtotal.ToString("C2");
@@ -241,12 +241,12 @@ namespace Web_Assignment
 
                 string insertcartProduct = @"INSERT INTO [Order] (UserId, orderStatus, subTotal, orderDateTime, DepartureDateTime, deliveryAddress)VALUES(@userID,@orderStatus,@subTotal,@orderDateTime,@DepartureDateTime,@deliveryAddress)";
                 SqlCommand cmdinsertcartProduct = new SqlCommand(insertcartProduct, connection);
-               
+
                 cmdinsertcartProduct.Parameters.AddWithValue("@userID", userId);
                 cmdinsertcartProduct.Parameters.AddWithValue("@orderStatus", order);
                 cmdinsertcartProduct.Parameters.AddWithValue("@subTotal", subtotal);
                 cmdinsertcartProduct.Parameters.AddWithValue("@orderDateTime", currentTime);
-                cmdinsertcartProduct.Parameters.AddWithValue("@DepartureDateTime", currentDate); 
+                cmdinsertcartProduct.Parameters.AddWithValue("@DepartureDateTime", currentDate);
                 cmdinsertcartProduct.Parameters.AddWithValue("@deliveryAddress", deliveryAddress);
 
                 cmdinsertcartProduct.ExecuteNonQuery();
@@ -257,22 +257,50 @@ namespace Web_Assignment
 
                 cartID = (int)command1.ExecuteScalar();
 
-
-
-
+              
                 string query6 = "DELETE FROM cartProduct WHERE cartID = @cartID"; ;
                 SqlCommand commandDelete = new SqlCommand(query6, connection);
                 commandDelete.Parameters.AddWithValue("@cartID", cartID);
                 commandDelete.ExecuteNonQuery();
 
-                //string script = @"<script type='text/javascript'>$('#Receipt').modal('show');</script>";
-               // ScriptManager.RegisterStartupScript(this, GetType(), "OpenModal", script, false);
                 string script = "alert('Order is successfull'); window.location.href='Home.aspx';";
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
+                //string script = @"<script type='text/javascript'>$('#Receipt').modal('show');</script>";
+                // ScriptManager.RegisterStartupScript(this, GetType(), "OpenModal", script, false);
+
 
                 connection.Close();
             }
-            
+
         }
-    }
+
+        protected void btnGoOut_Click(object sender, EventArgs e)
+        {
+            int userId = Convert.ToInt32(Session["Userid"]);
+            int cartID = 0;
+            
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query5 = "SELECT CartID FROM Cart WHERE UserId = @UserId";
+                SqlCommand command = new SqlCommand(query5, connection);
+                command.Parameters.AddWithValue("@UserId", userId);
+                connection.Open();
+                cartID = Convert.ToInt32(command.ExecuteScalar());
+                connection.Close();
+            }
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query6 = "DELETE FROM cartProduct WHERE cartID = @cartID"; ;
+                SqlCommand commandDelete = new SqlCommand(query6, connection);
+                commandDelete.Parameters.AddWithValue("@cartID", cartID);
+                commandDelete.ExecuteNonQuery();
+
+                string script = "alert('Order is successfull'); window.location.href='Home.aspx';";
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
+            }
+        }
+    }  
 }
