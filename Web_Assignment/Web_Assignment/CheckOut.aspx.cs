@@ -230,10 +230,30 @@ namespace Web_Assignment
                 SqlCommand command = new SqlCommand(query, connection);
 
                 command.Parameters.AddWithValue("@auserId", userId);
+               
+                    // Create a SqlDataReader object and execute the SELECT statement
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        // Declare a variable to store the delivery addresses
+                        string deliveryAddresses = "";
+
+                        // Loop through the SqlDataReader and append each delivery address to the variable
+                        while (reader.Read())
+                        {
+                            deliveryAddresses += $"AddressId: {reader["AddressId"]}<br/>";
+                            deliveryAddresses += $"AddressLine1: {reader["AddressLine1"]}<br/>";
+                            deliveryAddresses += $"AddressLine2: {reader["AddressLine2"]}<br/>";
+                            deliveryAddresses += $"City: {reader["City"]}<br/>";
+                            deliveryAddresses += $"State: {reader["State"]}<br/>";
+                            deliveryAddresses += $"PostalCode: {reader["PostalCode"]}<br/>";
+                            deliveryAddresses += "<br/>";
+                        }
+
+                   
 
 
 
-                string order = "Not Complete";
+                    string order = "Not Complete";
                 string deliveryAddress = "Tarc";
                 DateTime currentTime = DateTime.Now;
                 DateTime currentDate = currentTime.Date;
