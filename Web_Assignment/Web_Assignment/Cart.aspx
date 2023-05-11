@@ -19,49 +19,7 @@
               <div class="col-md-2"> <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Menu.aspx" BorderColor="#FF3300">Add more item</asp:HyperLink></div>
              </div>
           </div>
-             <!-- Address -->
-            
-               <div class="card mb-4">
-          <div class="card-body">
-              <div class="row">
-            <p><strong>Delivery Address</strong></p>
-
-
-            <p class="mb-0">Kiongho address</p>
-                  <asp:LinkButton ID="ChangeAddress" runat="server" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Address"> Change Address</asp:LinkButton>
-                 
-
-<!-- The Modal -->
-<div class="modal" id="Address">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        Modal body..
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-
-                  </div>
-        </div>
-       </div>    
-                
-            <!-- Address -->
+           
           <div class="card-body">
     <asp:Repeater ID="cartRepeater" runat="server" OnItemCommand="cartRepeater_ItemCommand">
     
