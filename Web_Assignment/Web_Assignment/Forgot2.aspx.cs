@@ -64,7 +64,7 @@ namespace Web_Assignment
             if (reader.HasRows)
             {
                 reader.Read();
-                String answer = reader["Question"].ToString();
+                String answer = reader["Answer"].ToString();
                 if (txtSecAns.Text == answer)
                 {
                     Response.Redirect("Forgot3.aspx?UserID=" + userId);

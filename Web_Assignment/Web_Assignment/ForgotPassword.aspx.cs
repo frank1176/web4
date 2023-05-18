@@ -23,7 +23,7 @@ namespace Web_Assignment
             string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             con = new SqlConnection(strCon);
             con.Open();
-            string query = "SELECT * FROM [User] WHERE Email = @aemail";
+            string query = "SELECT * FROM [dbo].[User] WHERE Email = @aemail";
             SqlCommand cmdSelectUser = new SqlCommand(query, con);
             cmdSelectUser.Parameters.AddWithValue("@aemail", email);
             SqlDataReader reader = cmdSelectUser.ExecuteReader();

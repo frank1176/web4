@@ -230,70 +230,70 @@ namespace Web_Assignment
                 SqlCommand command = new SqlCommand(query, connection);
 
                 command.Parameters.AddWithValue("@auserId", userId);
-               
-                    // Create a SqlDataReader object and execute the SELECT statement
-                    using (SqlDataReader reader = command.ExecuteReader())
+
+                // Create a SqlDataReader object and execute the SELECT statement
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    // Declare a variable to store the delivery addresses
+                    string deliveryAddresses = "";
+
+                    // Loop through the SqlDataReader and append each delivery address to the variable
+                    while (reader.Read())
                     {
-                        // Declare a variable to store the delivery addresses
-                        string deliveryAddresses = "";
+                        deliveryAddresses += $"AddressId: {reader["AddressId"]}<br/>";
+                        deliveryAddresses += $"AddressLine1: {reader["AddressLine1"]}<br/>";
+                        deliveryAddresses += $"AddressLine2: {reader["AddressLine2"]}<br/>";
+                        deliveryAddresses += $"City: {reader["City"]}<br/>";
+                        deliveryAddresses += $"State: {reader["State"]}<br/>";
+                        deliveryAddresses += $"PostalCode: {reader["PostalCode"]}<br/>";
+                        deliveryAddresses += "<br/>";
+                    }
 
-                        // Loop through the SqlDataReader and append each delivery address to the variable
-                        while (reader.Read())
-                        {
-                            deliveryAddresses += $"AddressId: {reader["AddressId"]}<br/>";
-                            deliveryAddresses += $"AddressLine1: {reader["AddressLine1"]}<br/>";
-                            deliveryAddresses += $"AddressLine2: {reader["AddressLine2"]}<br/>";
-                            deliveryAddresses += $"City: {reader["City"]}<br/>";
-                            deliveryAddresses += $"State: {reader["State"]}<br/>";
-                            deliveryAddresses += $"PostalCode: {reader["PostalCode"]}<br/>";
-                            deliveryAddresses += "<br/>";
-                        }
 
-                   
 
 
 
                     string order = "Not Complete";
-                string deliveryAddress = "Tarc";
-                DateTime currentTime = DateTime.Now;
-                DateTime currentDate = currentTime.Date;
-                Console.WriteLine("Current date: " + currentDate.ToShortDateString());
+                    string deliveryAddress = "Tarc";
+                    DateTime currentTime = DateTime.Now;
+                    DateTime currentDate = currentTime.Date;
+                    Console.WriteLine("Current date: " + currentDate.ToShortDateString());
 
-                string insertcartProduct = @"INSERT INTO [Order] (UserId, orderStatus, subTotal, orderDateTime, DepartureDateTime, deliveryAddress)VALUES(@userID,@orderStatus,@subTotal,@orderDateTime,@DepartureDateTime,@deliveryAddress)";
-                SqlCommand cmdinsertcartProduct = new SqlCommand(insertcartProduct, connection);
+                    string insertcartProduct = @"INSERT INTO [Order] (UserId, orderStatus, subTotal, orderDateTime, DepartureDateTime, deliveryAddress)VALUES(@userID,@orderStatus,@subTotal,@orderDateTime,@DepartureDateTime,@deliveryAddress)";
+                    SqlCommand cmdinsertcartProduct = new SqlCommand(insertcartProduct, connection);
 
-                cmdinsertcartProduct.Parameters.AddWithValue("@userID", userId);
-                cmdinsertcartProduct.Parameters.AddWithValue("@orderStatus", order);
-                cmdinsertcartProduct.Parameters.AddWithValue("@subTotal", subtotal);
-                cmdinsertcartProduct.Parameters.AddWithValue("@orderDateTime", currentTime);
-                cmdinsertcartProduct.Parameters.AddWithValue("@DepartureDateTime", currentDate);
-                cmdinsertcartProduct.Parameters.AddWithValue("@deliveryAddress", deliveryAddress);
+                    cmdinsertcartProduct.Parameters.AddWithValue("@userID", userId);
+                    cmdinsertcartProduct.Parameters.AddWithValue("@orderStatus", order);
+                    cmdinsertcartProduct.Parameters.AddWithValue("@subTotal", subtotal);
+                    cmdinsertcartProduct.Parameters.AddWithValue("@orderDateTime", currentTime);
+                    cmdinsertcartProduct.Parameters.AddWithValue("@DepartureDateTime", currentDate);
+                    cmdinsertcartProduct.Parameters.AddWithValue("@deliveryAddress", deliveryAddress);
 
-                cmdinsertcartProduct.ExecuteNonQuery();
+                    cmdinsertcartProduct.ExecuteNonQuery();
 
-                string query7 = "SELECT CartID FROM Cart WHERE UserId = @UserId";
-                SqlCommand command1 = new SqlCommand(query7, connection);
-                command1.Parameters.AddWithValue("@UserId", userId);
+                    string query7 = "SELECT CartID FROM Cart WHERE UserId = @UserId";
+                    SqlCommand command1 = new SqlCommand(query7, connection);
+                    command1.Parameters.AddWithValue("@UserId", userId);
 
-                cartID = (int)command1.ExecuteScalar();
-
-              
-                string query6 = "DELETE FROM cartProduct WHERE cartID = @cartID"; ;
-                SqlCommand commandDelete = new SqlCommand(query6, connection);
-                commandDelete.Parameters.AddWithValue("@cartID", cartID);
-                commandDelete.ExecuteNonQuery();
-
-                string script = "alert('Order is successfull'); window.location.href='Home.aspx';";
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
-                //string script = @"<script type='text/javascript'>$('#Receipt').modal('show');</script>";
-                // ScriptManager.RegisterStartupScript(this, GetType(), "OpenModal", script, false);
+                    cartID = (int)command1.ExecuteScalar();
 
 
-                connection.Close();
+                    string query6 = "DELETE FROM cartProduct WHERE cartID = @cartID"; ;
+                    SqlCommand commandDelete = new SqlCommand(query6, connection);
+                    commandDelete.Parameters.AddWithValue("@cartID", cartID);
+                    commandDelete.ExecuteNonQuery();
+
+                    string script = "alert('Order is successfull'); window.location.href='Home.aspx';";
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
+                    //string script = @"<script type='text/javascript'>$('#Receipt').modal('show');</script>";
+                    // ScriptManager.RegisterStartupScript(this, GetType(), "OpenModal", script, false);
+
+
+                    connection.Close();
+                }
+
             }
-
         }
-
         protected void btnGoOut_Click(object sender, EventArgs e)
         {
             int userId = Convert.ToInt32(Session["Userid"]);

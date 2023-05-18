@@ -56,7 +56,8 @@ namespace Web_Assignment
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            int userId = Convert.ToInt32(Request.QueryString["UserId"]);
+            int auserId = Convert.ToInt32(Session["Userid"]);
+
             string username = txtUsername.Text;
             string email = txtEmail.Text;
             string phnum = txtPhone.Text;
@@ -68,18 +69,19 @@ namespace Web_Assignment
             con.Open();
 
 
-            string query = "UPDATE [Delivery_address] SET addressLabel=@label, Address=@address, City=@city, State=@state,  Postcode=@postcode, Note=@note WHERE addressID=@addressId";
+            string query = "UPDATE [User] SET Username=@UserName1, Email=@Email1, Phonenumber=@Phonenumber1 WHERE UserId = @userId";
             SqlCommand command = new SqlCommand(query, con);
-            command.Parameters.AddWithValue("@label", username);
-            command.Parameters.AddWithValue("@address", email);
-            command.Parameters.AddWithValue("@city", phnum);
+            command.Parameters.AddWithValue("@UserName1", username);
+            command.Parameters.AddWithValue("@Email1", email);
+            command.Parameters.AddWithValue("@Phonenumber1", phnum);
+            command.Parameters.AddWithValue("@userId", auserId);
 
             int rowsAffected = command.ExecuteNonQuery();
 
             if (rowsAffected > 0)
             {
 
-                Response.Redirect("Addresslist.aspx");
+                Response.Redirect("Profile.aspx");
             }
             else
             {
